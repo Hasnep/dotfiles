@@ -10,5 +10,5 @@ sudo apt install stow
 git clone git@github.com:Hasnep/dotfiles.git ~/.dotfiles
 
 # Run stow on all the packages
-stow julia r ssh terminal zsh
+stow julia r ssh zsh
 ```
