@@ -12,4 +12,5 @@ git clone git@github.com:Hasnep/dotfiles.git ~/.dotfiles
 # Run stow on all the packages
 cd ~/.dotfiles
 stow julia r ssh zsh
+dconf load /com/gexperts/Tilix/ < ~/.dotfiles/tilix.dconf
 ```
