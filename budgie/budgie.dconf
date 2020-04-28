@@ -1,0 +1,89 @@
+[budgie-panel]
+builtin-theme=false
+dark-theme=true
+migration-level=1
+panels=['78df1d9c-859f-11ea-b916-9fd6372e0df3']
+
+[budgie-panel/applets/{472356c0-85a8-11ea-b916-9fd6372e0df3}]
+alignment='start'
+name='Icon Task List'
+position=1
+
+[budgie-panel/applets/{78df1d9d-859f-11ea-b916-9fd6372e0df3}]
+alignment='start'
+name='AppMenu'
+position=0
+
+[budgie-panel/applets/{78df1da0-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Clock'
+position=7
+
+[budgie-panel/applets/{78df1da1-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Visual Space'
+position=2
+
+[budgie-panel/applets/{78df1da3-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='DropBy'
+position=3
+
+[budgie-panel/applets/{7a2047fb-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Notifications'
+position=4
+
+[budgie-panel/applets/{7a2047fc-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Network'
+position=5
+
+[budgie-panel/applets/{7a204800-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='User Indicator'
+position=8
+
+[budgie-panel/applets/{7a204801-859f-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Raven Trigger'
+position=9
+
+[budgie-panel/applets/{b0163234-85a7-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='AppIndicator Applet'
+position=0
+
+[budgie-panel/applets/{b2593ade-85a5-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Status Indicator'
+position=6
+
+[budgie-panel/applets/{d327fe1a-85a7-11ea-b916-9fd6372e0df3}]
+alignment='end'
+name='Spacer'
+position=1
+
+[budgie-panel/instance/icon-tasklist/{472356c0-85a8-11ea-b916-9fd6372e0df3}]
+pinned-launchers=['nemo.desktop', 'firefox.desktop', 'code-insiders.desktop']
+
+[budgie-panel/instance/spacer/{d327fe1a-85a7-11ea-b916-9fd6372e0df3}]
+size=30
+
+[budgie-panel/panels/{78df1d9c-859f-11ea-b916-9fd6372e0df3}]
+applets=['78df1da3-859f-11ea-b916-9fd6372e0df3', 'b2593ade-85a5-11ea-b916-9fd6372e0df3', '7a204800-859f-11ea-b916-9fd6372e0df3', 'b0163234-85a7-11ea-b916-9fd6372e0df3', '472356c0-85a8-11ea-b916-9fd6372e0df3', '78df1da0-859f-11ea-b916-9fd6372e0df3', '7a2047fc-859f-11ea-b916-9fd6372e0df3', 'd327fe1a-85a7-11ea-b916-9fd6372e0df3', '78df1da1-859f-11ea-b916-9fd6372e0df3', '7a2047fb-859f-11ea-b916-9fd6372e0df3', '7a204801-859f-11ea-b916-9fd6372e0df3', '78df1d9d-859f-11ea-b916-9fd6372e0df3']
+autohide='none'
+dock-mode=false
+enable-shadow=false
+location='bottom'
+size=50
+theme-regions=true
+transparency='dynamic'
+
+[budgie-raven]
+show-power-strip=true
+
+[budgie-wm]
+button-layout='appmenu:minimize,maximize,close'
+caffeine-mode=false
+center-windows=true
