@@ -1,4 +1,4 @@
-push!(LOAD_PATH, "~/Documents/Julia/")
+push!(LOAD_PATH, "/home/hannes/Documents/julia/")
 
 try
     using OhMyREPL 
