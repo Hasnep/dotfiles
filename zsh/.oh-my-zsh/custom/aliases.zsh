@@ -6,7 +6,7 @@ alias ls="ls --color=auto"
 alias glances="~/.venvs/glances/bin/python -m glances"
 alias jupyterlab="~/.venvs/jupyter/bin/python -m jupyter lab"
 
-# Python 
+# Python
 alias autopep8="~/.venvs/autopep8/bin/python -m autopep8"
 alias bandit="~/.venvs/bandit/bin/python -m bandit"
 alias black="~/.venvs/black/bin/python -m black"
@@ -20,6 +20,3 @@ alias pylama="~/.venvs/pylama/bin/python -m pylama"
 alias pylint="~/.venvs/pylint/bin/python -m pylint"
 alias pytest="~/.venvs/pytest/bin/python -m pytest"
 alias yapf="~/.venvs/yapf/bin/python -m yapf"
-
-# Spotify
-# alias spotify="spotifyd && spt"
