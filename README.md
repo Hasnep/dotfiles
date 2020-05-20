@@ -21,13 +21,13 @@ stow git julia r ssh zsh
 To restore from files to dconf:
 
 ```shell
-dconf load /com/gexperts/Tilix/ < ~/.dotfiles/tilix/tilix.dconf
-dconf load /com/solus-project/ < ~/.dotfiles/budgie/budgie.dconf
+dconf load /com/gexperts/Tilix/ < ~/.dotfiles/tilix/tilix.conf
+dconf load /com/solus-project/ < ~/.dotfiles/budgie/budgie.conf
 ```
 
 To backup from dconf to files:
 
 ```shell
-dconf dump /com/gexperts/Tilix/ > ~/.dotfiles/tilix/tilix.dconf
-dconf dump /com/solus-project/ > ~/.dotfiles/budgie/budgie.dconf
+dconf dump /com/gexperts/Tilix/ > ~/.dotfiles/tilix/tilix.conf
+dconf dump /com/solus-project/ > ~/.dotfiles/budgie/budgie.conf
 ```
