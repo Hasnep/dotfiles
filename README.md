@@ -23,6 +23,7 @@ To restore from files to dconf:
 ```shell
 dconf load /com/gexperts/Tilix/ < ~/.dotfiles/tilix/tilix.conf
 dconf load /com/solus-project/ < ~/.dotfiles/budgie/budgie.conf
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/.dotfiles/gnome/keybindings.conf
 ```
 
 To backup from dconf to files:
@@ -30,4 +31,5 @@ To backup from dconf to files:
 ```shell
 dconf dump /com/gexperts/Tilix/ > ~/.dotfiles/tilix/tilix.conf
 dconf dump /com/solus-project/ > ~/.dotfiles/budgie/budgie.conf
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/.dotfiles/gnome/keybindings.conf 
 ```
