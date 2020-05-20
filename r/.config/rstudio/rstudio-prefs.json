@@ -2,7 +2,7 @@
   "custom_shell_command": "/usr/bin/zsh",
   "default_project_location": "~/Documents/R/",
   "default_sweave_engine": "knitr",
-  "editor_theme": "rscodeio",
+  "editor_theme": "Monokai",
   "highlight_r_function_calls": true,
   "jobs_tab_visibility": "shown",
   "load_workspace": false,
