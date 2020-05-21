@@ -1,5 +1,5 @@
-# Run neofetch on startup
-neofetch
+# Run neofetch if in tilix
+[ $(ps -o comm= -p $PPID) = "tilix" ] && neofetch
 
 # Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
