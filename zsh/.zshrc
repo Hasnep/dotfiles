@@ -36,5 +36,3 @@ source /etc/profile.d/undistract-me.sh
 # Set up PATH
 path+=~/.cargo/bin
 path+=~/bin
-
-
