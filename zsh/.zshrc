@@ -30,9 +30,6 @@ source $ZSH/oh-my-zsh.sh
 # Run Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Run undistract-me
-source /etc/profile.d/undistract-me.sh
-
 # Set up PATH
 path+=~/.cargo/bin
 path+=~/bin
