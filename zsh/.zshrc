@@ -34,4 +34,7 @@ source $ZSH/oh-my-zsh.sh
 source /etc/profile.d/undistract-me.sh
 
 # Set up PATH
-export PATH=~/bin:$PATH
+path+=~/.cargo/bin
+path+=~/bin
+
+
