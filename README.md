@@ -5,6 +5,10 @@
 ### GNU Stow
 
 ```shell
+# Add GNU PPA to get stow version >= 2.3
+sudo add-apt-repository ppa:dns/gnu
+sudo apt-get update
+
 # Install GNU Stow
 sudo apt install stow
 
