@@ -32,4 +32,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Set up PATH
 path+=~/.cargo/bin
-path+=~/bin
+path+=~/.bin
+path+=/snap/bin

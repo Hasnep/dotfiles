@@ -1,6 +1,6 @@
 # Commandline tools
 alias grep="grep --color=auto"
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --group-directories-first"
 
 # Python tools
 alias glances="~/.venvs/glances/bin/python -m glances"
