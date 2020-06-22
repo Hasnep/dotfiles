@@ -5,6 +5,7 @@ alias ls="ls --color=auto --group-directories-first"
 # Python tools
 alias glances="~/.venvs/glances/bin/python -m glances"
 alias jupyterlab="~/.venvs/jupyter/bin/python -m jupyter lab"
+alias jupytext="~/.venvs/jupytext/bin/jupytext"
 
 # Python
 alias autopep8="~/.venvs/autopep8/bin/python -m autopep8"
