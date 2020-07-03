@@ -1,5 +1,9 @@
 # Run neofetch if in tilix
-[ $(ps -o comm= -p $PPID) = "tilix" ] && neofetch
+if [[ $(ps -o comm= -p $PPID) = "tilix" ]]; then
+  neofetch
+elif [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
+  onefetch
+fi
 
 # Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
