@@ -22,7 +22,7 @@ HYPHEN_INSENSITIVE="true"
 setopt INTERACTIVE_COMMENTS
 
 # Plugins to load
-plugins=(git cargo pip ubuntu nvm auto-notify)
+plugins=(zsh-nvm git cargo pip ubuntu auto-notify)
 
 # Run oh my zsh
 source $ZSH/oh-my-zsh.sh
