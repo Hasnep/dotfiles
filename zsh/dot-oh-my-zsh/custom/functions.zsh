@@ -6,7 +6,6 @@ function activate {
 # Recompile requirements for a pip venv in ~/.venvs/<name of venv>
 function piprecompile {
     VENV_NAME=${1:?"Error: Specify the name of the venv."}
-
     echo "Compiling requirements" \
     && $HOME/.venvs/$VENV_NAME/bin/python -m pip install pip-tools \
     && $HOME/.venvs/$VENV_NAME/bin/python -m piptools compile \
@@ -17,7 +16,6 @@ function piprecompile {
 # Delete and recompile a pip venv in ~/.venvs/<name of venv>
 function piprecreate {
     VENV_NAME=${1:?"Error: Specify the name of the venv."}
-
     echo "Removing venv at $HOME/.venvs/$VENV_NAME/" \
     && rm -rf $HOME/.venvs/$VENV_NAME/ \
     && echo "Creating new venv at $HOME/.venvs/$VENV_NAME/" \
