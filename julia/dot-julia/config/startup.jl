@@ -1,4 +1,4 @@
-push!(LOAD_PATH, "/home/hannes/Documents/julia/")
+push!(LOAD_PATH, joinpath(homedir(), "Documents", "julia"))
 
 # try
 #     using OhMyREPL
