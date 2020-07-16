@@ -1,3 +1,6 @@
+# Dotfiles
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME
+
 # Commandline tools
 alias grep="grep --color=auto"
 alias ls="ls --color=auto --group-directories-first"

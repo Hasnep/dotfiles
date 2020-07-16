@@ -2,22 +2,24 @@
 
 ## Instructions
 
-### GNU Stow
-
 ```shell
-# Add GNU PPA to get stow version >= 2.3
-sudo add-apt-repository ppa:dns/gnu
-sudo apt-get update
+# Install git
+sudo apt install git
 
-# Install GNU Stow
-sudo apt install stow
+# Create an alias
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
-# Clone this repo to ~/.dotfiles
-git clone https://github.com/Hasnep/dotfiles.git ~/.dotfiles
+# Add .dotfiles to gitignore to avoid recursion
+# echo ".dotfiles" >> ~/.gitignore
 
-# Run stow on all the packages
-cd ~/.dotfiles
-stow git julia r ssh zsh
+# Clone the repo
+git clone --bare https://github.com/Hasnep/dotfiles.git $HOME/.dotfiles.git
+
+# Check out the repo
+dotfiles checkout
+
+# Don't show untracked files
+dotfiles config --local status.showUntrackedFiles no
 ```
 
 ### dconf
@@ -35,5 +37,5 @@ To backup from dconf to files:
 ```shell
 dconf dump /com/gexperts/Tilix/ > ~/.dotfiles/tilix/tilix.conf
 dconf dump /com/solus-project/ > ~/.dotfiles/budgie/budgie.conf
-dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/.dotfiles/gnome/keybindings.conf 
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/.dotfiles/gnome/keybindings.conf
 ```
