@@ -7,13 +7,13 @@
 sudo apt install git
 
 # Create an alias
-alias dotfiles='/usr/bin/git --git-dir=~/.dotfiles/ --work-tree=$HOME'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME
 
 # Add .dotfiles to gitignore to avoid recursion
 # echo ".dotfiles" >> ~/.gitignore
 
 # Clone the repo
-git clone --bare https://github.com/Hasnep/dotfiles.git ~/.dotfiles
+git clone --bare https://github.com/Hasnep/dotfiles.git $HOME/.dotfiles.git
 
 # Check out the repo
 dotfiles checkout
