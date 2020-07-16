@@ -10,7 +10,7 @@ sudo apt install git
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # Clone the repo
-git clone --bare https://github.com/Hasnep/dotfiles.git $HOME/.dotfiles
+git clone --bare git@github.com:Hasnep/dotfiles.git $HOME/.dotfiles
 
 # Check out the repo
 dotfiles checkout
