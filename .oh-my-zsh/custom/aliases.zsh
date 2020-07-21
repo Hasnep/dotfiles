@@ -2,6 +2,7 @@
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # Commandline tools
+alias apt="aptitude"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto --group-directories-first"
 alias please="sudo"
