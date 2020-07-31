@@ -38,6 +38,7 @@ source $ZSH/oh-my-zsh.sh
 path+=~/.cargo/bin
 path+=~/.bin
 path+=/snap/bin
+path+=~/.julia/bin
 
 # Set up node
 export NODE_PATH=$(which node)
