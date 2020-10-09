@@ -32,7 +32,8 @@ dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/gnome/keybindings.
 To backup from dconf to files:
 
 ```shell
-dconf dump /com/gexperts/Tilix/ > ~/tilix/tilix.conf
-dconf dump /com/solus-project/ > ~/budgie/budgie.conf
-dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/gnome/keybindings.conf
+mkdir -p ~/dconf
+dconf dump /com/gexperts/Tilix/ > ~/dconf/tilix.conf
+dconf dump /com/solus-project/ > ~/dconf/budgie.conf
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/dconf/keybindings.conf
 ```
