@@ -9,7 +9,12 @@
   "panes": {
     "console_left_on_top": false,
     "console_right_on_top": true,
-    "quadrants": ["Source", "TabSet1", "Console", "TabSet2"],
+    "quadrants": [
+      "Source",
+      "TabSet1",
+      "Console",
+      "TabSet2"
+    ],
     "tabSet1": [
       "Environment",
       "History",
@@ -19,7 +24,13 @@
       "Tutorial",
       "Presentation"
     ],
-    "tabSet2": ["Files", "Plots", "Packages", "Help", "Viewer"]
+    "tabSet2": [
+      "Files",
+      "Plots",
+      "Packages",
+      "Help",
+      "Viewer"
+    ]
   },
   "posix_terminal_shell": "custom",
   "reuse_sessions_for_project_links": true,
