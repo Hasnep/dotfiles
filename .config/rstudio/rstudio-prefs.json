@@ -1,6 +1,6 @@
 {
-  "custom_shell_command": "/usr/bin/zsh",
-  "default_project_location": "~/Documents/R/",
+  "custom_shell_command": "/usr/bin/fish",
+  "default_project_location": "~/Documents/r",
   "default_sweave_engine": "knitr",
   "editor_theme": "Monokai",
   "highlight_r_function_calls": true,
@@ -9,7 +9,12 @@
   "panes": {
     "console_left_on_top": false,
     "console_right_on_top": true,
-    "quadrants": ["Source", "TabSet1", "Console", "TabSet2"],
+    "quadrants": [
+      "Source",
+      "TabSet1",
+      "Console",
+      "TabSet2"
+    ],
     "tabSet1": [
       "Environment",
       "History",
@@ -19,13 +24,18 @@
       "Tutorial",
       "Presentation"
     ],
-    "tabSet2": ["Files", "Plots", "Packages", "Help", "Viewer"]
+    "tabSet2": [
+      "Files",
+      "Plots",
+      "Packages",
+      "Help",
+      "Viewer"
+    ]
   },
   "posix_terminal_shell": "custom",
   "reuse_sessions_for_project_links": true,
   "save_workspace": "never",
   "scroll_past_end_of_document": true,
-  "show_terminal_tab": false,
   "source_with_echo": true,
   "spelling_dictionary_language": "en_GB",
   "syntax_color_console": true,

@@ -79,5 +79,5 @@ alias safety="~/.venvs/safety/bin/python -m safety"
 alias yapf="~/.venvs/yapf/bin/python -m yapf"
 
 # Julia commandline tools
-alias pluto="julia --project -e 'import Pluto; Pluto.run()'"
-alias jlfmt="julia -e 'import JuliaFormatter; JuliaFormatter.format(\".\")'"
+alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
+alias jlfmt="julia --startup-file=no -q --compile=min -O0 -e 'import JuliaFormatter; JuliaFormatter.format(\".\",  margin = 120, always_for_in = true, whitespace_typedefs = true, whitespace_ops_in_indices = true)'"
