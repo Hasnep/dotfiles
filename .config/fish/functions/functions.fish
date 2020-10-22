@@ -55,9 +55,12 @@ alias ls="ls --color=auto --group-directories-first"
 alias please="sudo"
 
 # Python commandline tools
+alias bpytop="~/.venvs/bpytop/bin/python -m bpytop"
 alias glances="~/.venvs/glances/bin/python -m glances"
+alias jill="~/.venvs/jill/bin/python -m jill"
 alias jupyterlab="~/.venvs/jupyter/bin/python -m jupyter lab"
 alias jupytext="~/.venvs/jupytext/bin/jupytext"
+alias proselint="~/.venvs/proselint/bin/python -m proselint"
 
 # Python tooling
 alias autopep8="~/.venvs/autopep8/bin/python -m autopep8"
@@ -72,6 +75,7 @@ alias pydocstyle="~/.venvs/pydocstyle/bin/python -m pydocstyle"
 alias pylama="~/.venvs/pylama/bin/python -m pylama"
 alias pylint="~/.venvs/pylint/bin/python -m pylint"
 alias pytest="~/.venvs/pytest/bin/python -m pytest"
+alias safety="~/.venvs/safety/bin/python -m safety"
 alias yapf="~/.venvs/yapf/bin/python -m yapf"
 
 # Julia commandline tools
