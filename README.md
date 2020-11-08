@@ -1,5 +1,8 @@
 # My .dotfiles
 
+This repo is designed to be cloned as a bare repo in my home directory to quickly restore lots of my configuration files.
+I followed (this tutorial)[https://www.atlassian.com/git/tutorials/dotfiles] to set it up.
+
 ## Instructions
 
 ```shell
