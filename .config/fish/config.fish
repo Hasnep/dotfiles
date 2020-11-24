@@ -8,4 +8,4 @@ begin
     end
 end
 
-set -eg EDITOR /snap/bin/micro
+set -xg EDITOR /snap/bin/micro
