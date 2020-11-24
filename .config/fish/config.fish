@@ -7,3 +7,5 @@ begin
             git rev-parse --git-dir &>/dev/null && onefetch
     end
 end
+
+set -eg EDITOR /snap/bin/micro
