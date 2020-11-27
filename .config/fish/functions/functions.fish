@@ -1,7 +1,3 @@
-function activate -a "VENV" -d "Activate a Python venv in ~/.venvs/<venv>"
-    source ~/.venvs/$VENV/bin/activate.fish
-end
-
 function pip-recompile -a "VENV" -d "Recompile requirements for a pip venv in ~/.venvs/<venv>"
     set VENV_PATH $HOME/.venvs/$VENV
     echo "Compiling requirements"
@@ -42,13 +38,6 @@ function update-venvs -d "Update all my custom venvs"
     venv-tools auto pydocstyle
     venv-tools auto pytest
     venv-tools auto safety
-end
-
-function smart-add-ppa -a "PPA_URL" -d "Remove a PPA and re-add it"
-    echo "Removing $PPA_URL"
-    sudo add-apt-repository --remove -y $PPA_URL
-    echo "Adding $PPA_URL"
-    sudo add-apt-repository -y $PPA_URL
 end
 
 # Dotfiles
