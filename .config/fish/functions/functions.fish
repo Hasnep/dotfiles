@@ -2,21 +2,6 @@ function activate -a "VENV" -d "Activate a Python venv in ~/.venvs/<venv>"
     source ~/.venvs/$VENV/bin/activate.fish
 end
 
-function create-venv -a "VENV" "PACKAGES" -d "create-venv <venv> <packages>"
-    mkdir -p $HOME/.venvs/
-    set VENV_PATH $HOME/.venvs/$VENV
-    echo "Creating venv at $VENV_PATH"
-    python3 -m venv $VENV_PATH
-    if test -n "$PACKAGES"
-        echo "Installing $PACKAGES"
-        $HOME/.venvs/$VENV/bin/python -m pip install -U $PACKAGES
-    else
-        echo "Installing $VENV"
-        $HOME/.venvs/$VENV/bin/python -m pip install -U $VENV
-    end
-    echo "Done creating venv"
-end
-
 function pip-recompile -a "VENV" -d "Recompile requirements for a pip venv in ~/.venvs/<venv>"
     set VENV_PATH $HOME/.venvs/$VENV
     echo "Compiling requirements"
@@ -35,23 +20,28 @@ function pip-recreate -a "VENV" -d "Delete and recompile a pip venv in ~/.venvs/
     pip-recompile $VENV
 end
 
+# My venv-tools
+alias venv-tools="python3 ~/.local/bin/venv-tools.py"
+alias venv-auto="python3 ~/.local/bin/venv-tools.py auto"
+alias venv-create="python3 ~/.local/bin/venv-tools.py create"
+
 function update-venvs -d "Update all my custom venvs"
-    create-venv awscli
-    create-venv bpytop
-    create-venv glances
-    create-venv jill
-    create-venv jupyter jupyter jupyterlab
-    create-venv jupytext jupyter jupytext
-    create-venv proselint
+    venv-tools auto awscli
+    venv-tools auto bpytop
+    venv-tools auto glances
+    venv-tools auto jill
+    venv-tools auto jupyter --packages jupyter jupyterlab
+    venv-tools auto jupytext --packages jupyter jupytext
+    venv-tools auto proselint
 
     # Dev tools
-    create-venv black
-    create-venv flake8
-    create-venv mypy
-    create-venv pip-tools
-    create-venv pydocstyle
-    create-venv pytest
-    create-venv safety
+    venv-tools auto black
+    venv-tools auto flake8
+    venv-tools auto mypy
+    venv-tools auto pip-tools
+    venv-tools auto pydocstyle
+    venv-tools auto pytest
+    venv-tools auto safety
 end
 
 function smart-add-ppa -a "PPA_URL" -d "Remove a PPA and re-add it"
@@ -60,8 +50,6 @@ function smart-add-ppa -a "PPA_URL" -d "Remove a PPA and re-add it"
     echo "Adding $PPA_URL"
     sudo add-apt-repository -y $PPA_URL
 end
-
-# Aliases
 
 # Dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
@@ -74,6 +62,7 @@ alias ls="ls --color=auto --group-directories-first"
 alias please="sudo"
 
 # Python commandline tools
+alias aws="~/.venvs/awscli/bin/python -m awscli"
 alias bpytop="~/.venvs/bpytop/bin/python -m bpytop"
 alias glances="~/.venvs/glances/bin/python -m glances"
 alias jill="~/.venvs/jill/bin/python -m jill"
