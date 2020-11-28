@@ -1,0 +1,22 @@
+[Unit]
+Description=Backup home using restic
+[Service]
+Type=oneshot
+ExecStart=/snap/bin/restic \
+         backup \
+         --tag=${TAG} \
+         --exclude-if-present=.resticignore \
+         --exclude-file=%h/.config/restic/excludes-${TAG}.txt \
+         --verbose \
+         %h/${BACKUP_DIRECTORY}
+ExecStartPost=/snap/bin/restic \
+              forget \
+              --tag=${TAG} \
+              --keep-hourly=${KEEP_HOURLY} \
+              --keep-daily=${KEEP_DAILY} \
+              --keep-weekly=${KEEP_WEEKLY} \
+              --keep-monthly=${KEEP_MONTHLY} \
+              --keep-yearly=${KEEP_YEARLY} \
+              --verbose
+EnvironmentFile=%h/.config/restic/secrets
+EnvironmentFile=%h/.config/restic/config-home
