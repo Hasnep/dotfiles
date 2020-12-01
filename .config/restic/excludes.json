@@ -1,0 +1,56 @@
+{
+  "Ansible": ["$HOME/.ansible/"],
+  "Arduino": ["$HOME/.arduino15/", "$HOME/Arduino/"],
+  "Cache files": ["Cache/", ".cache/", "$HOME/.config/**/Cache"],
+  "Database dumps": ["*.dump"],
+  "Documents": ["$HOME/Documents/"],
+  "Downloads": ["$HOME/Downloads/"],
+  "Dropbox": ["$HOME/Dropbox/", "$HOME/.dropbox-dist/", "$HOME/.dropbox/"],
+  "Duplicati": ["$HOME/.config/Duplicati/"],
+  "Firefox": ["$HOME/.mozilla/"],
+  "Fish shell": ["$HOME/.local/share/fisher/"],
+  "GNOME": ["$HOME/.gvfs/", "$HOME/.local/share/gvfs-metadata/"],
+  "Julia": ["$HOME/.julia/", "$HOME/packages/julias/"],
+  "Lutris": ["$HOME/.local/share/lutris/", "$HOME/Games/"],
+  "Mono": ["$HOME/.mono/"],
+  "Nim": ["$HOME/.choosenim/"],
+  "Node": ["$HOME/.npm/", "$HOME/.nvm/", "node_modules/"],
+  "Phoronix": ["$HOME/.phoronix-test-suite/"],
+  "Python": [".ipynb_checkpoints/", ".mypy_cache/"],
+  "R": [
+    "$HOME/R/",
+    "$HOME/.r/",
+    "renv/library/",
+    "$HOME/.local/share/renv/",
+    "renv/python/",
+    "renv/staging/",
+    "renv/library/",
+    "renv/python/",
+    "renv/staging/"
+  ],
+  "Rust": [
+    "$HOME/.rustup/",
+    "$HOME/.cargo/",
+    "$HOME/Documents/rust/**/target/"
+  ],
+  "Snaps": ["$HOME/snap/"],
+  "Steam": ["$HOME/.local/share/Steam/steamapps/common/", "$HOME/.steam/"],
+  "System files": [
+    "$HOME/.thumbnails/",
+    "$HOME/.recently-used/",
+    "$HOME/.Trash/",
+    "$HOME/.var/",
+    "$HOME/.dbus/",
+    "$HOME/.local/share/Trash/",
+    "$HOME/.xsession-errors/"
+  ],
+  "VSCode": [
+    "$HOME/.config/Code - Insiders/",
+    "$HOME/.config/Code/",
+    "$HOME/.vscode-insiders/",
+    "$HOME/.vscode/"
+  ],
+  "VirtualBox": ["$HOME/VirtualBox VMs/"],
+  "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
+  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/"]
+}
