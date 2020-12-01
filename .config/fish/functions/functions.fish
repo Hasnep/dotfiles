@@ -29,6 +29,7 @@ function update-venvs -d "Update all my custom venvs"
     venv-tools auto jupyter --packages jupyter jupyterlab
     venv-tools auto jupytext --packages jupyter jupytext
     venv-tools auto proselint
+    venv-tools auto speedtest-cli
 
     # Dev tools
     venv-tools auto black
@@ -58,6 +59,7 @@ alias jill="~/.venvs/jill/bin/python -m jill"
 alias jupyterlab="~/.venvs/jupyter/bin/python -m jupyter lab"
 alias jupytext="~/.venvs/jupytext/bin/jupytext"
 alias proselint="~/.venvs/proselint/bin/python -m proselint"
+alias speedtest-cli="~/.venvs/speedtest-cli/bin/speedtest-cli"
 
 # Python tooling
 alias black="~/.venvs/black/bin/python -m black"
