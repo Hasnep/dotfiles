@@ -6,10 +6,18 @@ from typing import Optional, List
 
 VENVS_DIRECTORY = Path().home() / ".venvs"
 
+# Create a cli parser
 parser = argparse.ArgumentParser(description="Control venvs")
+
 parser.add_argument("action", type=str)
 parser.add_argument("venv_name", type=str)
-parser.add_argument("--packages", type=str, nargs="+", action="extend", required=False)
+# The extend argument is only available in Python >=3.8
+if sys.version_info.major == 3 and sys.version_info.major >= 8:
+    parser.add_argument(
+        "--packages", type=str, nargs="+", action="extend", required=False
+    )
+else:
+    parser.add_argument("--packages", type=str, nargs="+", required=False)
 
 
 def _pip_install(venv_python: Path, package: str):
