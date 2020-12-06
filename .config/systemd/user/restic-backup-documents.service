@@ -6,7 +6,7 @@ ExecStart=/snap/bin/restic \
          backup \
          --tag=${TAG} \
          --exclude-if-present=.resticignore \
-         --exclude-file=%h/.config/restic/excludes-${TAG}.txt \
+         --exclude-file=%h/.config/restic/excludes \
          --verbose \
          %h/${BACKUP_DIRECTORY}
 ExecStartPost=/snap/bin/restic \
