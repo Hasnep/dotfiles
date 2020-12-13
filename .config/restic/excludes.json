@@ -3,7 +3,6 @@
   "Arduino": ["$HOME/.arduino15/", "$HOME/Arduino/"],
   "Cache files": ["Cache/", ".cache/", "$HOME/.config/**/Cache"],
   "Database dumps": ["*.dump"],
-  "Documents": ["$HOME/Documents/"],
   "Downloads": ["$HOME/Downloads/"],
   "Dropbox": ["$HOME/Dropbox/", "$HOME/.dropbox-dist/", "$HOME/.dropbox/"],
   "Duplicati": ["$HOME/.config/Duplicati/"],
