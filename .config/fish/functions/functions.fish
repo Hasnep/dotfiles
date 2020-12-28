@@ -22,6 +22,7 @@ alias venv-auto="python3 ~/.local/bin/venv-tools.py auto"
 alias venv-create="python3 ~/.local/bin/venv-tools.py create"
 
 function update-venvs -d "Update all my custom venvs"
+    venv-tools auto ansible
     venv-tools auto awscli
     venv-tools auto bpytop
     venv-tools auto glances
@@ -52,6 +53,11 @@ alias ls="ls --color=auto --group-directories-first"
 alias please="sudo"
 
 # Python commandline tools
+alias ansible="~/.venvs/ansible/bin/ansible --extra-vars ansible_python_interpreter=/usr/bin/python3"
+complete --command ansible --wraps ansible
+alias ansible-galaxy="~/.venvs/ansible/bin/ansible-galaxy --extra-vars ansible_python_interpreter=/usr/bin/python3"
+complete --command ansible-galaxy --wraps ansible-galaxy
+alias ansible-playbook="~/.venvs/ansible/bin/ansible-playbook --extra-vars ansible_python_interpreter=/usr/bin/python3"
 alias aws="~/.venvs/awscli/bin/python -m awscli"
 alias bpytop="~/.venvs/bpytop/bin/python -m bpytop"
 alias glances="~/.venvs/glances/bin/python -m glances"
