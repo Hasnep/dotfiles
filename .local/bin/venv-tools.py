@@ -26,7 +26,7 @@ def _pip_install(venv_python: Path, package: str):
 
 
 def venv_create(venv_name: str):
-    # Ensure venvs foldder exists
+    # Ensure venvs folder exists
     VENVS_DIRECTORY.mkdir(parents=True, exist_ok=True)
     # Create venv
     venv_directory = VENVS_DIRECTORY / venv_name
