@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GPaste
+Icon=edit-paste
+Description=
+Comment=Clipboard manager
+Exec=gpaste-client start
