@@ -15,7 +15,7 @@
   "Nim": ["$HOME/.choosenim/"],
   "Node": ["$HOME/.npm/", "$HOME/.nvm/", "node_modules/"],
   "Phoronix": ["$HOME/.phoronix-test-suite/"],
-  "Python": [".ipynb_checkpoints/", ".mypy_cache/"],
+  "Python": ["$HOME/.venvs/", ".ipynb_checkpoints/", ".mypy_cache/"],
   "R": [
     "$HOME/R/",
     "$HOME/.r/",
@@ -51,5 +51,6 @@
   ],
   "VirtualBox": ["$HOME/VirtualBox VMs/"],
   "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
-  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/"]
+  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/"],
+  "Games": ["$HOME/.Prison Architect/"]
 }
