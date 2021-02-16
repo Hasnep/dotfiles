@@ -54,9 +54,7 @@ alias please="sudo"
 
 # Python commandline tools
 alias ansible="~/.venvs/ansible/bin/ansible --extra-vars ansible_python_interpreter=/usr/bin/python3"
-complete --command ansible --wraps ansible
 alias ansible-galaxy="~/.venvs/ansible/bin/ansible-galaxy --extra-vars ansible_python_interpreter=/usr/bin/python3"
-complete --command ansible-galaxy --wraps ansible-galaxy
 alias ansible-playbook="~/.venvs/ansible/bin/ansible-playbook --extra-vars ansible_python_interpreter=/usr/bin/python3"
 alias aws="~/.venvs/awscli/bin/python -m awscli"
 alias bpytop="~/.venvs/bpytop/bin/python -m bpytop"
