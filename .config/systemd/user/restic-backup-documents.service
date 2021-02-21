@@ -10,7 +10,7 @@ ExecStart=/snap/bin/restic \
          --tag=${TAG} \
          --exclude-if-present=.resticignore \
          --exclude-file=%h/.config/restic/excludes \
-         --json \
+         --verbose \
          %h/${BACKUP_DIRECTORY}
 ExecStartPost=/snap/bin/restic \
               forget \
@@ -20,6 +20,6 @@ ExecStartPost=/snap/bin/restic \
               --keep-weekly=${KEEP_WEEKLY} \
               --keep-monthly=${KEEP_MONTHLY} \
               --keep-yearly=${KEEP_YEARLY} \
-              --json
+              --verbose
 EnvironmentFile=%h/.config/restic/secrets
 EnvironmentFile=%h/.config/restic/config-documents
