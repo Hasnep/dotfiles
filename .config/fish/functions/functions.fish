@@ -69,9 +69,7 @@ alias speedtest-cli="~/.venvs/speedtest-cli/bin/speedtest-cli"
 alias black="~/.venvs/black/bin/python -m black"
 alias flake8="~/.venvs/flake8/bin/python -m flake8"
 alias mypy="~/.venvs/mypy/bin/python -m mypy"
-alias pip-compile="~/.venvs/pip-tools/bin/python -m piptools compile"
 alias pydocstyle="~/.venvs/pydocstyle/bin/python -m pydocstyle"
-alias pytest="~/.venvs/pytest/bin/python -m pytest"
 alias safety="~/.venvs/safety/bin/python -m safety"
 
 # Julia commandline tools
