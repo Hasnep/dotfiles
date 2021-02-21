@@ -35,6 +35,7 @@ function update-venvs -d "Update all my custom venvs"
     # Dev tools
     venv-tools auto black
     venv-tools auto flake8
+    venv-tools auto isort
     venv-tools auto mypy
     venv-tools auto pip-tools
     venv-tools auto pydocstyle
@@ -68,6 +69,7 @@ alias speedtest-cli="~/.venvs/speedtest-cli/bin/speedtest-cli"
 # Python tooling
 alias black="~/.venvs/black/bin/python -m black"
 alias flake8="~/.venvs/flake8/bin/python -m flake8"
+alias isort="~/.venvs/isort/bin/python -m isort"
 alias mypy="~/.venvs/mypy/bin/python -m mypy"
 alias pydocstyle="~/.venvs/pydocstyle/bin/python -m pydocstyle"
 alias safety="~/.venvs/safety/bin/python -m safety"
