@@ -1,5 +1,17 @@
 font:
-  size: 14.0
+  normal:
+    family: DejaVu Sans Mono
+    style: Book
+  bold:
+    family: DejaVu Sans Mono
+    style: Bold
+  italic:
+    family: DejaVu Sans Mono
+    style: Oblique
+  bold_italic:
+    family: DejaVu Sans Mono
+    style: Bold Oblique
+  size: 14.5
 colors:
   primary:
     background: "#030303"
