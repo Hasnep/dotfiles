@@ -27,7 +27,6 @@ dotfiles config --local status.showUntrackedFiles no
 To restore from files to dconf:
 
 ```shell
-dconf load /com/gexperts/Tilix/ < ~/dconf/tilix.conf
 dconf load /com/solus-project/ < ~/dconf/budgie.conf
 dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/dconf/keybindings.conf
 ```
@@ -36,7 +35,6 @@ To backup from dconf to files:
 
 ```shell
 mkdir -p ~/dconf
-dconf dump /com/gexperts/Tilix/ > ~/dconf/tilix.conf
 dconf dump /com/solus-project/ > ~/dconf/budgie.conf
 dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/dconf/keybindings.conf
 ```
