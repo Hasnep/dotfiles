@@ -9,6 +9,7 @@
   "Firefox": ["$HOME/.mozilla/"],
   "Fish shell": ["$HOME/.local/share/fisher/"],
   "GNOME": ["$HOME/.gvfs/", "$HOME/.local/share/gvfs-metadata/"],
+  "Games": ["$HOME/.Prison Architect/"],
   "Julia": ["$HOME/.julia/", "$HOME/packages/julias/"],
   "Lutris": ["$HOME/.local/share/lutris/", "$HOME/Games/"],
   "Mono": ["$HOME/.mono/"],
@@ -43,6 +44,7 @@
     "$HOME/.local/share/Trash/",
     "$HOME/.xsession-errors/"
   ],
+  "Torrents": ["$HOME/torrents/"],
   "VSCode": [
     "$HOME/.config/Code - Insiders/",
     "$HOME/.config/Code/",
@@ -51,6 +53,5 @@
   ],
   "VirtualBox": ["$HOME/VirtualBox VMs/"],
   "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
-  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/"],
-  "Games": ["$HOME/.Prison Architect/"]
+  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/"]
 }
