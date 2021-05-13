@@ -22,25 +22,11 @@ alias venv-auto="python3 ~/.local/bin/venv-tools.py auto"
 alias venv-create="python3 ~/.local/bin/venv-tools.py create"
 
 function update-venvs -d "Update all my custom venvs"
-    venv-tools auto ansible
-    venv-tools auto awscli
-    venv-tools auto bpytop
-    venv-tools auto glances
-    venv-tools auto jill
-    venv-tools auto jupyter --packages jupyter jupyterlab
-    venv-tools auto jupytext --packages jupyter jupytext
-    venv-tools auto proselint
-    venv-tools auto speedtest-cli
-
-    # Dev tools
-    venv-tools auto black
-    venv-tools auto flake8
-    venv-tools auto isort
-    venv-tools auto mypy
-    venv-tools auto pip-tools
-    venv-tools auto pydocstyle
-    venv-tools auto pytest
-    venv-tools auto safety
+    pipx install awscli
+    pipx install glances
+    pipx install jill
+    pipx install proselint
+    pipx install speedtest-cli
 end
 
 # Dotfiles
@@ -52,27 +38,6 @@ alias apt="aptitude"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto --group-directories-first"
 alias please="sudo"
-
-# Python commandline tools
-alias ansible="~/.venvs/ansible/bin/ansible --extra-vars ansible_python_interpreter=/usr/bin/python3"
-alias ansible-galaxy="~/.venvs/ansible/bin/ansible-galaxy --extra-vars ansible_python_interpreter=/usr/bin/python3"
-alias ansible-playbook="~/.venvs/ansible/bin/ansible-playbook --extra-vars ansible_python_interpreter=/usr/bin/python3"
-alias aws="~/.venvs/awscli/bin/python -m awscli"
-alias bpytop="~/.venvs/bpytop/bin/python -m bpytop"
-alias glances="~/.venvs/glances/bin/python -m glances"
-alias jill="~/.venvs/jill/bin/python -m jill"
-alias jupyterlab="~/.venvs/jupyter/bin/python -m jupyter lab"
-alias jupytext="~/.venvs/jupytext/bin/jupytext"
-alias proselint="~/.venvs/proselint/bin/python -m proselint"
-alias speedtest-cli="~/.venvs/speedtest-cli/bin/speedtest-cli"
-
-# Python tooling
-alias black="~/.venvs/black/bin/python -m black"
-alias flake8="~/.venvs/flake8/bin/python -m flake8"
-alias isort="~/.venvs/isort/bin/python -m isort"
-alias mypy="~/.venvs/mypy/bin/python -m mypy"
-alias pydocstyle="~/.venvs/pydocstyle/bin/python -m pydocstyle"
-alias safety="~/.venvs/safety/bin/python -m safety"
 
 # Julia commandline tools
 alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
