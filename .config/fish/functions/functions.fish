@@ -1,4 +1,4 @@
-function pip-recompile -a "VENV" -d "Recompile requirements for a pip venv in ~/.venvs/<venv>"
+function pip-recompile -a VENV -d "Recompile requirements for a pip venv in ~/.venvs/<venv>"
     set VENV_PATH $HOME/.venvs/$VENV
     echo "Compiling requirements"
     $VENV_PATH/bin/python -m pip install pip-tools
@@ -7,7 +7,7 @@ function pip-recompile -a "VENV" -d "Recompile requirements for a pip venv in ~/
     $VENV_PATH/bin/python -m pip install -r "requirements.txt"
 end
 
-function pip-recreate -a "VENV" -d "Delete and recompile a pip venv in ~/.venvs/<venv>"
+function pip-recreate -a VENV -d "Delete and recompile a pip venv in ~/.venvs/<venv>"
     set VENV_PATH $HOME/.venvs/$VENV
     echo "Removing venv at $VENV_PATH"
     rm -rf $VENV_PATH
