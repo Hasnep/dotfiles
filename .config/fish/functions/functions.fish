@@ -21,14 +21,6 @@ alias venv-tools="python3 ~/.local/bin/venv-tools.py"
 alias venv-auto="python3 ~/.local/bin/venv-tools.py auto"
 alias venv-create="python3 ~/.local/bin/venv-tools.py create"
 
-function update-venvs -d "Update all my custom venvs"
-    pipx install awscli
-    pipx install glances
-    pipx install jill
-    pipx install proselint
-    pipx install speedtest-cli
-end
-
 # Dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 complete --command dotfiles --wraps git
@@ -40,6 +32,17 @@ alias fd=fdfind
 alias grep=rg
 alias ls=exa
 alias please=sudo
+
+# Pipx aliases
+alias asciinema=pipx run asciinema
+alias awscli=pipx run awscli
+alias bpytop=pipx run bpytop
+alias gdtoolkit=pipx run gdtoolkit
+alias glances=pipx run glances
+alias jill=pipx run jill
+alias proselint=pipx run proselint
+alias speedtest-cli=pipx run speedtest-cli
+alias youtube-dl=pipx run youtube-dl
 
 # Julia commandline tools
 alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
