@@ -26,11 +26,22 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 complete --command dotfiles --wraps git
 
 # Aliases
+
 alias apt=aptitude
+alias apt="command apt"
+
 alias bat=batcat
+
 alias fd=fdfind
+alias find=fdfind
+alias find="command find"
+
 alias grep=rg
+alias grep="command grep"
+
 alias ls=exa
+alias ls="command ls"
+
 alias please=sudo
 
 # Pipx aliases
@@ -43,6 +54,7 @@ alias jill=pipx run jill
 alias proselint=pipx run proselint
 alias speedtest-cli=pipx run speedtest-cli
 alias youtube-dl=pipx run youtube-dl
+
 
 # Julia commandline tools
 alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
