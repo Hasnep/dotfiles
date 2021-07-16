@@ -33,16 +33,14 @@ end
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 complete --command dotfiles --wraps git
 
-# Commandline tools
-alias apt="aptitude"
-alias grep="grep --color=auto"
-alias ls="ls --color=auto --group-directories-first"
-alias please="sudo"
+# Aliases
+alias apt=aptitude
+alias bat=batcat
+alias fd=fdfind
+alias grep=rg
+alias ls=exa
+alias please=sudo
 
 # Julia commandline tools
 alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
 alias jlfmt="julia --startup-file=no -q --compile=min -O0 -e 'import JuliaFormatter; JuliaFormatter.format(\".\", margin = 120, always_for_in = true, whitespace_typedefs = true, whitespace_ops_in_indices = true)'"
-
-# Commandline tools
-alias fd=fdfind
-alias bat=batcat
