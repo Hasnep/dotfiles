@@ -45,16 +45,15 @@ alias ls="command ls"
 alias please=sudo
 
 # Pipx aliases
-alias asciinema=pipx run asciinema
-alias awscli=pipx run awscli
-alias bpytop=pipx run bpytop
-alias gdtoolkit=pipx run gdtoolkit
-alias glances=pipx run glances
-alias jill=pipx run jill
-alias proselint=pipx run proselint
-alias speedtest-cli=pipx run speedtest-cli
-alias youtube-dl=pipx run youtube-dl
-
+alias asciinema="pipx run asciinema"
+alias awscli="pipx run awscli"
+alias bpytop="pipx run bpytop"
+alias gdtoolkit="pipx run gdtoolkit"
+alias glances="pipx run glances"
+alias jill="pipx run jill"
+alias proselint="pipx run proselint"
+alias speedtest-cli="pipx run speedtest-cli"
+alias youtube-dl="pipx run youtube-dl"
 
 # Julia commandline tools
 alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
