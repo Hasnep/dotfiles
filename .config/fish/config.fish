@@ -8,6 +8,6 @@ begin
     end
 end
 
-set -xg EDITOR /snap/bin/micro
+set -xg EDITOR micro
 
 fish_add_path $HOME/bin $HOME/.cargo/bin/ $HOME/.nimble/bin/
