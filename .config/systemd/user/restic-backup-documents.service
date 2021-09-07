@@ -3,16 +3,16 @@ Description=Backup documents using restic
 [Service]
 Type=oneshot
 ExecStartPre=/usr/bin/python3 %h/.local/bin/restic-excludes-compile.py \
-            --output=%h/.config/restic/excludes \
-            %h/.config/restic/excludes.json
-ExecStart=/snap/bin/restic \
-         backup \
-         --tag=${TAG} \
-         --exclude-if-present=.resticignore \
-         --exclude-file=%h/.config/restic/excludes \
-         --verbose \
-         %h/${BACKUP_DIRECTORY}
-ExecStartPost=/snap/bin/restic \
+             --output=%h/.config/restic/excludes \
+             %h/.config/restic/excludes.json
+ExecStart=restic \
+          backup \
+          --tag=${TAG} \
+          --exclude-if-present=.resticignore \
+          --exclude-file=%h/.config/restic/excludes \
+          --verbose \
+          %h/${BACKUP_DIRECTORY}
+ExecStartPost=restic \
               forget \
               --tag=${TAG} \
               --keep-hourly=${KEEP_HOURLY} \
