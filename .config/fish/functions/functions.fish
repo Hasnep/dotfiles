@@ -34,6 +34,10 @@ end
 if type -q fdfind
     alias bat=batcat
 end
+## docker
+if type -q podman
+    alias docker=podman
+end
 ## find -> fd
 if type -q fdfind
     alias fd=fdfind
