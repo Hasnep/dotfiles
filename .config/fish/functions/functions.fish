@@ -17,9 +17,8 @@ function pip-recreate -a VENV -d "Delete and recompile a pip venv in ~/.venvs/<v
 end
 
 # My venv-tools
-alias venv-tools="python3 ~/.local/bin/venv-tools.py"
-alias venv-auto="python3 ~/.local/bin/venv-tools.py auto"
-alias venv-create="python3 ~/.local/bin/venv-tools.py create"
+alias venv-auto=venv-tools auto
+alias venv-create=venv-tools create
 
 # Dotfiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
