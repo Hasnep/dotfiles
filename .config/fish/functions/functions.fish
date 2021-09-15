@@ -26,23 +26,30 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 complete --command dotfiles --wraps git
 
 # Aliases
-## apt
-alias apt="command apt"
-alias apt=aptitude
-## bat
-alias bat=batcat
-## fd
-alias fd=fdfind
-## find
-alias find="command find"
-alias find=fdfind
-## grep
-alias grep="command grep"
-alias grep=rg
-## ls
-alias ls="command ls"
-alias ls=exa
-## please
+## apt -> aptitude
+if type -q aptitude
+    alias apt=aptitude
+end
+## cat -> bat
+if type -q fdfind
+    alias bat=batcat
+end
+## find -> fd
+if type -q fdfind
+    alias fd=fdfind
+end
+if type -q fd
+    alias find=fd
+end
+## grep -> rg
+if type -q rg
+    alias grep=rg
+end
+## ls -> exa
+if type -q exa
+    alias ls=exa
+end
+## sudo
 alias please=sudo
 
 # Pipx aliases
