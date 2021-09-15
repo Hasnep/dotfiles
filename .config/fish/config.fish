@@ -9,5 +9,6 @@ begin
 end
 
 set -xg EDITOR micro
+set -xg nvm_default_version lts
 
 fish_add_path $HOME/bin $HOME/.cargo/bin/ $HOME/.nimble/bin/
