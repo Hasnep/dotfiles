@@ -55,6 +55,9 @@ if type -q exa
 end
 ## sudo
 alias please=sudo
+if type -q doas
+    alias sudo=doas
+end
 
 # Pipx aliases
 alias asciinema="pipx run asciinema"
