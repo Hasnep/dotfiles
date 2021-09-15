@@ -1,0 +1,29 @@
+[user]
+	name = Hannes
+
+[blame]
+    ; Add git blame ignore file to global config
+	ignoreRevsFile = .git-blame-ignore-revs
+
+[diff]
+    ; Set the default diffing algorithm to histogram
+	algorithm = histogram
+
+[alias]
+    ; Add an alias for unstaging
+    unstage = "reset HEAD --"
+
+[init]
+    ; Set default branch name to main
+    defaultBranch = main
+
+; Use delta as diffing pager
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+[delta]
+    side-by-side = true
+[interactive]
+    diffFilter = delta --color-only --features=interactive
