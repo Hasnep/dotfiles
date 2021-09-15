@@ -5,3 +5,9 @@ try
 catch e
     @warn(e.msg)
 end
+
+try
+    using AbbreviatedStackTraces
+catch e
+    @warn(e.msg)
+end
