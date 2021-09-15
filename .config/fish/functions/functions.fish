@@ -61,6 +61,7 @@ end
 
 # Pipx aliases
 alias asciinema="pipx run asciinema"
+alias az="pipx run --spec azure-cli az"
 alias bpytop="pipx run bpytop"
 alias gdtoolkit="pipx run gdtoolkit"
 alias glances="pipx run glances"
