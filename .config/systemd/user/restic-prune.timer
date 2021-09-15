@@ -1,7 +1,7 @@
 [Unit]
-Description=Monthly restic prune
+Description=Weekly restic prune
 [Timer]
-OnCalendar=monthly
+OnCalendar=weekly
 Persistent=true
 [Install]
 WantedBy=timers.target
