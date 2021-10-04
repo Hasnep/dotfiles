@@ -48,6 +48,8 @@ end
 if type -q rg
     alias grep=rg
 end
+## lite -> lite-xl
+alias lite=lite-xl
 ## ls -> exa
 if type -q exa
     alias ls=exa
