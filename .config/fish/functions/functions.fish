@@ -50,6 +50,8 @@ if type -q rg
 end
 ## lite -> lite-xl
 alias lite=lite-xl
+## lock
+alias lock="gnome-screensaver-command -l"
 ## ls -> exa
 if type -q exa
     alias ls=exa
