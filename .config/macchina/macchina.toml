@@ -1,0 +1,37 @@
+# Specifies the network interface to use for the LocalIP readout
+interface = "wlan0"
+
+# Lengthen uptime output
+long_uptime = true
+
+# Lengthen shell output
+long_shell = false
+
+# Lengthen shell output
+long_kernel = false
+
+theme = "mytheme"
+
+# Displays only the specified readouts.
+# Conflicts with: hide
+# Accepted values (case-sensitive):
+#   - Host
+#   - Machine
+#   - Kernel
+#   - Distribution
+#   - OperatingSystem
+#   - DesktopEnvironment
+#   - WindowManager
+#   - Resolution
+#   - Backlight [Linux/NetBSD only]
+#   - Packages
+#   - LocalIP
+#   - Terminal
+#   - Shell
+#   - Uptime
+#   - Processor
+#   - ProcessorLoad
+#   - Memory
+#   - Battery
+# Example:
+# show = ["Terminal"]
