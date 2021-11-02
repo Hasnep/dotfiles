@@ -21,8 +21,8 @@ x = 1
 y = 0
 
 [custom_ascii]
-color = "White"
-path = "~/.config/macchina/ascii/elephant.txt"
+color = "Reset"
+path = "~/.config/macchina/ascii/fish.txt"
 
 [randomize]
 key_color = false
