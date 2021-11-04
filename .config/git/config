@@ -12,6 +12,10 @@
 [alias]
     ; Add an alias for unstaging
     unstage = "reset HEAD --"
+    ; Add interactive versions of common commands using fzf
+    iadd = !git add $(git ls-files --modified --exclude-standard | fzf -m)
+    idiff = !git diff $(git ls-files --modified --others --exclude-standard | fzf -m)
+    ishow = !git show $(git log --pretty=oneline | cut -c1-7 | fzf -m)
 
 [init]
     ; Set default branch name to main
