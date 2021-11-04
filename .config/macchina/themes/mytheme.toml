@@ -4,7 +4,9 @@ hide_ascii = false
 hide_bar_delimiters = false
 prefer_small_ascii = false
 separator = ""
-palette = "None"
+key_color = "Red"
+separator_color = "Red"
+# palette = "None"
 
 [bar]
 glyph = "ߋ"
@@ -21,7 +23,6 @@ x = 1
 y = 0
 
 [custom_ascii]
-color = "Reset"
 path = "~/.config/macchina/ascii/fish.txt"
 
 [randomize]

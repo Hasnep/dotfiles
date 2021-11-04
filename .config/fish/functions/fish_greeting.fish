@@ -3,7 +3,7 @@ function fish_greeting
         set -l terminal_emulator (ps -p (ps -p $fish_pid -o ppid= | tr -d \[:space:\]) -o args=)
         switch $terminal_emulator
             case "*alacritty*" x-terminal-emulator
-                macchina --custom-ascii "~/.config/macchina/ascii/fish.txt"
+                macchina
             case "*code*" "*Code*"
                 git rev-parse --git-dir &> /dev/null && onefetch
         end
