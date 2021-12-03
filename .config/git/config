@@ -11,7 +11,7 @@
 
 [alias]
     ; Add an alias for unstaging
-    unstage = "reset HEAD --"
+    unstage = !git reset HEAD --
     ; Add interactive versions of common commands using fzf
     iadd = !git add $(git ls-files --modified --exclude-standard | fzf -m)
     idiff = !git diff $(git ls-files --modified --others --exclude-standard | fzf -m)
