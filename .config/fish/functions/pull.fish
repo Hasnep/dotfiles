@@ -1,0 +1,1 @@
+alias pull='git pull'
