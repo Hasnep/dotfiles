@@ -10,9 +10,11 @@
 	algorithm = histogram
 
 [alias]
-    ; Add an alias for unstaging
+    ; Alias for listing staged files
+    staged = !git diff --cached
+    ; Alias for unstaging
     unstage = !git reset HEAD --
-    ; Add interactive versions of common commands using fzf
+    ; Interactive versions of common commands using fzf
     iadd = !git add $(git ls-files --modified --exclude-standard | fzf -m)
     idiff = !git diff $(git ls-files --modified --others --exclude-standard | fzf -m)
     irevert = !git revert $(git ls-files --modified --exclude-standard | fzf -m)
