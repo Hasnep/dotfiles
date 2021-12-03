@@ -1,0 +1,48 @@
+{
+  "folders": [
+    {
+      "name": "Alacritty config",
+      "path": "./.config/alacritty"
+    },
+    {
+      "name": "Autostart config",
+      "path": "./.config/autostart"
+    },
+    {
+      "name": "Bin",
+      "path": "./.local/bin"
+    },
+    {
+      "name": "Fish config",
+      "path": "./.config/fish"
+    },
+    {
+      "name": "Git config",
+      "path": "./.config/git"
+    },
+    {
+      "name": "Julia config",
+      "path": "./.julia/config"
+    },
+    {
+      "name": "Lite XL config",
+      "path": "./.config/lite-xl"
+    },
+    {
+      "name": "Macchina config",
+      "path": "./.config/macchina"
+    },
+    {
+      "name": "Restic config",
+      "path": "./.config/restic"
+    },
+    {
+      "name": "Rstudio config",
+      "path": "./.config/rstudio"
+    },
+    {
+      "name": "Systemd config",
+      "path": "./.config/systemd"
+    }
+  ]
+}
