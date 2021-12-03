@@ -6,8 +6,8 @@ set --global hydro_color_prompt magenta
 set --global hydro_color_pwd cyan
 
 # Environment variables
-set -xg EDITOR micro
-set -xg nvm_default_version lts
+set --export --global EDITOR micro
+set --global nvm_default_version lts
 
 # Path
 fish_add_path $HOME/.local/bin/ $HOME/bin/ $HOME/.cargo/bin/ $HOME/.nimble/bin/
