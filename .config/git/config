@@ -1,13 +1,13 @@
 [user]
-	name = Hannes
+    name = Hannes
 
 [blame]
     ; Add git blame ignore file to global config
-	ignoreRevsFile = .git-blame-ignore-revs
+    ignoreRevsFile = .git-blame-ignore-revs
 
 [diff]
     ; Set the default diffing algorithm to histogram
-	algorithm = histogram
+    algorithm = histogram
 
 [pull]
     rebase = true
