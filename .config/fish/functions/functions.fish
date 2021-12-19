@@ -25,10 +25,6 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 complete --command dotfiles --wraps git
 
 # Aliases
-## apt -> aptitude
-if type -q aptitude
-    alias apt=aptitude
-end
 ## cat -> bat
 if type -q fdfind
     alias bat=batcat
