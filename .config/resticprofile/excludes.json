@@ -3,6 +3,7 @@
   "Arduino": ["$HOME/.arduino15/", "$HOME/Arduino/"],
   "Bitwig": ["$HOME/.BitwigStudio"],
   "Cache files": ["Cache/", ".cache/", "$HOME/.config/**/Cache"],
+  "Docker": ["$HOME/.local/share/containers/"],
   "Database dumps": ["*.dump"],
   "Downloads": ["$HOME/Downloads/"],
   "Dropbox": ["$HOME/Dropbox/", "$HOME/.dropbox-dist/", "$HOME/.dropbox/"],
