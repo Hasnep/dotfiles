@@ -1,6 +1,7 @@
 {
   "Ansible": ["$HOME/.ansible/"],
   "Arduino": ["$HOME/.arduino15/", "$HOME/Arduino/"],
+  "Bitwig": ["$HOME/.BitwigStudio"],
   "Cache files": ["Cache/", ".cache/", "$HOME/.config/**/Cache"],
   "Database dumps": ["*.dump"],
   "Downloads": ["$HOME/Downloads/"],
