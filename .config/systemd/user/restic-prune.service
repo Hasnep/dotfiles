@@ -1,6 +1,0 @@
-[Unit]
-Description=Prune restic backups
-[Service]
-Type=oneshot
-ExecStart=restic prune
-EnvironmentFile=%h/.config/restic/secrets

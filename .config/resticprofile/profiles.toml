@@ -1,0 +1,65 @@
+[global]
+password-file = "password.txt"
+
+[global.backup]
+exclude-file = "excludes.txt"
+exclude-if-present = ".resticignore"
+schedule-permission = "user"
+schedule-lock-wait = "2h"
+run-before = "$HOME/.local/bin/restic-excludes-compile --output=$HOME/.config/resticprofile/excludes.txt $HOME/.config/resticprofile/excludes.json"
+
+[global.retention]
+before-backup = false
+after-backup = true
+prune = true
+
+# Home
+[home]
+inherit = "global"
+
+[home.backup]
+source = ["$HOME"]
+schedule = "daily"
+exclude = ["$HOME/Documents/"]
+tag = ["home"]
+
+[home.retention]
+keep-daily = 7
+keep-weekly = 4
+keep-monthly = 12
+keep-yearly = 999
+tag = ["home"]
+
+# Documents
+[documents]
+inherit = "global"
+
+[documents.backup]
+source = ["$HOME/Documents/"]
+tag = ["documents"]
+schedule = "hourly"
+
+[documents.retention]
+keep-hourly = 24
+keep-daily = 14
+keep-weekly = 4
+keep-monthly = 12
+keep-yearly = 999
+tag = ["documents"]
+
+# Final profiles
+[home-local]
+inherit = "home"
+repository = "/media/hannes/caddy/dello/"
+
+[home-remote]
+inherit = "home"
+repository = "rclone:pcloud:restic/dello/"
+
+[documents-local]
+inherit = "documents"
+repository = "/media/hannes/caddy/dello/"
+
+[documents-remote]
+inherit = "documents"
+repository = "rclone:pcloud:restic/dello/"

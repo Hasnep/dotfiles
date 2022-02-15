@@ -1,7 +1,0 @@
-[Unit]
-Description=Daily backup home
-[Timer]
-OnCalendar=daily
-Persistent=true
-[Install]
-WantedBy=timers.target
