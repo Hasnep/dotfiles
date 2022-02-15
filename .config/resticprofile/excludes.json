@@ -18,7 +18,14 @@
   "Nim": ["$HOME/.choosenim/"],
   "Node": ["$HOME/.npm/", "$HOME/.nvm/", "node_modules/"],
   "Phoronix": ["$HOME/.phoronix-test-suite/"],
-  "Python": ["$HOME/.venvs/", ".ipynb_checkpoints/", ".mypy_cache/"],
+  "Python": [
+    ".ipynb_checkpoints/",
+    ".mypy_cache/",
+    "$HOME/.local/pipx",
+    "$HOME/.venvs/",
+    ".venv/",
+    "venv/"
+  ],
   "R": [
     "$HOME/R/",
     "$HOME/.r/",
