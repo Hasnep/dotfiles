@@ -54,6 +54,7 @@
     "$HOME/.xsession-errors/"
   ],
   "Torrents": ["$HOME/torrents/"],
+  "Terraform": [".terraform/"],
   "VSCode": [
     "$HOME/.config/Code - Insiders/",
     "$HOME/.config/Code/",
