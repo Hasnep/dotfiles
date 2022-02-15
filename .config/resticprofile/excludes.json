@@ -63,5 +63,5 @@
   ],
   "VirtualBox": ["$HOME/VirtualBox VMs/"],
   "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
-  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/"]
+  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/", "$HOME/.config/pcloud/"]
 }
