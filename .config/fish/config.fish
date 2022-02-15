@@ -10,4 +10,4 @@ set --export --global EDITOR micro
 set --global nvm_default_version lts
 
 # Path
-fish_add_path $HOME/.local/bin/ $HOME/bin/ $HOME/.cargo/bin/ $HOME/.nimble/bin/
+fish_add_path $HOME/.local/bin/ $HOME/bin/ $HOME/.cargo/bin/ $HOME/.nimble/bin/ $HOME/.juliaup/bin/
