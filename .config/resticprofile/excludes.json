@@ -51,8 +51,8 @@
     "$HOME/.local/share/Trash/",
     "$HOME/.xsession-errors/"
   ],
-  "Torrents": ["$HOME/torrents/"],
   "Terraform": [".terraform/"],
+  "Torrents": ["$HOME/torrents/"],
   "VSCode": [
     "$HOME/.config/Code - Insiders/",
     "$HOME/.config/Code/",
