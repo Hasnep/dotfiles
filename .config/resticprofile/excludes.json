@@ -2,10 +2,10 @@
   "Ansible": ["$HOME/.ansible/"],
   "Arduino": ["$HOME/.arduino15/", "$HOME/Arduino/"],
   "Bitwig": ["$HOME/.BitwigStudio"],
-  "Cache files": ["Cache/", ".cache/", "$HOME/.config/**/Cache"],
+  "Cache files": ["$HOME/.config/**/Cache", ".cache/", "Cache/"],
   "Docker": ["$HOME/.local/share/containers/"],
   "Downloads": ["$HOME/Downloads/"],
-  "Dropbox": ["$HOME/Dropbox/", "$HOME/.dropbox-dist/", "$HOME/.dropbox/"],
+  "Dropbox": ["$HOME/.dropbox-dist/", "$HOME/.dropbox/", "$HOME/Dropbox/"],
   "Firefox": ["$HOME/.mozilla/"],
   "Fish shell": ["$HOME/.local/share/fisher/"],
   "GNOME": ["$HOME/.gvfs/", "$HOME/.local/share/gvfs-metadata/"],
@@ -17,38 +17,38 @@
   "Node": ["$HOME/.npm/", "$HOME/.nvm/", "node_modules/"],
   "Phoronix": ["$HOME/.phoronix-test-suite/"],
   "Python": [
-    ".ipynb_checkpoints/",
-    ".mypy_cache/",
     "$HOME/.local/pipx",
     "$HOME/.venvs/",
+    ".ipynb_checkpoints/",
+    ".mypy_cache/",
     ".venv/",
     "venv/"
   ],
   "R": [
-    "$HOME/R/",
-    "$HOME/.r/",
-    "renv/library/",
     "$HOME/.local/share/renv/",
+    "$HOME/.r/",
+    "$HOME/R/",
+    "renv/library/",
+    "renv/library/",
+    "renv/python/",
     "renv/python/",
     "renv/staging/",
-    "renv/library/",
-    "renv/python/",
     "renv/staging/"
   ],
   "Rust": [
-    "$HOME/.rustup/",
     "$HOME/.cargo/",
+    "$HOME/.rustup/",
     "$HOME/Documents/rust/**/target/"
   ],
   "Snaps": ["$HOME/snap/"],
   "Steam": ["$HOME/.local/share/Steam/steamapps/common/", "$HOME/.steam/"],
   "System files": [
-    "$HOME/.thumbnails/",
-    "$HOME/.recently-used/",
     "$HOME/.Trash/",
-    "$HOME/.var/",
     "$HOME/.dbus/",
     "$HOME/.local/share/Trash/",
+    "$HOME/.recently-used/",
+    "$HOME/.thumbnails/",
+    "$HOME/.var/",
     "$HOME/.xsession-errors/"
   ],
   "Terraform": [".terraform/"],
@@ -61,5 +61,5 @@
   ],
   "VirtualBox": ["$HOME/VirtualBox VMs/"],
   "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
-  "pCloud": ["$HOME/pCloudDrive/", "$HOME/.pcloud/", "$HOME/.config/pcloud/"]
+  "pCloud": ["$HOME/.config/pcloud/", "$HOME/.pcloud/", "$HOME/pCloudDrive/"]
 }
