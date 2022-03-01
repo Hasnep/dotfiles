@@ -20,10 +20,6 @@ end
 alias venv-auto=venv-tools auto
 alias venv-create=venv-tools create
 
-# Dotfiles
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-complete --command dotfiles --wraps git
-
 # Aliases
 ## cat -> bat
 if type -q fdfind
