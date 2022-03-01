@@ -4,6 +4,7 @@ set --global hydro_color_error red
 set --global hydro_color_git brblack
 set --global hydro_color_prompt magenta
 set --global hydro_color_pwd cyan
+set --global hydro_multiline true
 
 # Environment variables
 set --export --global EDITOR micro
