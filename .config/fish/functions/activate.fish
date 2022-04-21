@@ -5,9 +5,9 @@ function activate --description "Activate a Python venv"
 
         # Use venv in project firectory
     else if test -d ./.venv
-        set venv_path realpath "./.venv"
+        set venv_path (realpath "./.venv")
     else if test -d ./venv
-        set venv_path realpath "./venv"
+        set venv_path (realpath "./venv")
 
         # Use venv in ~/.venvs/
     else
