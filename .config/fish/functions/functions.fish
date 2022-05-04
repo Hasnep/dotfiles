@@ -20,38 +20,6 @@ end
 alias venv-auto=venv-tools auto
 alias venv-create=venv-tools create
 
-# Aliases
-## cat -> bat
-if type -q fdfind
-    alias bat=batcat
-end
-## docker
-if type -q podman
-    alias docker=podman
-end
-## find -> fd
-if type -q fdfind
-    alias fd=fdfind
-end
-if type -q fd
-    alias find=fd
-end
-## grep -> rg
-if type -q rg
-    alias grep=rg
-end
-## lock
-alias lock="gnome-screensaver-command -l"
-## ls -> exa
-if type -q exa
-    alias ls=exa
-end
-## sudo
-alias please=sudo
-if type -q doas
-    alias sudo=doas
-end
-
 # Julia commandline tools
 alias pluto="julia --project -e 'import Pkg; Pkg.update(\"Pluto\"); import Pluto; Pluto.run()'"
 alias jlfmt="julia --startup-file=no -q --compile=min -O0 -e 'import JuliaFormatter; JuliaFormatter.format(\".\", margin = 120, always_for_in = true, whitespace_typedefs = true, whitespace_ops_in_indices = true)'"
