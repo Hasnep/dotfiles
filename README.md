@@ -21,18 +21,3 @@ dotfiles checkout
 # Don't show untracked files
 dotfiles config --local status.showUntrackedFiles no
 ```
-
-### dconf
-
-To restore from files to dconf:
-
-```shell
-dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ~/dconf/keybindings.conf
-```
-
-To backup from dconf to files:
-
-```shell
-mkdir -p ~/dconf
-dconf dump /org/gnome/settings-daemon/plugins/media-keys/ > ~/dconf/keybindings.conf
-```
