@@ -26,6 +26,8 @@
     defaultBranch = main
 
 ; Use delta as diffing pager
+[core]
+    pager = delta
 [pager]
     diff = delta
     log = delta
@@ -35,3 +37,4 @@
     side-by-side = true
 [interactive]
     diffFilter = delta --color-only --features=interactive
+
