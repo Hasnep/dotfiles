@@ -6,6 +6,7 @@
     algorithm = histogram
 
 [pull]
+    autostash = true
     rebase = true
 
 [alias]
