@@ -9,6 +9,9 @@
     autostash = true
     rebase = true
 
+[merge]
+    conflictstyle = diff3
+
 [alias]
     ; Alias for listing staged files
     staged = !git diff --cached
@@ -37,4 +40,3 @@
     side-by-side = true
 [interactive]
     diffFilter = delta --color-only --features=interactive
-
