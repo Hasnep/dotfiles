@@ -1,6 +1,6 @@
-function speedtest-cli --wraps speedtest-cli
-    if not type --no-functions --query speedtest-cli
+function speedtest --wraps speedtest
+    if not type --no-functions --query speedtest
         pipx install speedtest-cli
     end
-    command speedtest-cli $argv
+    command speedtest $argv
 end
