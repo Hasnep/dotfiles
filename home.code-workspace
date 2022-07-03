@@ -33,13 +33,13 @@
       "path": "./.config/macchina"
     },
     {
-      "name": "Restic config",
-      "path": "./.config/restic"
+      "name": "Resticprofile config",
+      "path": "./.config/resticprofile"
     },
     {
-      "name": "Rstudio config",
-      "path": "./.config/rstudio"
-    },
+          "name":"SSH config",
+          "path": ".ssh"
+    },    
     {
       "name": "Systemd config",
       "path": "./.config/systemd"
