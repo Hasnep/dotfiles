@@ -1,5 +1,6 @@
 [global]
 password-file = "password.txt"
+force-inactive-lock = true
 
 [global.backup]
 exclude-file = "excludes.txt"
@@ -18,9 +19,9 @@ prune = true
 inherit = "global"
 
 [home.backup]
-source = ["$HOME"]
+source = ["~"]
 schedule = "daily"
-exclude = ["$HOME/Documents/"]
+exclude = ["~/Documents/"]
 tag = ["home"]
 
 [home.retention]
@@ -35,7 +36,7 @@ tag = ["home"]
 inherit = "global"
 
 [documents.backup]
-source = ["$HOME/Documents/"]
+source = ["~/Documents/"]
 tag = ["documents"]
 schedule = "hourly"
 
@@ -50,16 +51,16 @@ tag = ["documents"]
 # Final profiles
 [home-local]
 inherit = "home"
-repository = "/media/hannes/caddy/dello/"
+repository = "/media/hannes/caddy/dello/home/"
 
 [home-remote]
 inherit = "home"
-repository = "rclone:pcloud:restic/dello/"
+repository = "~/pCloudDrive/restic/dello/home/"
 
 [documents-local]
 inherit = "documents"
-repository = "/media/hannes/caddy/dello/"
+repository = "/media/hannes/caddy/dello/documents/"
 
 [documents-remote]
 inherit = "documents"
-repository = "rclone:pcloud:restic/dello/"
+repository = "~/pCloudDrive/restic/dello/documents/"
