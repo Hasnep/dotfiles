@@ -23,6 +23,8 @@
     irevert = !git revert $(git ls-files --modified --exclude-standard | fzf -m)
     ishow = !git show $(git log --pretty=oneline | cut -c1-7 | fzf -m)
     iunstage = !git unstage $(git diff --cached --name-only | fzf -m)
+    ; Alias to make a WIP commit
+    wip = !git commit -m WIP
 
 [init]
     ; Set default branch name to main
