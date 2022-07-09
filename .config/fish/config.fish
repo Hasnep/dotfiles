@@ -13,5 +13,8 @@ fzf_configure_bindings --directory=\cf --git_log= --git_status=\cg --history=\cr
 set --export --global EDITOR micro
 set --global nvm_default_version lts
 
+# Set XDG environment variables
+source $HOME/.config/xdg-config.env
+
 # Path
 fish_add_path $HOME/.local/bin/ $HOME/bin/ $HOME/.cargo/bin/ $HOME/.nimble/bin/ $HOME/go/bin/ $HOME/.juliaup/bin/
