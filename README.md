@@ -20,4 +20,7 @@ dotfiles checkout
 
 # Don't show untracked files
 dotfiles config --local status.showUntrackedFiles no
+
+# Set up pre-commit
+GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME pre-commit install
 ```
