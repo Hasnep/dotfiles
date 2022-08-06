@@ -1,0 +1,21 @@
+#!/usr/bin/env julia
+
+import TOML
+
+get_cli_arg(name, version::String) = "$name@latest"
+
+function get_cli_arg(name, d::Dict)
+    extras = "extras" in keys(d) ? ("[" * join(d["extras"], ",") * "]") : ""
+    return "$name$extras@latest"
+end
+
+get_cli_arguments(d) = [get_cli_arg(name, v) for (name, v) in d]
+get_cli_command(d, is_dev) = "poetry add" * (is_dev ? " --dev " : " ") * join(get_cli_arguments(d), " ")
+
+pyproject_path = joinpath(pwd(), "pyproject.toml")
+pyproject = open(f -> read(f, String), pyproject_path, "r") |> TOML.parse
+dependencies = pyproject["tool"]["poetry"]["dependencies"]
+dependencies = filter(x -> x.first != "python",dependencies)
+dev_dependencies = pyproject["tool"]["poetry"]["dev-dependencies"]
+println(get_cli_command(dependencies, false))
+println(get_cli_command(dev_dependencies, true))
