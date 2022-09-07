@@ -2,20 +2,32 @@
 
 import TOML
 
-get_cli_arg(name, version::String) = "$name@latest"
-
-function get_cli_arg(name, d::Dict)
-    extras = "extras" in keys(d) ? ("[" * join(d["extras"], ",") * "]") : ""
-    return "$name$extras@latest"
+"""Parse a dependency with just a version."""
+function parse_dependency(name::String, _version::String; is_dev::Bool)
+    return (name = name, extras = [], is_dev = is_dev)
 end
 
-get_cli_arguments(d) = [get_cli_arg(name, v) for (name, v) in d]
-get_cli_command(d, is_dev) = "poetry add" * (is_dev ? " --dev " : " ") * join(get_cli_arguments(d), " ")
+"""Parse a dependency with extras."""
+function parse_dependency(name::String, d::Dict; is_dev::Bool)
+    extras = get(d, "extras", [])
+    return (name = name, extras = extras, is_dev = is_dev)
+end
+
+function get_cli_command(name, extras, is_dev)
+    dev_flag = is_dev ? "--dev" : missing
+    extras_arguments = vcat([["--extras", extra] for extra in extras]...)
+    return ["poetry", "add", dev_flag, extras_arguments..., "$name@latest"] |> skipmissing |> (x -> join(x, " "))
+end
 
 pyproject_path = joinpath(pwd(), "pyproject.toml")
 pyproject = open(f -> read(f, String), pyproject_path, "r") |> TOML.parse
-dependencies = pyproject["tool"]["poetry"]["dependencies"]
-dependencies = filter(x -> x.first != "python",dependencies)
-dev_dependencies = pyproject["tool"]["poetry"]["dev-dependencies"]
-println(get_cli_command(dependencies, false))
-println(get_cli_command(dev_dependencies, true))
+dependencies = [
+    parse_dependency(name, x; is_dev = false) for
+    (name, x) in pyproject["tool"]["poetry"]["dependencies"] if name != "python"
+]
+dev_dependencies =
+    [parse_dependency(name, x; is_dev = true) for (name, x) in pyproject["tool"]["poetry"]["dev-dependencies"]]
+commands = [get_cli_command(d...) for d in vcat(dependencies, dev_dependencies)]
+for command in commands
+    println(command)
+end
