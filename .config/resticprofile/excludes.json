@@ -37,6 +37,8 @@
   ],
   "Rust": [
     "$HOME/.cargo/",
+    "$HOME/.local/share/cargo",
+    "$HOME/.local/share/rustup",
     "$HOME/.rustup/",
     "$HOME/Documents/rust/**/target/"
   ],
