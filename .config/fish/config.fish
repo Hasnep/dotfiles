@@ -16,5 +16,11 @@ set --global nvm_default_version lts
 # Set XDG environment variables
 source $HOME/.config/xdg-config.env
 
-# Path
-fish_add_path $HOME/.local/bin/ $HOME/bin/ $HOME/.cargo/bin/ $HOME/.nimble/bin/ $HOME/go/bin/ $HOME/.juliaup/bin/
+# Add folders to path
+fish_add_path \
+    $HOME/bin/ \
+    $HOME/.local/bin/ \
+    $HOME/.nimble/bin/ \
+    $XDG_DATA_HOME/cargo/bin/ \
+    $XDG_DATA_HOME/go/bin/ \
+    $XDG_DATA_HOME/julia/juliaup/bin/
