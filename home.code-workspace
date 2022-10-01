@@ -22,7 +22,7 @@
     },
     {
       "name": "Julia config",
-      "path": "./.julia/config"
+      "path": "./.local/share/julia/config"
     },
     {
       "name": "Lite XL config",
@@ -39,7 +39,7 @@
     {
           "name":"SSH config",
           "path": ".ssh"
-    },    
+    },
     {
       "name": "Systemd config",
       "path": "./.config/systemd"
