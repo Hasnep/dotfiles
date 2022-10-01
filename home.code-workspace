@@ -37,8 +37,8 @@
       "path": "./.config/resticprofile"
     },
     {
-          "name":"SSH config",
-          "path": ".ssh"
+      "name":"SSH config",
+      "path": ".ssh"
     },
     {
       "name": "Systemd config",
