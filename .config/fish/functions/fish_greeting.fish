@@ -4,8 +4,8 @@ function fish_greeting
         switch $terminal_emulator
             case "*alacritty*" x-terminal-emulator
                 macchina
-            case "*code*" "*Code*"
-                git rev-parse --git-dir &> /dev/null && onefetch
+            case "*code*" "*Visual Studio Code.app*"
+                git rev-parse --git-dir &>/dev/null && onefetch
         end
     end
 end
