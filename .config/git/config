@@ -1,5 +1,7 @@
 [user]
     name = Hannes
+    ; Only read user email from git config file
+	useConfigOnly = true
 
 [diff]
     ; Set the default diffing algorithm to histogram
