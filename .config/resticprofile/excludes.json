@@ -35,6 +35,7 @@
     "renv/staging/",
     "renv/staging/"
   ],
+  "RIP": ["$HOME/.local/share/graveyard"],
   "Rust": [
     "$HOME/.cargo/",
     "$HOME/.local/share/cargo",
