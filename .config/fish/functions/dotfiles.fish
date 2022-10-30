@@ -1,1 +1,3 @@
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+function dotfiles --wraps=git
+    git --git-dir=$HOME/.dotfiles --work-tree=$HOME $argv
+end
