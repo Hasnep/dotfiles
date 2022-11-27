@@ -1,3 +1,5 @@
 if type -q exa
-    alias ls=exa
+    function ls --wraps=exa
+        command exa $argv
+    end
 end

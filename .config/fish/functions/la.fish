@@ -1,5 +1,9 @@
 if type -q exa
-    alias la='exa --long --all --header'
+    function la --wraps=exa
+        command exa --long --all --header $argv
+    end
 else
-    alias la='ls -lAh'
+    function la --wraps=ls
+        command ls -lAh --almost-all --human-readable -l $argv
+    end
 end

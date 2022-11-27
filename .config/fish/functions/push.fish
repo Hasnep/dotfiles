@@ -1,1 +1,3 @@
-alias push='git push --set-upstream (git config --get remote.origin.url)'
+function push --wraps=git
+    command git push --set-upstream (command git config --get remote.origin.url)
+end

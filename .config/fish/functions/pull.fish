@@ -1,1 +1,3 @@
-alias pull='git pull'
+function pull --wraps=git
+    command git pull $argv
+end

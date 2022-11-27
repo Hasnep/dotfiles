@@ -1,1 +1,3 @@
-alias jlfmt="julia --startup-file=no -q --compile=min -O0 -e 'import JuliaFormatter; JuliaFormatter.format(\".\", margin = 120, always_for_in = true, whitespace_typedefs = true, whitespace_ops_in_indices = true)'"
+function jlfmt --wraps julia
+    julia --startup-file=no --quiet --compile=min --optimize=0 --eval 'import JuliaFormatter; JuliaFormatter.format(".")' $argv
+end
