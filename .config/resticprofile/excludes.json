@@ -15,6 +15,7 @@
   "Mono": ["$HOME/.mono/"],
   "Nim": ["$HOME/.choosenim/"],
   "Node": ["$HOME/.npm/", "$HOME/.nvm/", "node_modules/"],
+  "OCaml": ["$HOME/.local/share/opam/"],
   "Phoronix": ["$HOME/.phoronix-test-suite/"],
   "Python": [
     "$HOME/.local/pipx",
