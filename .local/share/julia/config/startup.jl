@@ -15,15 +15,9 @@ catch e
 end
 
 try
-    using JuliaFormatter
-catch e
-    push!(install_instructions, "Pkg.add(\"JuliaFormatter\")")
-end
-
-try
     using CuratedSystemImages
 catch e
-    push!(install_instructions, "Pkg.add(url=\"https://github.com/MichaelHatherly/CuratedSystemImages.jl\")")
+    push!(install_instructions, "Pkg.add(url=\"https://github.com/MichaelHatherly/CuratedSystemImages.jl\"); import CuratedSystemImages; CuratedSystemImages.install()")
 end
 
 if length(install_instructions) > 0
