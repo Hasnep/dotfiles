@@ -1,7 +1,7 @@
 assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["github_cli_extensions", "snap"]
+disable = ["containers", "github_cli_extensions", "pip3", "snap"]
 
 [git]
 repos = ["~/.dotfiles"]
