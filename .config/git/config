@@ -12,18 +12,22 @@
     rebase = true
 
 [alias]
-    ; Alias for listing staged files
+    ; List staged files
     staged = !git diff --cached
-    ; Alias for unstaging
+    ; Unstage files
     unstage = !git reset HEAD --
+    ; Make a WIP commit
+    wip = !git commit -m WIP
+    ; Make a FIXME commit
+    fixme = !git commit -m FIXME
+    ; Clean up merged branches
+    delete-merged-branches = git-delete-merged-branches
     ; Interactive versions of common commands using fzf
     iadd = !git add $(git ls-files --modified --exclude-standard | fzf -m)
     idiff = !git diff $(git ls-files --modified --others --exclude-standard | fzf -m)
     irevert = !git revert $(git ls-files --modified --exclude-standard | fzf -m)
     ishow = !git show $(git log --pretty=oneline | cut -c1-7 | fzf -m)
     iunstage = !git unstage $(git diff --cached --name-only | fzf -m)
-    ; Alias to make a WIP commit
-    wip = !git commit -m WIP
 
 [init]
     ; Set default branch name to main
