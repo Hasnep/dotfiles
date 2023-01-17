@@ -1,0 +1,113 @@
+{
+  "default_path": "/home/hannes/bin",
+  "bins": {
+    "/home/hannes/bin/act": {
+      "path": "/home/hannes/bin/act",
+      "remote_name": "act",
+      "version": "v0.2.40",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/nektos/act",
+      "provider": "github",
+      "package_path": "act"
+    },
+    "/home/hannes/bin/antidot": {
+      "path": "/home/hannes/bin/antidot",
+      "remote_name": "antidot",
+      "version": "v0.6.3",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/doron-cohen/antidot",
+      "provider": "github",
+      "package_path": ""
+    },
+    "/home/hannes/bin/bin": {
+      "path": "/home/hannes/bin/bin",
+      "remote_name": "bin",
+      "version": "v0.15.2",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/marcosnils/bin/releases/tag/v0.15.2",
+      "provider": "",
+      "package_path": ""
+    },
+    "/home/hannes/bin/clue": {
+      "path": "/home/hannes/bin/clue",
+      "remote_name": "clue",
+      "version": "v2.5.3",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/ClueLang/Clue",
+      "provider": "github",
+      "package_path": "clue"
+    },
+    "/home/hannes/bin/crystalline": {
+      "path": "/home/hannes/bin/crystalline",
+      "remote_name": "crystalline",
+      "version": "v0.8.0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/elbywan/crystalline/releases/tag/v0.8.0",
+      "provider": "",
+      "package_path": ""
+    },
+    "/home/hannes/bin/f2": {
+      "path": "/home/hannes/bin/f2",
+      "remote_name": "f2",
+      "version": "v1.8.0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/ayoisaiah/f2",
+      "provider": "github",
+      "package_path": "f2"
+    },
+    "/home/hannes/bin/gramma": {
+      "path": "/home/hannes/bin/gramma",
+      "remote_name": "gramma",
+      "version": "v1.6.0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/caderek/gramma",
+      "provider": "github",
+      "package_path": "gramma"
+    },
+    "/home/hannes/bin/macchina": {
+      "path": "/home/hannes/bin/macchina",
+      "remote_name": "macchina",
+      "version": "v6.1.8",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/Macchina-CLI/macchina/releases/tag/v6.1.8",
+      "provider": "",
+      "package_path": ""
+    },
+    "/home/hannes/bin/mdn": {
+      "path": "/home/hannes/bin/mdn",
+      "remote_name": "mdn",
+      "version": "v0.3.0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "github.com/hasnep/emdien",
+      "provider": "github",
+      "package_path": ""
+    },
+    "/home/hannes/bin/resticprofile": {
+      "path": "/home/hannes/bin/resticprofile",
+      "remote_name": "resticprofile",
+      "version": "v0.19.0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "github.com/creativeprojects/resticprofile",
+      "provider": "github",
+      "package_path": "resticprofile"
+    },
+    "/home/hannes/bin/shfmt": {
+      "path": "/home/hannes/bin/shfmt",
+      "remote_name": "shfmt",
+      "version": "v3.6.0",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/mvdan/sh",
+      "provider": "github",
+      "package_path": ""
+    },
+    "/home/hannes/bin/zigup": {
+      "path": "/home/hannes/bin/zigup",
+      "remote_name": "zigup",
+      "version": "v2022_08_25",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "github.com/marler8997/zigup",
+      "provider": "github",
+      "package_path": "zigup"
+    }
+  }
+}
