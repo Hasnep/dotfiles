@@ -10,7 +10,12 @@
   "Fish shell": ["$HOME/.local/share/fisher/"],
   "GNOME": ["$HOME/.gvfs/", "$HOME/.local/share/gvfs-metadata/"],
   "Games": ["$HOME/.Prison Architect/"],
-  "Julia": ["$HOME/.julia/", "$HOME/packages/julias/"],
+  "Go": ["$HOME/.local/share/go/"],
+  "Julia": [
+    "$HOME/.julia/",
+    "$HOME/packages/julias/",
+    "$HOME/.local/share/julia/"
+  ],
   "Lutris": ["$HOME/.local/share/lutris/", "$HOME/Games/"],
   "Mono": ["$HOME/.mono/"],
   "Nim": ["$HOME/.choosenim/"],
@@ -39,8 +44,8 @@
   "RIP": ["$HOME/.local/share/graveyard"],
   "Rust": [
     "$HOME/.cargo/",
-    "$HOME/.local/share/cargo",
-    "$HOME/.local/share/rustup",
+    "$HOME/.local/share/cargo/",
+    "$HOME/.local/share/rustup/",
     "$HOME/.rustup/",
     "$HOME/Documents/rust/**/target/"
   ],
@@ -65,5 +70,6 @@
   ],
   "VirtualBox": ["$HOME/VirtualBox VMs/"],
   "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
+  "Zeal": ["$HOME/.local/share/Zeal/"],
   "pCloud": ["$HOME/.config/pcloud/", "$HOME/.pcloud/", "$HOME/pCloudDrive/"]
 }
