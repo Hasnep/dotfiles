@@ -25,7 +25,7 @@ function activate --description "Activate a Python venv"
         echo "Could not find a virtual environment at `$venv_path`."
         return 1
     end
-    
+
     echo "Activating venv in `$venv_path`."
     source $venv_path/bin/activate.fish
 end
