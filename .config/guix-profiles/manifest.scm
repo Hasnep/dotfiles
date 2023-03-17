@@ -1,0 +1,40 @@
+; guix package --manifest=$HOME/.config/guix-profile/manifest.scm --profile=$HOME/.config/guix-profile/default
+
+(
+    specifications->manifest
+    '(
+        ; "hugo"
+        ; "pipx"
+        "bat"
+        "btop"
+        "cowsay"
+        "du-dust"
+        "exa"
+        "fd"
+        "fzf"
+        "git"
+        "glibc-locales"
+        "go"
+        "guile"
+        "htop"
+        "hyperfine"
+        "jc"
+        "jq"
+        "lolcat"
+        "lynx"
+        "meson"
+        "moreutils"
+        "mosh"
+        "nano"
+        "neofetch"
+        "ninja"
+        "nushell"
+        "pandoc"
+        "pre-commit"
+        "rclone"
+        "ripgrep"
+        "tectonic"
+        "tmux"
+        "tree"
+    )
+)
