@@ -1,7 +1,16 @@
 assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["containers", "github_cli_extensions", "node", "pip3", "snap"]
+disable = [
+    "containers",
+    "distrobox",
+    "github_cli_extensions",
+    "guix",
+    "nix",
+    "node",
+    "pip3",
+    "snap",
+]
 skip_notify = true
 
 [git]
