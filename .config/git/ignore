@@ -1,2 +1,22 @@
+# VSCode files
 .vscode/
+
+# MacOS metadata
 .DS_Store
+
+# Guix manifests
+manifest.scm
+
+# Nix flake files
+flake.nix
+flake.lock
+
+# Devenv files
+.envrc
+devenv.nix
+devenv.lock
+devenv.yaml
+
+# Devenv cache files
+.devenv*
+devenv.local.nix
