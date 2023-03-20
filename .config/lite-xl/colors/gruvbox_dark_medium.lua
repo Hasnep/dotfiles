@@ -32,7 +32,7 @@ local colours = {
     aqua1 = { common.color "#689D6A" },
     orange = { common.color "#FE8019" },
     orange1 = { common.color "#D65D0E" },
-} 
+}
 
 style.background = colours.bg
 style.background2 = colours.bg1
@@ -40,14 +40,14 @@ style.background3 = colours.bg2
 style.text = colours.fg
 style.caret = colours.fg4
 style.accent = colours.yellow
-style.dim = colours.gray  
-style.divider = colours.bg1 
+style.dim = colours.gray
+style.divider = colours.bg1
 style.selection = colours.bg1
 style.line_number = colours.gray
 style.line_number2 = colours.aqua
-style.line_highlight = colours.bg1  
-style.scrollbar = colours.bg1 
-style.scrollbar2 = colours.bg2  
+style.line_highlight = colours.bg1
+style.scrollbar = colours.bg1
+style.scrollbar2 = colours.bg2
 
 style.syntax["normal"] = colours.fg
 style.syntax["symbol"] = colours.fg
@@ -56,6 +56,6 @@ style.syntax["keyword"] = colours.red
 style.syntax["keyword2"] = colours.blue
 style.syntax["number"] = colours.purple
 style.syntax["literal"] = colours.purple
-style.syntax["string"] = colours.green   
+style.syntax["string"] = colours.green
 style.syntax["operator"] = colours.aqua
 style.syntax["function"] = colours.aqua
