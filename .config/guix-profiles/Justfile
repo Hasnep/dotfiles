@@ -8,10 +8,10 @@ default_profile_folder := guix_profiles_folder / "default"
 default: sort generate apply
 
 sort:
-    sort-json {{packages_file}} | jq . | sponge {{packages_file}} 
-    
-generate:
-    generate-guix-manifest --packages-file={{packages_file}} --manifest-file={{manifest_file}} 
+    sort-json {{packages_file}} | jq . | sponge {{packages_file}}
 
-apply:    
+generate:
+    generate-guix-manifest --packages-file={{packages_file}} --manifest-file={{manifest_file}}
+
+apply:
     guix package --manifest={{manifest_file}} --profile={{default_profile_folder}}
