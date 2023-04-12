@@ -30,3 +30,11 @@ fish_add_path \
 if type --query --no-functions trash
     abbr --global --add rip 'trash put'
 end
+
+# Activate Guix
+if type --query --no-functions guix
+    set activate_guix_script_path $XDG_CONFIG_HOME/guix-profiles/activate-guix.fish
+    if test -f $activate_guix_script_path
+        source $XDG_CONFIG_HOME/guix-profiles/activate-guix.fish
+    end
+end
