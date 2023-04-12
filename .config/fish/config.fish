@@ -14,9 +14,6 @@ if type --query --no-functions micro
     set --export --global EDITOR micro
 end
 
-# Environment variables
-set --global nvm_default_version lts
-
 # Set XDG environment variables
 source $HOME/.config/xdg-config.env
 
