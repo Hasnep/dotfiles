@@ -9,8 +9,12 @@ set --global hydro_multiline true
 # Configure fzf plugin keybindings
 fzf_configure_bindings --directory=\cf --git_log= --git_status=\cg --history=\cr --variables --processes
 
+# Set default editor
+if type --query --no-functions micro
+    set --export --global EDITOR micro
+end
+
 # Environment variables
-set --export --global EDITOR micro
 set --global nvm_default_version lts
 
 # Set XDG environment variables
