@@ -25,3 +25,8 @@ fish_add_path \
     $XDG_DATA_HOME/cargo/bin/ \
     $XDG_DATA_HOME/go/bin/ \
     $XDG_DATA_HOME/julia/juliaup/bin/
+
+# Add abbreviations
+if type --query --no-functions trash
+    abbr --global --add rip 'trash put'
+end
