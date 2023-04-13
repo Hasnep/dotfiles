@@ -23,7 +23,7 @@ function ppa --argument action --argument ppa_url --description "Add or remove a
             end
             ppa-remove $ppa_url
         case list
-            apt-add-repository --list
+            apt-add-repository --list | sort
         case '*'
             echo "Action must be either `add`, `remove` or `list`."
             return 1
