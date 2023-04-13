@@ -1,5 +1,5 @@
 {
-	"folders": [{"name":"Bin config","path":"./.config/bin"},
+	"folders": [
 		{
 			"name": "Alacritty config",
 			"path": "./.config/alacritty"
@@ -11,6 +11,10 @@
 		{
 			"name": "Bin",
 			"path": "./.local/bin"
+		},
+		{
+			"name": "Bin config",
+			"path": "./.config/bin"
 		},
 		{
 			"name": "Fish config",
