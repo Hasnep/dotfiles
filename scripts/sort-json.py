@@ -3,49 +3,47 @@
 import argparse
 import json
 import sys
-from typing import List, Dict, Union, Any, Tuple, Optional
+from typing import List, Dict, Union, Any, Optional
 from pathlib import Path
 from collections import OrderedDict
 
 
-JsonType = Union[str, int, float, List[Any], Dict[str, Any], Tuple[str, Any]]
+Json = Union[str, int, float, List["Json"], Dict[str, "Json"]]
 
 
-def sort_json(data: Any) -> Any:
-    def sort_by(x: JsonType) -> str:
-        if isinstance(x, str):
-            return x
-        elif isinstance(x, int) or isinstance(x, float):
-            return str(x)
-        elif isinstance(x, tuple):
-            return str(x[0])
-        elif isinstance(x, list) or isinstance(x, dict):
-            return "_"
-        else:
-            print("Couldn't convert")
-            exit(1)
+def sort_by(value: Json) -> str:
+    match value:
+        case str() | int() | float():
+            return str(value)
+        case list():
+            return "_" + "".join(str(x) for x in value)
+        case dict():
+            return sort_by(list(value.keys()))
 
-    if isinstance(data, list):
-        return sorted(map(sort_json, data), key=sort_by)
-    if isinstance(data, dict):
-        return OrderedDict(
-            sorted([(k, sort_json(v)) for k, v in data.items()], key=sort_by)
-        )
-    if isinstance(data, str) or isinstance(data, int) or isinstance(data, float):
-        return data
-    else:
-        print("Couldn't sort!")
-        exit(1)
+
+def sort_json(data: Json) -> Any:
+    match data:
+        case str() | int() | float():
+            return data
+        case list():
+            return sorted([sort_json(x) for x in data], key=sort_by)
+        case dict():
+            return OrderedDict(
+                sorted(
+                    [(k, sort_json(v)) for k, v in data.items()],
+                    key=lambda x: sort_by(x[0]),
+                )
+            )
 
 
 def get_input_file_path() -> Optional[Path]:
     parser = argparse.ArgumentParser()
-    parser.add_argument("input_file_path", type=Path,default=None, nargs="?" )
+    parser.add_argument("input_file_path", type=Path, default=None, nargs="?")
     args = parser.parse_args()
     return args.input_file_path
 
 
-def read_input(input_file_path: Optional[Path]) -> JsonType:
+def read_input(input_file_path: Optional[Path]) -> Json:
     if input_file_path is None:
         return json.load(sys.stdin)
     else:
