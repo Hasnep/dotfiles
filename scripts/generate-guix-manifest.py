@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.11
 
+import tomllib as toml
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Dict
@@ -32,9 +33,20 @@ def get_cli_args() -> CliArgs:
 def read_packages_file(packages_file_path: Path) -> Packages:
     with open(packages_file_path, "r") as f:
         packages_string = f.read()
-    if packages_file_path.suffix == ".jsonc":
-        packages_string = re.sub(r"//.*", "", packages_string)
-    packages = json.loads(packages_string)
+
+    packages_file_extension = packages_file_path.suffix
+
+    match packages_file_extension:
+        case ".toml":
+            packages = toml.loads(packages_string)
+        case ".jsonc":
+            packages_string_no_comments = re.sub(r"//.*", "", packages_string)
+            packages = json.loads(packages_string_no_comments)
+        case ".json":
+            packages = json.loads(packages_string)
+        case _:
+            raise Exception(f"Unknown file extension: `{packages_file_extension}`.")
+
     return {k: v for (k, v) in packages.items() if k != "ignore"}
 
 
