@@ -68,6 +68,7 @@
     "$HOME/.vscode-insiders/",
     "$HOME/.vscode/"
   ],
+  "VSCodium": ["$HOME/.vscode-oss/", "$HOME/.config/VSCodium/"],
   "VirtualBox": ["$HOME/VirtualBox VMs/"],
   "Wine": ["$HOME/.wine-prefixes/", "$HOME/.wine/"],
   "Zeal": ["$HOME/.local/share/Zeal/"],
