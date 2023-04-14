@@ -17,6 +17,10 @@
 			"path": "./.config/fish"
 		},
 		{
+			"name": "Fortune config",
+			"path": "./.config/fortune"
+		},
+		{
 			"name": "Git config",
 			"path": "./.config/git"
 		},
