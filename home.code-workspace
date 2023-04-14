@@ -13,10 +13,6 @@
 			"path": "./.local/bin"
 		},
 		{
-			"name": "Bin config",
-			"path": "./.config/bin"
-		},
-		{
 			"name": "Fish config",
 			"path": "./.config/fish"
 		},
