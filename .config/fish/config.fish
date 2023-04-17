@@ -13,10 +13,8 @@ source $HOME/.config/xdg-config.env
 fish_add_path \
     $HOME/bin/ \
     $HOME/.local/bin/ \
-    $HOME/.nimble/bin/ \
     $XDG_DATA_HOME/cargo/bin/ \
-    $XDG_DATA_HOME/go/bin/ \
-    $XDG_DATA_HOME/julia/juliaup/bin/
+    $XDG_DATA_HOME/juliaup/bin/
 
 # Add abbreviations
 if type --query --no-functions trash
