@@ -31,6 +31,7 @@ generate:
         --nix-profile-path={{nix_profile_folder}}
 
 apply_guix: update_activate_guix
+    mkdir -p {{guix_data_folder}}
     guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
 
 apply_apt:
