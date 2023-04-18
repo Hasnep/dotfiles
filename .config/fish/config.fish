@@ -10,21 +10,24 @@ end
 source $HOME/.config/xdg-config.env
 
 # Add folders to path
-fish_add_path \
-    $HOME/bin/ \
-    $HOME/.local/bin/ \
-    $XDG_DATA_HOME/cargo/bin/ \
-    $XDG_DATA_HOME/juliaup/bin/ \
-    $XDG_DATA_HOME/nix/bin
+fish_add_path --move $XDG_DATA_HOME/cargo/bin/
+fish_add_path --move $XDG_DATA_HOME/juliaup/bin/
+# Nix
+fish_add_path --move $XDG_DATA_HOME/nix/bin
+# System packages
+fish_add_path --move /usr/bin/
 
-# Add abbreviations
-if type --query --no-functions trash
-    abbr --global --add rip 'trash put'
-end
-
-# Activate Guix
+# Guix
 if type --query --no-functions guix
     if type --query activate-guix
         activate-guix
     end
+end
+
+fish_add_path --move $HOME/.local/bin/
+fish_add_path --move $HOME/bin/
+
+# Add abbreviations
+if type --query --no-functions trash
+    abbr --global --add rip 'trash put'
 end
