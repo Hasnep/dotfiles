@@ -54,7 +54,7 @@ def main():
     input_file_path = get_input_file_path()
     data = read_input(input_file_path)
     data_sorted = sort_json(data)
-    print(json.dumps(data_sorted))
+    print(json.dumps(data_sorted, ensure_ascii=False))
 
 
 if __name__ == "__main__":
