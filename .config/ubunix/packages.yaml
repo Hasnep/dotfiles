@@ -21,6 +21,7 @@ cli:
   bc:
     guix: [bc]
   cowsay:
+    comment: Normally my custom cowsay script takes precedence over the installed one
     guix: [cowsay]
     apt: [cowsay]
   du-dust:
@@ -91,20 +92,22 @@ cli:
     guix:
       packages: [curl]
       ignore: true
+      comment: Didn't work last time I tried to use it
     apt: [curl]
     nix: [curl]
   tldr:
     guix:
       packages: [tealdeer]
       ignore: true
+      comment: Breaks when I try to install
     nix: [tealdeer]
 editors:
   nano:
     guix: [nano]
-  vim:
-    guix:
-      packages: [vim]
-      ignore: true
+    apt:
+      packages: [nano]
+      force: true
+      comment: Need to always have access to an editor
   micro:
     apt: [micro]
     nix: [micro]
@@ -140,9 +143,11 @@ programming:
     guix:
       packages: [pre-commit]
       ignore: true
+      comment: Still on v2
     apt:
       packages: [pre-commit]
       ignore: true
+      comment: Still on v2
     nix: [pre-commit]
   hadolint:
     nix: [hadolint]
@@ -164,12 +169,16 @@ programming:
     nix:
       packages: [python310Packages.gdtoolkit]
       ignore: true
+      comment: Broke last time I tried to install
   yamllint:
     guix: [python-yamllint]
     apt: [yamllint]
 python:
   python3:
-    guix: [python]
+    guix:
+      packages: [python]
+      ignore: true
+      comment: Outdated version of Python
     apt:
       packages: [python3]
       force: true
