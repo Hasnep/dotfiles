@@ -4,7 +4,7 @@ import argparse
 import subprocess
 import sys
 from pathlib import Path
-from typing import Optional, List
+from typing import List, Optional
 
 VENVS_DIRECTORY = Path().home() / ".venvs"
 
