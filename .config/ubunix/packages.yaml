@@ -1,0 +1,272 @@
+cli:
+  yq:
+    nix: [yq]
+  just:
+    nix: [just]
+  grex:
+    nix: [grex]
+  pipx:
+    apt: [pipx]
+  speedtest-cli:
+    guix: [speedtest-cli]
+  jello:
+    apt: [jello]
+    nix: [jello]
+  ansible:
+    guix: [ansible]
+    apt: [ansible]
+  bat:
+    guix: [bat]
+    apt: [bat]
+  bc:
+    guix: [bc]
+  cowsay:
+    guix: [cowsay]
+    apt: [cowsay]
+  du-dust:
+    nix: [du-dust]
+  entr:
+    guix: [entr]
+  exa:
+    guix: [exa]
+  fd:
+    guix: [fd]
+  ffmpeg:
+    guix: [ffmpeg]
+  fzf:
+    guix: [fzf]
+  httpie:
+    guix: [httpie]
+  hyperfine:
+    nix: [hyperfine]
+  jc:
+    guix: [jc]
+  jq:
+    guix: [jq]
+  lolcat:
+    guix: [lolcat]
+  make:
+    guix: [make]
+    apt: [make]
+  moreutils:
+    guix: [moreutils]
+    apt: [moreutils]
+  mosh:
+    guix: [mosh]
+    apt: [mosh]
+  mpv:
+    guix: [mpv]
+    apt: [mpv]
+  neofetch:
+    guix: [neofetch]
+    apt: [neofetch]
+  rclone:
+    guix: [rclone]
+  ripgrep:
+    guix: [ripgrep]
+  tar:
+    guix: [tar]
+    apt:
+      packages: [tar]
+      force: true
+    nix: [tar]
+  unzip:
+    guix: [unzip]
+  tesseract:
+    guix: [tesseract-ocr]
+  tokei:
+    guix: [tokei]
+  tree:
+    guix: [tree]
+  wget:
+    guix: [wget]
+  yt-dlp:
+    nix: [yt-dlp]
+  zip:
+    guix: [zip]
+    apt: [zip]
+  curlie:
+    guix: [curlie]
+  curl:
+    guix:
+      packages: [curl]
+      ignore: true
+    apt: [curl]
+    nix: [curl]
+  tldr:
+    guix:
+      packages: [tealdeer]
+      ignore: true
+    nix: [tealdeer]
+editors:
+  nano:
+    guix: [nano]
+  vim:
+    guix:
+      packages: [vim]
+      ignore: true
+  micro:
+    apt: [micro]
+    nix: [micro]
+programming:
+  rust-script:
+    nix: [rust-script]
+  linode-cli:
+    nix: [linode-cli]
+  chicken:
+    guix: [chicken]
+  cmake:
+    guix: [cmake]
+  go:
+    guix: [go]
+  guile:
+    guix: [guile]
+  meson:
+    guix: [meson]
+    apt: [meson]
+  nim:
+    guix: [nim]
+  ninja:
+    guix: [ninja]
+  node:
+    guix: [node]
+  pandoc:
+    guix: [pandoc]
+  shellcheck:
+    guix: [shellcheck]
+  tectonic:
+    guix: [tectonic]
+  pre-commit:
+    guix:
+      packages: [pre-commit]
+      ignore: true
+    apt:
+      packages: [pre-commit]
+      ignore: true
+    nix: [pre-commit]
+  hadolint:
+    nix: [hadolint]
+  crystal:
+    nix: [crystal]
+  terraform:
+    nix: [terraform]
+  hugo:
+    nix: [hugo]
+  git:
+    guix:
+      packages: [git]
+      ignore: true
+    apt: [git]
+    nix: [git]
+  git-delete-merged-branches:
+    nix: [git-delete-merged-branches]
+  gdtoolkit:
+    nix:
+      packages: [python310Packages.gdtoolkit]
+      ignore: true
+  yamllint:
+    guix: [python-yamllint]
+    apt: [yamllint]
+python:
+  python3:
+    guix: [python]
+    apt:
+      packages: [python3]
+      force: true
+    nix: [python3]
+  python3.12:
+    apt: [python3.12]
+    nix: [python312]
+  python3.11:
+    apt: [python3.11]
+    nix: [python311]
+  python3.10:
+    apt: [python3.10]
+    nix: [python310]
+  python3.9:
+    apt: [python3.9]
+    nix: [python39]
+  black:
+    guix: [python-black]
+  ruff:
+    nix: [ruff]
+  pyright:
+    nix: [nodePackages.pyright]
+  flake8:
+    guix: [python-flake8, python-flake8-implicit-str-concat]
+    apt: [flake8]
+    nix: [flake8]
+  isort:
+    guix: [python-isort]
+    apt: [isort]
+    nix: [isort]
+shell:
+  bash:
+    apt: [bash]
+  fish:
+    guix: [fish]
+    apt:
+      packages: [fish]
+      force: true
+  nushell:
+    guix: [nushell]
+  zsh:
+    guix: [zsh]
+    apt: [zsh]
+system:
+  "":
+    guix: [glibc-locales]
+  sudo:
+    apt: [sudo]
+  doas:
+    guix:
+      packages: [opendoas]
+      ignore: true
+    apt:
+      packages: [doas]
+      ignore: true
+top:
+  bpytop:
+    guix: [bpytop]
+    apt: [bpytop]
+  btop:
+    guix: [btop]
+    apt: [btop]
+    nix: [btop]
+  htop:
+    guix: [htop]
+  btm:
+    nix: [bottom]
+tui:
+  lynx:
+    guix: [lynx]
+  tmux:
+    guix: [tmux]
+gui:
+  catfish:
+    apt: [catfish]
+  solaar:
+    apt: [solaar]
+  celluloid:
+    apt: [celluloid]
+  cheese:
+    apt: [cheese]
+  code:
+    apt: [code]
+  codium:
+    apt: [codium]
+  eye-of-gnome:
+    apt: [eog]
+  foot:
+    apt: [foot]
+ubuntu:
+  aptitude:
+    apt: [aptitude]
+  nala:
+    apt: [nala]
+nix:
+  alejandra:
+    nix: [alejandra]
+ignored:
+  distrobox:
+    guix: [distrobox]

@@ -6,6 +6,7 @@ disable = [
     "distrobox",
     "github_cli_extensions",
     "guix",
+    "home-manager",
     "nix",
     "node",
     "pip3",

@@ -33,6 +33,10 @@
 			"path": "./.config/guix-profiles"
 		},
 		{
+			"name": "Home manager",
+			"path": "./.config/home-manager"
+		},
+		{
 			"name": "Julia config",
 			"path": "./.local/share/julia/config"
 		},
@@ -67,6 +71,10 @@
 		{
 			"name": "Systemd config",
 			"path": "./.config/systemd"
+		},
+		{
+			"name": "Ubunix config",
+			"path": "./.config/ubunix"
 		},
 		{
 			"name": "Vale",

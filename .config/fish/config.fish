@@ -14,7 +14,8 @@ fish_add_path \
     $HOME/bin/ \
     $HOME/.local/bin/ \
     $XDG_DATA_HOME/cargo/bin/ \
-    $XDG_DATA_HOME/juliaup/bin/
+    $XDG_DATA_HOME/juliaup/bin/ \
+    $XDG_DATA_HOME/nix/bin
 
 # Add abbreviations
 if type --query --no-functions trash
@@ -23,8 +24,7 @@ end
 
 # Activate Guix
 if type --query --no-functions guix
-    set activate_guix_script_path $XDG_CONFIG_HOME/guix-profiles/activate-guix.fish
-    if test -f $activate_guix_script_path
-        source $XDG_CONFIG_HOME/guix-profiles/activate-guix.fish
+    if type --query activate-guix
+        activate-guix
     end
 end
