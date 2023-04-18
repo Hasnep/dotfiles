@@ -3,10 +3,9 @@
 import argparse
 import json
 import sys
-from typing import List, Dict, Union, Any, Optional
-from pathlib import Path
 from collections import OrderedDict
-
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 
 Json = Union[str, int, float, List["Json"], Dict[str, "Json"]]
 
