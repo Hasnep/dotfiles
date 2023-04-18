@@ -1,6 +1,6 @@
 #!/bin/sh
 
-destination_folder=$HOME/.local/bin
+destination_folder=$HOME/bin
 echo "Creating '$destination_folder' if it doesn't exist."
 mkdir -p "$destination_folder"
 
