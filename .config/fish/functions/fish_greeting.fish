@@ -1,5 +1,5 @@
 function fish_greeting
-    if test $TERM = alacritty
+    if test $TERM = alacritty -o $TERM = foot
         if type --query --no-functions macchina
             macchina
         end
