@@ -88,6 +88,8 @@ cli:
     nix: [tealdeer]
   tokei:
     guix: [tokei]
+  topgrade:
+    nix: [topgrade]
   tree:
     guix: [tree]
   unzip:
@@ -128,6 +130,9 @@ gui:
     apt: [foot]
   solaar:
     apt: [solaar]
+guix:
+  glibc-locales:
+    guix: [glibc-locales]
 ignored:
   distrobox:
     guix: [distrobox]
@@ -137,10 +142,10 @@ nix:
 programming:
   chicken:
     guix: [chicken]
-  cmake:
-    guix: [cmake]
   crystal:
     nix: [crystal]
+  gdb:
+    apt: [gdb]
   gdtoolkit:
     nix:
       comment: Broke last time I tried to install
@@ -185,6 +190,8 @@ programming:
       ignore: true
       packages: [pre-commit]
     nix: [pre-commit]
+  prettier:
+    nix: [nodePackages.prettier]
   rust-script:
     nix: [rust-script]
   shellcheck:
@@ -218,18 +225,6 @@ python:
       force: true
       packages: [python3]
     nix: [python3]
-  python3.10:
-    apt: [python3.10]
-    nix: [python310]
-  python3.11:
-    apt: [python3.11]
-    nix: [python311]
-  python3.12:
-    apt: [python3.12]
-    nix: [python312]
-  python3.9:
-    apt: [python3.9]
-    nix: [python39]
   ruff:
     nix: [ruff]
 shell:
@@ -246,8 +241,6 @@ shell:
     guix: [zsh]
     apt: [zsh]
 system:
-  "":
-    guix: [glibc-locales]
   doas:
     guix:
       ignore: true
