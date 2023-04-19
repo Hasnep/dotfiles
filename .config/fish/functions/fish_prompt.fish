@@ -42,7 +42,14 @@ function fish_prompt
     set --function part_duration $duration_prefix$duration_colour$duration_seconds$duration_suffix
 
     # Previous command status
-    if test "$previous_command_exit_code" -eq 0
+    set did_previous_command_exit_successfully yes
+    for exit_code in $previous_command_exit_code
+        if test $exit_code != 0
+            set did_previous_command_exit_successfully no
+            break
+        end
+    end
+    if test $did_previous_command_exit_successfully = yes
         set --function prompt_colour (set_color --bold $config_prompt_colour)
         set --function part_exit_code
     else
