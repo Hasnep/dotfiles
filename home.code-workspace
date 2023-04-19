@@ -29,7 +29,7 @@
 			"path": "./.config/guix"
 		},
 		{
-			"name": "Home manager",
+			"name": "Home manager config",
 			"path": "./.config/home-manager"
 		},
 		{
@@ -49,7 +49,7 @@
 			"path": "./.config/macchina"
 		},
 		{
-			"name": "Nix",
+			"name": "Nix config",
 			"path": "./.config/nix"
 		},
 		{
@@ -73,7 +73,7 @@
 			"path": "./.config/ubunix"
 		},
 		{
-			"name": "Vale",
+			"name": "Vale config",
 			"path": "./.config/vale"
 		}
 	]
