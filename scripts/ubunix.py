@@ -377,39 +377,39 @@ if __name__ == "__main__":
         )
 
         # Create folder
-        (XDG_CONFIG_HOME / "home-manager").mkdir(parents=True, exist_ok=True)
+        cli_args.nix_manifest_folder_path.mkdir(parents=True, exist_ok=True)
 
-        with open(XDG_CONFIG_HOME / "home-manager" / "flake.nix", "w") as f:
+        with open(cli_args.nix_manifest_folder_path / "flake.nix", "w") as f:
             f.write(
                 dedent(
                     r"""
                     {
-                    description = "Home Manager configuration of hannes";
-                    inputs = {
-                        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-                        home-manager = {
-                        url = "github:nix-community/home-manager";
-                        inputs.nixpkgs.follows = "nixpkgs";
+                        description = "Home Manager configuration of hannes";
+                        inputs = {
+                            nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+                            home-manager = {
+                            url = "github:nix-community/home-manager";
+                            inputs.nixpkgs.follows = "nixpkgs";
+                            };
                         };
-                    };
-                    outputs = { nixpkgs, home-manager, ... }:
-                        let
-                        system = "x86_64-linux";
-                        pkgs = nixpkgs.legacyPackages.${system};
-                        in {
-                        homeConfigurations.hannes = home-manager.lib.homeManagerConfiguration {
-                            inherit pkgs;
-                            modules = [ ./home.nix ];
-                        };
+                        outputs = { nixpkgs, home-manager, ... }:
+                            let
+                            system = "x86_64-linux";
+                            pkgs = nixpkgs.legacyPackages.${system};
+                            in {
+                            homeConfigurations.hannes = home-manager.lib.homeManagerConfiguration {
+                                inherit pkgs;
+                                modules = [ ./home.nix ];
+                            };
                         };
                     }
                     """
                 )
             )
-        with open(XDG_CONFIG_HOME / "home-manager" / "home.nix", "w") as f:
+        with open(cli_args.nix_manifest_folder_path / "home.nix", "w") as f:
             f.write(nix_manifest)
-        format_nix_manifest(XDG_CONFIG_HOME / "home-manager" / "flake.nix")
-        format_nix_manifest(XDG_CONFIG_HOME / "home-manager" / "home.nix")
+        format_nix_manifest(cli_args.nix_manifest_folder_path / "flake.nix")
+        format_nix_manifest(cli_args.nix_manifest_folder_path / "home.nix")
 
     for p, install_with in packages:
         if len(install_with) == 0:
