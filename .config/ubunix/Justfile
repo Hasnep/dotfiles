@@ -9,19 +9,20 @@ guix_config_folder := env_var("XDG_CONFIG_HOME") / "guix"
 guix_manifest_file := guix_config_folder / "manifest.scm"
 guix_data_folder := env_var("XDG_DATA_HOME") / "guix"
 guix_profile_folder := guix_data_folder / "default"
-guix_activate_script := fish_config_folder / "functions" / "activate-guix.fish"
+guix_activate_script := guix_config_folder / "activate-guix.fish"
 
 apt_manifest_file := ubunix_config_folder / "apt-manifest.fish"
 
-nix_manifest_folder := ubunix_config_folder
+nix_manifest_folder := env_var("XDG_CONFIG_HOME") / "home-manager"
+nix_config_folder := env_var("XDG_CONFIG_HOME") / "nix"
 nix_profile_folder := env_var("XDG_DATA_HOME") / "nix"
 nix_bin_folder := nix_profile_folder / "bin"
-nix_activate_script := fish_config_folder / "functions" / "activate-nix.fish"
+nix_activate_script := nix_config_folder / "functions" / "activate-nix.fish"
 
 default: generate apply_guix apply_apt apply_nix
 
 generate:
-    cat {{packages_file}} | yq . > /tmp/ubunix-packages.json
+    cat {{packages_file}} | yq -c . > /tmp/ubunix-packages.json
     ubunix \
         --packages-file=/tmp/ubunix-packages.json \
         --guix-manifest-file={{guix_manifest_file}} \
@@ -37,27 +38,16 @@ apply_guix: update_activate_guix
 apply_apt:
     fish {{apt_manifest_file}}
 
-apply_nix: update_activate_nix
+apply_nix:
     nix run home-manager/master -- switch
 
 update_activate_guix:
     #!/usr/bin/env fish
     echo -n '' > {{guix_activate_script}}
-    echo 'function activate-guix' >> {{guix_activate_script}}
     guix package --search-paths -p {{guix_data_folder}}/current 2>/dev/null | bash-exports-to-fish >> {{guix_activate_script}}
     echo '    set --export GUIX_MANIFEST {{guix_manifest_file}}' >> {{guix_activate_script}}
     echo '    set --export GUIX_PROFILE {{guix_profile_folder}}' >> {{guix_activate_script}}
     guix package --search-paths --profile={{guix_profile_folder}} 2>/dev/null | bash-exports-to-fish >> {{guix_activate_script}}
     echo '    set --export GUIX_LOCPATH {{guix_profile_folder}}/lib/locale' >> {{guix_activate_script}}
-    echo '    end' >> {{guix_activate_script}}
     fish_indent --write {{guix_activate_script}}
     echo "Updated '{{guix_activate_script}}'."
-
-update_activate_nix:
-    #!/usr/bin/env fish
-    echo -n '' > {{nix_activate_script}}
-    echo 'function activate-nix' >> {{nix_activate_script}}
-    echo 'fish_add_path {{nix_bin_folder}}' >> {{nix_activate_script}}
-    echo 'end' >> {{nix_activate_script}}
-    fish_indent --write {{nix_activate_script}}
-    echo "Updated '{{nix_activate_script}}'."
