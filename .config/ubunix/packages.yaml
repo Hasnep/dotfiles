@@ -1,17 +1,4 @@
 cli:
-  yq:
-    nix: [yq]
-  just:
-    nix: [just]
-  grex:
-    nix: [grex]
-  pipx:
-    apt: [pipx]
-  speedtest-cli:
-    guix: [speedtest-cli]
-  jello:
-    apt: [jello]
-    nix: [jello]
   ansible:
     guix: [ansible]
     apt: [ansible]
@@ -24,6 +11,15 @@ cli:
     comment: Normally my custom cowsay script takes precedence over the installed one
     guix: [cowsay]
     apt: [cowsay]
+  curl:
+    guix:
+      comment: Didn't work last time I tried to use it
+      ignore: true
+      packages: [curl]
+    apt: [curl]
+    nix: [curl]
+  curlie:
+    guix: [curlie]
   du-dust:
     nix: [du-dust]
   entr:
@@ -36,14 +32,21 @@ cli:
     guix: [ffmpeg]
   fzf:
     guix: [fzf]
+  grex:
+    nix: [grex]
   httpie:
     guix: [httpie]
   hyperfine:
     nix: [hyperfine]
   jc:
     guix: [jc]
+  jello:
+    apt: [jello]
+    nix: [jello]
   jq:
     guix: [jq]
+  just:
+    nix: [just]
   lolcat:
     guix: [lolcat]
   make:
@@ -61,201 +64,56 @@ cli:
   neofetch:
     guix: [neofetch]
     apt: [neofetch]
+  pipx:
+    apt: [pipx]
   rclone:
     guix: [rclone]
   ripgrep:
     guix: [ripgrep]
+  speedtest-cli:
+    guix: [speedtest-cli]
   tar:
     guix: [tar]
     apt:
-      packages: [tar]
       force: true
+      packages: [tar]
     nix: [tar]
-  unzip:
-    guix: [unzip]
   tesseract:
     guix: [tesseract-ocr]
+  tldr:
+    guix:
+      comment: Breaks when I try to install
+      ignore: true
+      packages: [tealdeer]
+    nix: [tealdeer]
   tokei:
     guix: [tokei]
   tree:
     guix: [tree]
+  unzip:
+    guix: [unzip]
   wget:
     guix: [wget]
+  yq:
+    nix: [yq]
   yt-dlp:
     nix: [yt-dlp]
   zip:
     guix: [zip]
     apt: [zip]
-  curlie:
-    guix: [curlie]
-  curl:
-    guix:
-      packages: [curl]
-      ignore: true
-      comment: Didn't work last time I tried to use it
-    apt: [curl]
-    nix: [curl]
-  tldr:
-    guix:
-      packages: [tealdeer]
-      ignore: true
-      comment: Breaks when I try to install
-    nix: [tealdeer]
 editors:
-  nano:
-    guix: [nano]
-    apt:
-      packages: [nano]
-      force: true
-      comment: Need to always have access to an editor
   micro:
     apt: [micro]
     nix: [micro]
-programming:
-  rust-script:
-    nix: [rust-script]
-  linode-cli:
-    nix: [linode-cli]
-  chicken:
-    guix: [chicken]
-  cmake:
-    guix: [cmake]
-  go:
-    guix: [go]
-  guile:
-    guix: [guile]
-  meson:
-    guix: [meson]
-    apt: [meson]
-  nim:
-    guix: [nim]
-  ninja:
-    guix: [ninja]
-  node:
-    guix: [node]
-  pandoc:
-    guix: [pandoc]
-  shellcheck:
-    guix: [shellcheck]
-  tectonic:
-    guix: [tectonic]
-  pre-commit:
-    guix:
-      packages: [pre-commit]
-      ignore: true
-      comment: Still on v2
+  nano:
+    guix: [nano]
     apt:
-      packages: [pre-commit]
-      ignore: true
-      comment: Still on v2
-    nix: [pre-commit]
-  hadolint:
-    nix: [hadolint]
-  crystal:
-    nix: [crystal]
-  terraform:
-    nix: [terraform]
-  hugo:
-    nix: [hugo]
-  git:
-    guix:
-      packages: [git]
-      ignore: true
-    apt: [git]
-    nix: [git]
-  git-delete-merged-branches:
-    nix: [git-delete-merged-branches]
-  gdtoolkit:
-    nix:
-      packages: [python310Packages.gdtoolkit]
-      ignore: true
-      comment: Broke last time I tried to install
-  yamllint:
-    guix: [python-yamllint]
-    apt: [yamllint]
-python:
-  python3:
-    guix:
-      packages: [python]
-      ignore: true
-      comment: Outdated version of Python
-    apt:
-      packages: [python3]
+      comment: Need to always have access to an editor
       force: true
-    nix: [python3]
-  python3.12:
-    apt: [python3.12]
-    nix: [python312]
-  python3.11:
-    apt: [python3.11]
-    nix: [python311]
-  python3.10:
-    apt: [python3.10]
-    nix: [python310]
-  python3.9:
-    apt: [python3.9]
-    nix: [python39]
-  black:
-    guix: [python-black]
-  ruff:
-    nix: [ruff]
-  pyright:
-    nix: [nodePackages.pyright]
-  flake8:
-    guix: [python-flake8, python-flake8-implicit-str-concat]
-    apt: [flake8]
-    nix: [flake8]
-  isort:
-    guix: [python-isort]
-    apt: [isort]
-    nix: [isort]
-shell:
-  bash:
-    apt: [bash]
-  fish:
-    guix: [fish]
-    apt:
-      packages: [fish]
-      force: true
-  nushell:
-    guix: [nushell]
-  zsh:
-    guix: [zsh]
-    apt: [zsh]
-system:
-  "":
-    guix: [glibc-locales]
-  sudo:
-    apt: [sudo]
-  doas:
-    guix:
-      packages: [opendoas]
-      ignore: true
-    apt:
-      packages: [doas]
-      ignore: true
-top:
-  bpytop:
-    guix: [bpytop]
-    apt: [bpytop]
-  btop:
-    guix: [btop]
-    apt: [btop]
-    nix: [btop]
-  htop:
-    guix: [htop]
-  btm:
-    nix: [bottom]
-tui:
-  lynx:
-    guix: [lynx]
-  tmux:
-    guix: [tmux]
+      packages: [nano]
 gui:
   catfish:
     apt: [catfish]
-  solaar:
-    apt: [solaar]
   celluloid:
     apt: [celluloid]
   cheese:
@@ -268,14 +126,156 @@ gui:
     apt: [eog]
   foot:
     apt: [foot]
+  solaar:
+    apt: [solaar]
+ignored:
+  distrobox:
+    guix: [distrobox]
+nix:
+  alejandra:
+    nix: [alejandra]
+programming:
+  chicken:
+    guix: [chicken]
+  cmake:
+    guix: [cmake]
+  crystal:
+    nix: [crystal]
+  gdtoolkit:
+    nix:
+      comment: Broke last time I tried to install
+      ignore: true
+      packages: [python310Packages.gdtoolkit]
+  git:
+    guix:
+      ignore: true
+      packages: [git]
+    apt: [git]
+    nix: [git]
+  git-delete-merged-branches:
+    nix: [git-delete-merged-branches]
+  go:
+    guix: [go]
+  guile:
+    guix: [guile]
+  hadolint:
+    nix: [hadolint]
+  hugo:
+    nix: [hugo]
+  linode-cli:
+    nix: [linode-cli]
+  meson:
+    guix: [meson]
+    apt: [meson]
+  nim:
+    guix: [nim]
+  ninja:
+    guix: [ninja]
+  node:
+    guix: [node]
+  pandoc:
+    guix: [pandoc]
+  pre-commit:
+    guix:
+      comment: Still on v2
+      ignore: true
+      packages: [pre-commit]
+    apt:
+      comment: Still on v2
+      ignore: true
+      packages: [pre-commit]
+    nix: [pre-commit]
+  rust-script:
+    nix: [rust-script]
+  shellcheck:
+    guix: [shellcheck]
+  tectonic:
+    guix: [tectonic]
+  terraform:
+    nix: [terraform]
+  yamllint:
+    guix: [python-yamllint]
+    apt: [yamllint]
+python:
+  black:
+    guix: [python-black]
+  flake8:
+    guix: [python-flake8, python-flake8-implicit-str-concat]
+    apt: [flake8]
+    nix: [flake8]
+  isort:
+    guix: [python-isort]
+    apt: [isort]
+    nix: [isort]
+  pyright:
+    nix: [nodePackages.pyright]
+  python3:
+    guix:
+      comment: Outdated version of Python
+      ignore: true
+      packages: [python]
+    apt:
+      force: true
+      packages: [python3]
+    nix: [python3]
+  python3.10:
+    apt: [python3.10]
+    nix: [python310]
+  python3.11:
+    apt: [python3.11]
+    nix: [python311]
+  python3.12:
+    apt: [python3.12]
+    nix: [python312]
+  python3.9:
+    apt: [python3.9]
+    nix: [python39]
+  ruff:
+    nix: [ruff]
+shell:
+  bash:
+    apt: [bash]
+  fish:
+    guix: [fish]
+    apt:
+      force: true
+      packages: [fish]
+  nushell:
+    guix: [nushell]
+  zsh:
+    guix: [zsh]
+    apt: [zsh]
+system:
+  "":
+    guix: [glibc-locales]
+  doas:
+    guix:
+      ignore: true
+      packages: [opendoas]
+    apt:
+      ignore: true
+      packages: [doas]
+  sudo:
+    apt: [sudo]
+top:
+  bpytop:
+    guix: [bpytop]
+    apt: [bpytop]
+  btm:
+    nix: [bottom]
+  btop:
+    guix: [btop]
+    apt: [btop]
+    nix: [btop]
+  htop:
+    guix: [htop]
+tui:
+  lynx:
+    guix: [lynx]
+  tmux:
+    guix: [tmux]
 ubuntu:
   aptitude:
     apt: [aptitude]
   nala:
     apt: [nala]
-nix:
-  alejandra:
-    nix: [alejandra]
-ignored:
-  distrobox:
-    guix: [distrobox]

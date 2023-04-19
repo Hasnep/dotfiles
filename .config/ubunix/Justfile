@@ -21,8 +21,12 @@ nix_activate_script := nix_config_folder / "functions" / "activate-nix.fish"
 
 default: generate apply_guix apply_apt apply_nix
 
+sort_packages:
+    cat {{packages_file}} | yq . | sort-ubunix-packages | sponge {{packages_file}} \
+        && prettier --write {{packages_file}}
+
 generate:
-    cat {{packages_file}} | yq -c . > /tmp/ubunix-packages.json
+    cat {{packages_file}} | yq . > /tmp/ubunix-packages.json
     ubunix \
         --packages-file=/tmp/ubunix-packages.json \
         --guix-manifest-file={{guix_manifest_file}} \
