@@ -32,8 +32,14 @@ cli:
     guix: [ffmpeg]
   fzf:
     guix: [fzf]
+  graphviz:
+    guix: [graphviz]
+    apt: [graphviz]
   grex:
     nix: [grex]
+  gron:
+    guix: [gron]
+    apt: [gron]
   httpie:
     guix: [httpie]
   hyperfine:
@@ -132,6 +138,9 @@ gui:
   foot:
     apt: [foot]
     nix: [foot]
+  qdirstat:
+    guix: [qdirstat]
+    apt: [qdirstat]
   solaar:
     apt: [solaar]
 guix:
@@ -170,6 +179,7 @@ programming:
   hadolint:
     nix: [hadolint]
   hugo:
+    apt: [hugo]
     nix: [hugo]
   linode-cli:
     nix: [linode-cli]
@@ -182,6 +192,7 @@ programming:
     guix: [ninja]
   node:
     guix: [node]
+    apt: [nodejs, npm]
   pandoc:
     guix: [pandoc]
   pre-commit:
@@ -203,7 +214,11 @@ programming:
   tectonic:
     guix: [tectonic]
   terraform:
+    apt: [terraform]
     nix: [terraform]
+  tup:
+    guix: [tup]
+    apt: [tup]
   yamllint:
     guix: [python-yamllint]
     apt: [yamllint]
