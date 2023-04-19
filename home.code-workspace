@@ -9,10 +9,6 @@
 			"path": "./.config/autostart"
 		},
 		{
-			"name": "Bin",
-			"path": "./.local/bin"
-		},
-		{
 			"name": "Fish config",
 			"path": "./.config/fish"
 		},
