@@ -114,6 +114,9 @@ editors:
       force: true
       packages: [nano]
 gui:
+  alacritty:
+    guix: [alacritty]
+    nix: [alacritty]
   catfish:
     apt: [catfish]
   celluloid:
@@ -128,6 +131,7 @@ gui:
     apt: [eog]
   foot:
     apt: [foot]
+    nix: [foot]
   solaar:
     apt: [solaar]
 guix:
