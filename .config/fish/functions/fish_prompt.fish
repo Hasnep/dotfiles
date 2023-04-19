@@ -43,10 +43,10 @@ function fish_prompt
 
     # Previous command status
     if test "$previous_command_exit_code" -eq 0
-        set --function prompt_colour (set_color $config_prompt_colour)
+        set --function prompt_colour (set_color --bold $config_prompt_colour)
         set --function part_exit_code
     else
-        set --function prompt_colour (set_color $config_error_colour)
+        set --function prompt_colour (set_color --bold $config_error_colour)
         set --function exit_code_prefix " "
         set --function exit_code_colour $prompt_colour
         set --function exit_code "[$previous_command_exit_code]"
