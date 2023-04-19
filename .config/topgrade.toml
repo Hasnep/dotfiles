@@ -6,8 +6,6 @@ disable = [
     "distrobox",
     "github_cli_extensions",
     "guix",
-    "home_manager",
-    "nix",
     "node",
     "pip3",
     "snap",
@@ -17,3 +15,17 @@ skip_notify = true
 [git]
 repos = ["~/.dotfiles"]
 pull_predefined = false
+
+[commands]
+Guix = """
+if type --query --no-functions guix
+    if set --query GUIX_MANIFEST GUIX_PROFILE
+        guix pull && guix package --manifest=$GUIX_MANIFEST --profile=$GUIX_PROFILE
+    else
+        echo "Environment variables 'GUIX_MANIFEST' and 'GUIX_PROFILE' not set."
+        exit 1
+    end
+else
+    echo "Guix not installed"
+end
+"""
