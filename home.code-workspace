@@ -29,10 +29,6 @@
 			"path": "./.config/guix"
 		},
 		{
-			"name": "Guix Profiles",
-			"path": "./.config/guix-profiles"
-		},
-		{
 			"name": "Home manager",
 			"path": "./.config/home-manager"
 		},
