@@ -13,6 +13,10 @@
 			"path": "./.config/fish"
 		},
 		{
+			"name": "Foot config",
+			"path": "./.config/foot"
+		},
+		{
 			"name": "Fortune config",
 			"path": "./.config/fortune"
 		},
