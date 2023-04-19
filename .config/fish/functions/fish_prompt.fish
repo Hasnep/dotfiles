@@ -1,4 +1,5 @@
 function fish_prompt
+    # Get the exit code of the previous command
     set --function previous_command_exit_code $pipestatus
 
     # Configs
@@ -9,7 +10,7 @@ function fish_prompt
     set --function config_prompt_character "❱"
     set --function config_command_duration_threshold_milliseconds 1000 # 1 second
 
-    # Reset colour
+    # Define a reset colour variable
     set --function reset_colour (set_color normal)
 
     # Working directory
