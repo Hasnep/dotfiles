@@ -9,7 +9,7 @@ from argparse import ArgumentParser
 from dataclasses import dataclass
 from pathlib import Path
 from textwrap import dedent
-from typing import Dict, List, NamedTuple, NotRequired, Optional, TypedDict, TypeVar
+from typing import Dict, List, NotRequired, Optional, TypedDict, TypeVar
 
 # Constants
 T = TypeVar("T")
@@ -82,10 +82,21 @@ def get_cli_args() -> CliArgs:
 # Packaging
 
 
-class Packages(NamedTuple):
-    package_names: List[str]
-    package_manager: str
-    force: bool = False
+class Packages:
+    def __init__(
+        self, package_names: List[str], package_manager: str, force: bool, ignore: bool
+    ) -> None:
+        self.package_names = package_names
+        self.package_manager = package_manager
+
+        # Both force and ignore are mutually exclusive
+        if force and ignore:
+            raise Exception(
+                f"Both `force` and `ignore` were both set for packages `{', '.join(package_names)}` from `{package_manager}`."
+            )
+
+        self.force = force
+        self.ignore = ignore
 
 
 class UniPackage:
@@ -95,6 +106,7 @@ class UniPackage:
         guix: Optional[PackageManagerConfig],
         apt: Optional[PackageManagerConfig],
         nix: Optional[PackageManagerConfig],
+        ignore: Optional[bool],
     ):
         self.command_name = command
 
@@ -105,16 +117,20 @@ class UniPackage:
                 case None:
                     return None
                 case list():
-                    return Packages(x, package_manager)
+                    return Packages(x, package_manager, False, False)
                 case dict():
                     return (
                         None
                         if x.get("ignore", False)
                         else Packages(
-                            x["packages"], package_manager, x.get("force", False)
+                            x["packages"],
+                            package_manager,
+                            x.get("force", False),
+                            x.get("ignore", False),
                         )
                     )
 
+        self.ignore = ignore
         self.guix = get_packages("guix", guix)
         self.apt = get_packages("apt", apt)
         self.nix = get_packages("nix", nix)
@@ -152,7 +168,11 @@ def read_packages_file(packages_file_path: Path) -> List[UniPackage]:
     )
     return [
         UniPackage(
-            command=command, guix=p.get("guix"), apt=p.get("apt"), nix=p.get("nix")
+            command=command,
+            guix=p.get("guix"),
+            apt=p.get("apt"),
+            nix=p.get("nix"),
+            ignore=p.get("ignore"),
         )
         for command, p in x
     ]
@@ -174,27 +194,41 @@ def get_installed_package_managers() -> List[str]:
 def get_package_managers_to_install(
     p: UniPackage, installed_package_managers: List[str]
 ) -> List[str]:
+    if p.ignore:
+        return []
+
     is_guix_installed = "guix" in installed_package_managers
     is_apt_installed = "apt" in installed_package_managers
     is_nix_installed = "nix" in installed_package_managers
 
-    has_guix_package = p.guix is not None
-    has_apt_package = p.apt is not None
-    has_nix_package = p.nix is not None
-
-    force_guix = p.guix is not None and p.guix.force
-    force_apt = p.apt is not None and p.apt.force
-    force_nix = p.nix is not None and p.nix.force
+    (has_guix_package, force_guix, ignore_guix) = (
+        (False, False, False) if p.guix is None else (True, p.guix.force, p.guix.ignore)
+    )
+    (has_apt_package, force_apt, ignore_apt) = (
+        (False, False, False) if p.apt is None else (True, p.apt.force, p.apt.ignore)
+    )
+    (has_nix_package, force_nix, ignore_nix) = (
+        (False, False, False) if p.nix is None else (True, p.nix.force, p.nix.ignore)
+    )
 
     # Install using guix if it is installed and has a package
-    install_using_guix = is_guix_installed and has_guix_package and (force_guix or True)
+    install_using_guix = (
+        not ignore_guix
+        and is_guix_installed
+        and has_guix_package
+        and (force_guix or True)
+    )
     # Install using apt if it is installed and has a package and the same package is not installed using guix
     install_using_apt = (
-        is_apt_installed and has_apt_package and (not install_using_guix or force_apt)
+        not ignore_apt
+        and is_apt_installed
+        and has_apt_package
+        and (not install_using_guix or force_apt)
     )
     # Install using nix if it is installed and has a package and the same package is not installed using guix or apt
     install_using_nix = (
-        is_nix_installed
+        not ignore_nix
+        and is_nix_installed
         and has_nix_package
         and (not (install_using_guix or install_using_apt) or force_nix)
     )
@@ -299,16 +333,18 @@ def get_apt_install_command(command_line_arguments: CliArgs) -> str:
 
 if __name__ == "__main__":
     cli_args = get_cli_args()
-    packages = read_packages_file(cli_args.packages_file_path)
     installed_package_managers = get_installed_package_managers()
+    packages = [
+        (p, get_package_managers_to_install(p, installed_package_managers))
+        for p in read_packages_file(cli_args.packages_file_path)
+    ]
+
     if "guix" in installed_package_managers:
         guix_manifest = get_guix_manifest(
             [
                 p.guix
-                for p in packages
-                if p.guix is not None
-                and "guix"
-                in get_package_managers_to_install(p, installed_package_managers)
+                for p, install_with in packages
+                if p.guix is not None and "guix" in install_with
             ]
         )
         with open(cli_args.guix_manifest_file_path, "w") as f:
@@ -319,17 +355,13 @@ if __name__ == "__main__":
         apt_manifest = get_apt_manifest(
             [
                 p.apt
-                for p in packages
-                if p.apt is not None
-                and "apt"
-                in get_package_managers_to_install(p, installed_package_managers)
+                for p, install_with in packages
+                if p.apt is not None and "apt" in install_with
             ],
             [
                 p.apt
-                for p in packages
-                if p.apt is not None
-                and "apt"
-                not in get_package_managers_to_install(p, installed_package_managers)
+                for p, install_with in packages
+                if p.apt is not None and "apt" not in install_with
             ],
         )
         with open(cli_args.apt_manifest_file_path, "w") as f:
@@ -339,10 +371,8 @@ if __name__ == "__main__":
         nix_manifest = get_nix_manifest(
             [
                 p.nix
-                for p in packages
-                if p.nix is not None
-                and "nix"
-                in get_package_managers_to_install(p, installed_package_managers)
+                for p, install_with in packages
+                if p.nix is not None and "nix" in install_with
             ]
         )
 
@@ -380,6 +410,10 @@ if __name__ == "__main__":
             f.write(nix_manifest)
         format_nix_manifest(XDG_CONFIG_HOME / "home-manager" / "flake.nix")
         format_nix_manifest(XDG_CONFIG_HOME / "home-manager" / "home.nix")
+
+    for p, install_with in packages:
+        if len(install_with) == 0:
+            print(f"Package `{p.command_name}` was not installed.")
 
     print("")
     print(get_guix_install_command(cli_args))
