@@ -25,8 +25,12 @@ cli:
   curlie:
     guix: [curlie]
     nix: [curlie]
+  delta:
+    nix: [delta]
   dust:
-    guix: [du-dust]
+    guix:
+      ignore: true
+      packages: [du-dust]
     nix: [du-dust]
   entr:
     guix: [entr]
@@ -63,7 +67,7 @@ cli:
     nix: [hyperfine]
   jc:
     guix: [jc]
-    apt: [jc]
+    apt: [jc, jq]
     nix: [jc]
   jello:
     apt: [jello]
@@ -76,9 +80,13 @@ cli:
   lolcat:
     guix: [lolcat]
     apt: [lolcat]
+  macchina:
+    nix: [macchina]
   make:
     guix: [make]
-    apt: [make]
+    apt:
+      force: true
+      packages: [make]
   moreutils:
     guix: [moreutils]
     apt: [moreutils]
@@ -155,7 +163,7 @@ cli:
     apt: [youtube-dl]
     nix: [youtube-dl]
   yq:
-    apt: [yq]
+    apt: [yq, jq]
     nix: [yq]
   yt-dlp:
     guix: [yt-dlp]
@@ -183,10 +191,6 @@ gui:
     apt: [celluloid]
   cheese:
     apt: [cheese]
-  code:
-    apt: [code]
-  codium:
-    apt: [codium]
   eye-of-gnome:
     apt: [eog]
   gpaste:
@@ -281,7 +285,6 @@ programming:
   tectonic:
     guix: [tectonic]
   terraform:
-    apt: [terraform]
     nix: [terraform]
   tup:
     guix: [tup]
