@@ -4,6 +4,7 @@
     "Hello, world!",
     "Lorem ipsum dolor sit amet..."
   ],
+  "chinese": ["父債子還"],
   "memes": [
     "Why do they call it oven when you of in the cold food of out hot eat the food?"
   ],
@@ -13,5 +14,10 @@
     "Winona is another character from Rubbadubbers",
     "margherita pizza with removed chunks of tomato, cheese string",
     "他真的很笨呢"
+  ],
+  "programming": [
+    "“Premature optimization is the root of all evil.”\n― Donald Knuth",
+    "“There are only two kinds of languages: the ones people complain about and the ones nobody uses.”\n―Bjarne Stroustrup",
+    "“[C has] the power of assembly language and the convenience of… assembly language.”\n―Dennis Ritchie"
   ]
 }
