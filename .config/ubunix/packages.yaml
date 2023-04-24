@@ -100,7 +100,10 @@ cli:
     guix: [neofetch]
     apt: [neofetch]
   pipx:
-    apt: [pipx]
+    apt:
+      comment: Not working for some reason
+      ignore: true
+      packages: [pipx]
     nix: [pipx]
   rclone:
     guix: [rclone]
