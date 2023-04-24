@@ -262,7 +262,12 @@ def get_apt_manifest(
     packages_to_install: List[Packages], packages_to_remove: List[Packages]
 ) -> str:
     package_names_to_install = flatten([p.package_names for p in packages_to_install])
-    package_names_to_remove = flatten([p.package_names for p in packages_to_remove])
+    package_names_to_remove = [
+        package_name
+        for package_name in flatten([p.package_names for p in packages_to_remove])
+        if package_name not in package_names_to_install
+    ]
+
     return "\n".join(
         [
             "sudo nala remove " + " ".join(package_names_to_remove)
