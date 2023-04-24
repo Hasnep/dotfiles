@@ -7,6 +7,7 @@ cli:
     apt: [bat]
   bc:
     guix: [bc]
+    apt: [bc]
   cowsay:
     comment: Normally my custom cowsay script takes precedence over the installed one
     guix: [cowsay]
@@ -20,18 +21,23 @@ cli:
     nix: [curl]
   curlie:
     guix: [curlie]
-  du-dust:
+  dust:
     nix: [du-dust]
   entr:
     guix: [entr]
+    apt: [entr]
   exa:
     guix: [exa]
+    apt: [exa]
   fd:
     guix: [fd]
+    apt: [fd-find]
   ffmpeg:
     guix: [ffmpeg]
+    apt: [ffmpeg]
   fzf:
     guix: [fzf]
+    apt: [fzf]
   graphviz:
     guix: [graphviz]
     apt: [graphviz]
@@ -43,18 +49,23 @@ cli:
   httpie:
     guix: [httpie]
   hyperfine:
+    guix: [hyperfine]
+    apt: [hyperfine]
     nix: [hyperfine]
   jc:
     guix: [jc]
+    apt: [jc]
   jello:
     apt: [jello]
     nix: [jello]
   jq:
     guix: [jq]
+    apt: [jq]
   just:
     nix: [just]
   lolcat:
     guix: [lolcat]
+    apt: [lolcat]
   make:
     guix: [make]
     apt: [make]
@@ -72,12 +83,18 @@ cli:
     apt: [neofetch]
   pipx:
     apt: [pipx]
+    nix: [pipx]
   rclone:
     guix: [rclone]
+    apt: [rclone]
+    nix: [rclone]
   ripgrep:
     guix: [ripgrep]
-  speedtest-cli:
+    apt: [ripgrep]
+    nix: [ripgrep]
+  speedtest:
     guix: [speedtest-cli]
+    apt: [speedtest-cli]
   tar:
     guix: [tar]
     apt:
@@ -86,6 +103,7 @@ cli:
     nix: [tar]
   tesseract:
     guix: [tesseract-ocr]
+    apt: [tesseract-ocr]
   tldr:
     guix:
       comment: Breaks when I try to install
@@ -98,17 +116,34 @@ cli:
     nix: [topgrade]
   tree:
     guix: [tree]
+    apt: [tree]
   unzip:
     guix: [unzip]
+    apt:
+      comment: Needed for Lutris
+      force: true
+      packages: [unzip]
+    nix: [unzip]
   wget:
     guix: [wget]
+    apt:
+      force: true
+      packages: [wget]
+  youtube-dl:
+    comment: Replaced by yt-dlp
+    ignore: true
+    guix: [youtube-dl]
+    apt: [youtube-dl]
+    nix: [youtube-dl]
   yq:
     nix: [yq]
   yt-dlp:
+    guix: [yt-dlp]
     nix: [yt-dlp]
   zip:
     guix: [zip]
     apt: [zip]
+    nix: [zip]
 editors:
   micro:
     apt: [micro]
@@ -120,9 +155,6 @@ editors:
       force: true
       packages: [nano]
 gui:
-  alacritty:
-    guix: [alacritty]
-    nix: [alacritty]
   catfish:
     apt: [catfish]
   celluloid:
@@ -135,18 +167,24 @@ gui:
     apt: [codium]
   eye-of-gnome:
     apt: [eog]
-  foot:
-    apt: [foot]
-    nix: [foot]
+  gpaste:
+    guix:
+      ignore: true
+      packages: [gpaste]
+    apt: [gpaste-2, gnome-shell-extension-gpaste]
+  lutris:
+    apt: [lutris]
   qdirstat:
     guix: [qdirstat]
     apt: [qdirstat]
   solaar:
     apt: [solaar]
+  zeal:
+    apt: [zeal]
 guix:
   glibc-locales:
     guix: [glibc-locales]
-ignored:
+ignore:
   distrobox:
     guix: [distrobox]
 nix:
@@ -155,6 +193,7 @@ nix:
 programming:
   chicken:
     guix: [chicken]
+    apt: [chicken-bin]
   crystal:
     nix: [crystal]
   gdb:
@@ -172,6 +211,8 @@ programming:
     nix: [git]
   git-delete-merged-branches:
     nix: [git-delete-merged-branches]
+  github-cli:
+    nix: [gh]
   go:
     guix: [go]
   guile:
@@ -190,7 +231,7 @@ programming:
     guix: [nim]
   ninja:
     guix: [ninja]
-  node:
+  nodejs:
     guix: [node]
     apt: [nodejs, npm]
   pandoc:
@@ -211,6 +252,7 @@ programming:
     nix: [rust-script]
   shellcheck:
     guix: [shellcheck]
+    apt: [shellcheck]
   tectonic:
     guix: [tectonic]
   terraform:
@@ -225,6 +267,7 @@ programming:
 python:
   black:
     guix: [python-black]
+    apt: [black]
   flake8:
     guix: [python-flake8, python-flake8-implicit-str-concat]
     apt: [flake8]
@@ -248,17 +291,24 @@ python:
     nix: [ruff]
 shell:
   bash:
-    apt: [bash]
+    guix: [bash]
+    apt:
+      force: true
+      packages: [bash]
+    nix: [bash]
   fish:
     guix: [fish]
     apt:
       force: true
       packages: [fish]
+    nix: [fish]
   nushell:
     guix: [nushell]
+    nix: [nushell]
   zsh:
     guix: [zsh]
     apt: [zsh]
+    nix: [zsh]
 system:
   doas:
     guix:
@@ -267,8 +317,32 @@ system:
     apt:
       ignore: true
       packages: [doas]
+  software-properties-common:
+    apt:
+      force: true
+      packages: [software-properties-common]
   sudo:
-    apt: [sudo]
+    apt:
+      force: true
+      packages: [sudo]
+terminal:
+  alacritty:
+    comment: Using foot at the moment
+    ignore: true
+    guix: [alacritty]
+    nix: [alacritty]
+  foot:
+    guix:
+      ignore: true
+      packages: [foot]
+    apt: [foot]
+    nix: [foot]
+  kitty:
+    comment: Using foot at the moment
+    ignore: true
+    guix: [kitty]
+    apt: [kitty]
+    nix: [kitty]
 top:
   bpytop:
     guix: [bpytop]
@@ -281,11 +355,14 @@ top:
     nix: [btop]
   htop:
     guix: [htop]
+    apt: [htop]
 tui:
   lynx:
     guix: [lynx]
+    apt: [lynx]
   tmux:
     guix: [tmux]
+    apt: [tmux]
 ubuntu:
   aptitude:
     apt: [aptitude]
