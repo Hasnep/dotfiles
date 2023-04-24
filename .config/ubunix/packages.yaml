@@ -2,6 +2,9 @@ cli:
   ansible:
     guix: [ansible]
     apt: [ansible]
+  autorestic:
+    ignore: true
+    nix: [autorestic]
   bat:
     guix: [bat]
     apt: [bat]
@@ -21,7 +24,9 @@ cli:
     nix: [curl]
   curlie:
     guix: [curlie]
+    nix: [curlie]
   dust:
+    guix: [du-dust]
     nix: [du-dust]
   entr:
     guix: [entr]
@@ -35,12 +40,15 @@ cli:
   ffmpeg:
     guix: [ffmpeg]
     apt: [ffmpeg]
+    nix: [ffmpeg]
   fzf:
     guix: [fzf]
     apt: [fzf]
+    nix: [fzf]
   graphviz:
     guix: [graphviz]
     apt: [graphviz]
+    nix: [graphviz]
   grex:
     nix: [grex]
   gron:
@@ -48,6 +56,7 @@ cli:
     apt: [gron]
   httpie:
     guix: [httpie]
+    apt: [httpie]
   hyperfine:
     guix: [hyperfine]
     apt: [hyperfine]
@@ -55,6 +64,7 @@ cli:
   jc:
     guix: [jc]
     apt: [jc]
+    nix: [jc]
   jello:
     apt: [jello]
     nix: [jello]
@@ -88,6 +98,10 @@ cli:
     guix: [rclone]
     apt: [rclone]
     nix: [rclone]
+  restic:
+    ignore: true
+    apt: [restic]
+    nix: [restic]
   ripgrep:
     guix: [ripgrep]
     apt: [ripgrep]
@@ -109,12 +123,16 @@ cli:
       comment: Breaks when I try to install
       ignore: true
       packages: [tealdeer]
+    apt: [tealdeer]
     nix: [tealdeer]
   tokei:
     guix: [tokei]
+    nix: [tokei]
   topgrade:
     nix: [topgrade]
   tree:
+    comment: The command `exa` has a --tree argument
+    ignore: true
     guix: [tree]
     apt: [tree]
   unzip:
@@ -129,6 +147,7 @@ cli:
     apt:
       force: true
       packages: [wget]
+    nix: [wget]
   youtube-dl:
     comment: Replaced by yt-dlp
     ignore: true
@@ -136,9 +155,11 @@ cli:
     apt: [youtube-dl]
     nix: [youtube-dl]
   yq:
+    apt: [yq]
     nix: [yq]
   yt-dlp:
     guix: [yt-dlp]
+    apt: [yt-dlp]
     nix: [yt-dlp]
   zip:
     guix: [zip]
@@ -154,6 +175,7 @@ editors:
       comment: Need to always have access to an editor
       force: true
       packages: [nano]
+    nix: [nano]
 gui:
   catfish:
     apt: [catfish]
@@ -195,9 +217,8 @@ programming:
     guix: [chicken]
     apt: [chicken-bin]
   crystal:
+    apt: [crystal]
     nix: [crystal]
-  gdb:
-    apt: [gdb]
   gdtoolkit:
     nix:
       comment: Broke last time I tried to install
@@ -210,13 +231,17 @@ programming:
     apt: [git]
     nix: [git]
   git-delete-merged-branches:
+    apt: [git-delete-merged-branches]
     nix: [git-delete-merged-branches]
   github-cli:
+    apt: [gh]
     nix: [gh]
   go:
     guix: [go]
+    apt: [golang]
   guile:
     guix: [guile]
+    apt: [guile-3.0]
   hadolint:
     nix: [hadolint]
   hugo:
@@ -229,22 +254,22 @@ programming:
     apt: [meson]
   nim:
     guix: [nim]
+    apt: [nim]
   ninja:
     guix: [ninja]
+    apt: [ninja-build]
   nodejs:
     guix: [node]
     apt: [nodejs, npm]
   pandoc:
     guix: [pandoc]
+    apt: [pandoc]
   pre-commit:
     guix:
       comment: Still on v2
       ignore: true
       packages: [pre-commit]
-    apt:
-      comment: Still on v2
-      ignore: true
-      packages: [pre-commit]
+    apt: [pre-commit]
     nix: [pre-commit]
   prettier:
     nix: [nodePackages.prettier]
@@ -327,9 +352,10 @@ system:
       packages: [sudo]
 terminal:
   alacritty:
-    comment: Using foot at the moment
-    ignore: true
-    guix: [alacritty]
+    guix:
+      ignore: true
+      packages: [alacritty]
+    apt: [alacritty]
     nix: [alacritty]
   foot:
     guix:
@@ -340,7 +366,9 @@ terminal:
   kitty:
     comment: Using foot at the moment
     ignore: true
-    guix: [kitty]
+    guix:
+      ignore: true
+      packages: [kitty]
     apt: [kitty]
     nix: [kitty]
 top:
