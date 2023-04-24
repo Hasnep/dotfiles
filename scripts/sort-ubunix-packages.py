@@ -45,6 +45,14 @@ CategoriesDict = Dict[str, UniPackagesDict]
 
 class Package:
     def __init__(self, package: PackageDict):
+        extra_keys = [
+            k
+            for k in package.keys()
+            if k not in ["ignore", "comment", "force", "packages"]
+        ]
+        if len(extra_keys) > 0:
+            raise Exception(f"Unknown keys: `{', '.join(extra_keys)}`.")
+
         self.ignore = package.get("ignore")
         self.comment = package.get("comment")
         self.force = package.get("force")
@@ -68,6 +76,14 @@ class Package:
 
 class UniPackage:
     def __init__(self, uni_package: UniPackageDict):
+        extra_keys = [
+            k
+            for k in uni_package.keys()
+            if k not in ["ignore", "comment", "guix", "apt", "nix"]
+        ]
+        if len(extra_keys) > 0:
+            raise Exception(f"Unknown keys: `{', '.join(extra_keys)}`.")
+
         self.ignore = uni_package.get("ignore")
         self.comment = uni_package.get("comment")
 
@@ -135,5 +151,11 @@ class Categories:
 if __name__ == "__main__":
     packages_str = sys.stdin.read()
     packages_dict = json.loads(packages_str)
-    packages = Categories(packages_dict)
-    print(packages.serialise())
+    try:
+        packages = Categories(packages_dict)
+    except Exception as e:
+        print("# Error: ", e)
+        print(json.dumps(packages_dict))
+    else:
+        packages_serialised = packages.serialise()
+        print(packages_serialised)
