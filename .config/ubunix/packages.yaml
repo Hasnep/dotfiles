@@ -187,6 +187,46 @@ editors:
       force: true
       packages: [nano]
     nix: [nano]
+fonts:
+  arphic-ukai:
+    apt: [fonts-arphic-ukai]
+  bebas-neue:
+    apt: [fonts-bebas-neue]
+  cmu:
+    apt: [fonts-cmu]
+  comic-mono:
+    nix:
+      ignore: true
+      packages: [comic-mono-font]
+  comic-neue:
+    guix: [font-comic-neue]
+    apt: [fonts-comic-neue]
+    nix: [comic-neue]
+  dejavu:
+    apt: [fonts-dejavu]
+  emojione:
+    apt: [fonts-emojione]
+  firacode:
+    apt: [fonts-firacode]
+  ibm-plex:
+    apt: [fonts-ibm-plex]
+  inconsolata:
+    guix: [font-inconsolata]
+    apt: [fonts-inconsolata]
+    nix: [inconsolata-unstable]
+  jetbrains-mono:
+    apt: [fonts-jetbrains-mono]
+  latin-modern:
+    guix: [font-latin-modern]
+    apt: [fonts-lmodern]
+  lobster:
+    apt: [fonts-lobster]
+  lobstertwo:
+    apt: [fonts-lobstertwo]
+  noto:
+    apt: [fonts-noto]
+  stix:
+    apt: [fonts-stix]
 gui:
   catfish:
     apt: [catfish]
