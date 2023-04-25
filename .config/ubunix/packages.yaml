@@ -49,6 +49,8 @@ cli:
     guix: [fzf]
     apt: [fzf]
     nix: [fzf]
+  glow:
+    nix: [glow]
   graphviz:
     guix: [graphviz]
     apt: [graphviz]
@@ -141,6 +143,8 @@ cli:
     nix: [tokei]
   topgrade:
     nix: [topgrade]
+  trashy:
+    nix: [trashy]
   tree:
     comment: The command `exa` has a --tree argument
     ignore: true
@@ -153,12 +157,16 @@ cli:
       force: true
       packages: [unzip]
     nix: [unzip]
+  vale:
+    nix: [vale]
   wget:
     guix: [wget]
     apt:
       force: true
       packages: [wget]
     nix: [wget]
+  xdg-ninja:
+    nix: [xdg-ninja]
   youtube-dl:
     comment: Replaced by yt-dlp
     ignore: true
@@ -172,6 +180,8 @@ cli:
     guix: [yt-dlp]
     apt: [yt-dlp]
     nix: [yt-dlp]
+  zellij:
+    nix: [zellij]
   zip:
     guix: [zip]
     apt: [zip]
@@ -259,6 +269,8 @@ ignore:
 nix:
   alejandra:
     nix: [alejandra]
+  nix:
+    nix: [nix]
 programming:
   chicken:
     guix: [chicken]
@@ -266,6 +278,10 @@ programming:
   crystal:
     apt: [crystal]
     nix: [crystal]
+  deno:
+    nix: [deno]
+  duckdb:
+    nix: [duckdb]
   gdtoolkit:
     nix:
       comment: Broke last time I tried to install
@@ -294,6 +310,8 @@ programming:
   hugo:
     apt: [hugo]
     nix: [hugo]
+  latex2mathml:
+    nix: [latex2mathml]
   linode-cli:
     nix: [linode-cli]
   meson:
@@ -332,13 +350,19 @@ programming:
   tup:
     guix: [tup]
     apt: [tup]
+    nix: [tup]
   yamllint:
     guix: [python-yamllint]
     apt: [yamllint]
+    nix: [yamllint]
+  zig:
+    guix: [zig]
+    nix: [zig]
 python:
   black:
     guix: [python-black]
     apt: [black]
+    nix: [black]
   flake8:
     guix: [python-flake8, python-flake8-implicit-str-concat]
     apt: [flake8]
