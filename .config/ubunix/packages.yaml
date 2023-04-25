@@ -238,28 +238,109 @@ fonts:
   stix:
     apt: [fonts-stix]
 gui:
+  anki:
+    flatpak: [net.ankiweb.Anki]
+  audacity:
+    flatpak: [org.audacityteam.Audacity]
+  bitwig-studio:
+    flatpak: [com.bitwig.BitwigStudio]
+  blender:
+    flatpak: [org.blender.Blender]
+  bottles:
+    flatpak: [com.usebottles.bottles]
+  brave-browser:
+    flatpak: [com.brave.Browser]
   catfish:
     apt: [catfish]
   celluloid:
     apt: [celluloid]
+    flatpak: [io.github.celluloid_player.Celluloid]
   cheese:
     apt: [cheese]
+    flatpak: [org.gnome.Cheese]
+  czkawka:
+    flatpak: [com.github.qarmin.czkawka]
+  discord:
+    flatpak: [com.discordapp.Discord]
+  drawing:
+    flatpak: [com.github.maoschanz.drawing]
+  element:
+    flatpak: [im.riot.Riot]
+  evince:
+    flatpak: [org.gnome.Evince]
   eye-of-gnome:
     apt: [eog]
+    flatpak: [org.gnome.eog]
+  file-roller:
+    apt: [file-roller,zip]
+    flatpak: [org.gnome.FileRoller]
+  firefox:
+    flatpak: [org.mozilla.firefox]
+  flatseal:
+    flatpak: [com.github.tchx84.Flatseal]
+  fluffychat:
+    flatpak: [im.fluffychat.Fluffychat]
+  font-downloader:
+    flatpak: [org.gustavoperedo.FontDownloader]
+  font-viewer:
+    flatpak: [org.gnome.font-viewer]
+  gimp:
+    flatpak: [org.gimp.GIMP]
   gpaste:
     guix:
       ignore: true
       packages: [gpaste]
     apt: [gpaste-2, gnome-shell-extension-gpaste]
+  handbrake:
+    flatpak: [fr.handbrake.ghb]
+  inkscape:
+    flatpak: [org.inkscape.Inkscape]
+  joplin:
+    flatpak: [net.cozic.joplin_desktop]
+  josm:
+    flatpak: [org.openstreetmap.josm]
+  kdenlive:
+    flatpak: [org.kde.kdenlive]
+  krita:
+    flatpak: [org.kde.krita]
+  libre-office:
+    flatpak: [org.libreoffice.LibreOffice]
   lutris:
     apt: [lutris]
+  meld:
+    flatpak: [org.gnome.meld]
+  musescore:
+    flatpak: [org.musescore.MuseScore]
+  obs:
+    flatpak: [com.obsproject.Studio]
+  pinta:
+    flatpak: [com.github.PintaProject.Pinta]
+  pitivi:
+    flatpak: [org.pitivi.Pitivi]
+  qalculate-gtk:
+    flatpak: [io.github.Qalculate]
   qdirstat:
     guix: [qdirstat]
     apt: [qdirstat]
+  smile:
+    flatpak: [it.mijorus.smile]
   solaar:
     apt: [solaar]
+  spotify:
+    flatpak: [com.spotify.Client]
+  steam:
+    flatpak: [com.valvesoftware.Steam]
+  thunderbird:
+    flatpak: [org.mozilla.Thunderbird]
+  transmission:
+    flatpak: [com.transmissionbt.Transmission]
+  vlc:
+    flatpak: [org.videolan.VLC]
   zeal:
     apt: [zeal]
+    flatpak: [org.zealdocs.Zeal]
+  zulip:
+    flatpak: [org.zulip.Zulip]
 guix:
   glibc-locales:
     guix: [glibc-locales]

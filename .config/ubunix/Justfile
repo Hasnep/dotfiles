@@ -19,7 +19,9 @@ nix_profile_folder := env_var("XDG_DATA_HOME") / "nix"
 nix_bin_folder := nix_profile_folder / "bin"
 nix_activate_script := nix_config_folder / "functions" / "activate-nix.fish"
 
-default: generate apply_guix apply_apt apply_nix
+flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"
+
+default: generate apply_guix apply_apt apply_nix apply_flatpak
 
 sort_packages:
     cat {{packages_file}} | yq . | sort-ubunix-packages | sponge {{packages_file}} \
@@ -32,6 +34,7 @@ generate:
         --guix-manifest-file={{guix_manifest_file}} \
         --apt-manifest-file={{apt_manifest_file}} \
         --nix-manifest-folder={{nix_manifest_folder}} \
+        --flatpak-manifest-file={{flatpak_manifest_file}} \
         --guix-profile-path={{guix_profile_folder}} \
         --nix-profile-path={{nix_profile_folder}}
 
@@ -44,6 +47,9 @@ apply_apt:
 
 apply_nix:
     nix run home-manager/master -- switch
+
+apply_flatpak:
+    fish {{flatpak_manifest_file}}
 
 update_activate_guix:
     #!/usr/bin/env fish

@@ -24,6 +24,7 @@ PackageDict = TypedDict(
         "guix": NotRequired[PackageManagerConfig],
         "apt": NotRequired[PackageManagerConfig],
         "nix": NotRequired[PackageManagerConfig],
+        "flatpak": NotRequired[PackageManagerConfig],
     },
 )
 XDG_CONFIG_HOME = Path(os.getenv("XDG_CONFIG_HOME", Path.home() / ".config"))
@@ -49,6 +50,7 @@ class CliArgs:
     guix_manifest_file_path: Path
     apt_manifest_file_path: Path
     nix_manifest_folder_path: Path
+    flatpak_manifest_file_path: Path
     # Profiles
     guix_profile_path: Path
     nix_profile_path: Path
@@ -60,6 +62,7 @@ def get_cli_args() -> CliArgs:
     parser.add_argument("--guix-manifest-file", type=Path, required=True)
     parser.add_argument("--apt-manifest-file", type=Path, required=True)
     parser.add_argument("--nix-manifest-folder", type=Path, required=True)
+    parser.add_argument("--flatpak-manifest-file", type=Path, required=True)
     parser.add_argument(
         "--guix-profile-path",
         type=Path,
@@ -74,6 +77,7 @@ def get_cli_args() -> CliArgs:
         args.guix_manifest_file,
         args.apt_manifest_file,
         args.nix_manifest_folder,
+        args.flatpak_manifest_file,
         args.guix_profile_path,
         args.nix_profile_path,
     )
@@ -106,6 +110,7 @@ class UniPackage:
         guix: Optional[PackageManagerConfig],
         apt: Optional[PackageManagerConfig],
         nix: Optional[PackageManagerConfig],
+        flatpak: Optional[PackageManagerConfig],
         ignore: Optional[bool],
     ):
         self.command_name = command
@@ -134,6 +139,7 @@ class UniPackage:
         self.guix = get_packages("guix", guix)
         self.apt = get_packages("apt", apt)
         self.nix = get_packages("nix", nix)
+        self.flatpak = get_packages("flatpak", flatpak)
 
 
 def read_packages_file(packages_file_path: Path) -> List[UniPackage]:
@@ -172,6 +178,7 @@ def read_packages_file(packages_file_path: Path) -> List[UniPackage]:
             guix=p.get("guix"),
             apt=p.get("apt"),
             nix=p.get("nix"),
+            flatpak=p.get("flatpak"),
             ignore=p.get("ignore"),
         )
         for command, p in x
@@ -187,7 +194,7 @@ def is_command_installed(command: str) -> bool:
 
 
 def get_installed_package_managers() -> List[str]:
-    package_managers = ["guix", "nix", "apt"]
+    package_managers = ["guix", "nix", "apt", "flatpak"]
     return [command for command in package_managers if is_command_installed(command)]
 
 
@@ -200,6 +207,7 @@ def get_package_managers_to_install(
     is_guix_installed = "guix" in installed_package_managers
     is_apt_installed = "apt" in installed_package_managers
     is_nix_installed = "nix" in installed_package_managers
+    is_flatpak_installed = "flatpak" in installed_package_managers
 
     (has_guix_package, force_guix, ignore_guix) = (
         (False, False, False) if p.guix is None else (True, p.guix.force, p.guix.ignore)
@@ -209,6 +217,11 @@ def get_package_managers_to_install(
     )
     (has_nix_package, force_nix, ignore_nix) = (
         (False, False, False) if p.nix is None else (True, p.nix.force, p.nix.ignore)
+    )
+    (has_flatpak_package, force_flatpak, ignore_flatpak) = (
+        (False, False, False)
+        if p.flatpak is None
+        else (True, p.flatpak.force, p.flatpak.ignore)
     )
 
     # Install using guix if it is installed and has a package
@@ -232,6 +245,16 @@ def get_package_managers_to_install(
         and has_nix_package
         and (not (install_using_guix or install_using_apt) or force_nix)
     )
+    # Install using flatpak if it is installed and has a package and the same package is not installed using guix or apt or nix
+    install_using_flatpak = (
+        not ignore_flatpak
+        and is_flatpak_installed
+        and has_flatpak_package
+        and (
+            not (install_using_guix or install_using_apt or install_using_nix)
+            or force_flatpak
+        )
+    )
 
     return list(
         {
@@ -240,6 +263,7 @@ def get_package_managers_to_install(
                 "guix": install_using_guix,
                 "apt": install_using_apt,
                 "nix": install_using_nix,
+                "flatpak": install_using_flatpak,
             }.items()
             if v
         }.keys()
@@ -297,6 +321,23 @@ def get_nix_manifest(packages_to_install: List[Packages]) -> str:
     )
 
 
+def get_flatpak_manifest(
+    packages_to_install: List[Packages], packages_to_remove: List[Packages]
+) -> str:
+    package_names_to_install = flatten([p.package_names for p in packages_to_install])
+    package_names_to_remove = [
+        package_name
+        for package_name in flatten([p.package_names for p in packages_to_remove])
+        if package_name not in package_names_to_install
+    ]
+    return "\n".join(
+        [
+            "flatpak uninstall " + " ".join(sorted(package_names_to_remove)),
+            "flatpak install " + " ".join(sorted(package_names_to_install)),
+        ]
+    )
+
+
 def format_guix_manifest(manifest_file_path: Path) -> None:
     format_command = ["guix", "style", "--whole-file", str(manifest_file_path)]
     print(f"Formatting manifest file using command `{' '.join(format_command)}`.")
@@ -324,12 +365,16 @@ def get_guix_install_command(command_line_arguments: CliArgs) -> str:
     )
 
 
+def get_apt_install_command(command_line_arguments: CliArgs) -> str:
+    return " ".join(["source", str(command_line_arguments.apt_manifest_file_path)])
+
+
 def get_nix_install_command(command_line_arguments: CliArgs) -> str:
     return " ".join(["nix", "run", "home-manager/master", "--", "switch"])
 
 
-def get_apt_install_command(command_line_arguments: CliArgs) -> str:
-    return " ".join(["source", str(command_line_arguments.apt_manifest_file_path)])
+def get_flatpak_install_command(command_line_arguments: CliArgs) -> str:
+    return " ".join(["source", str(command_line_arguments.flatpak_manifest_file_path)])
 
 
 if __name__ == "__main__":
@@ -412,6 +457,22 @@ if __name__ == "__main__":
         format_nix_manifest(cli_args.nix_manifest_folder_path / "flake.nix")
         format_nix_manifest(cli_args.nix_manifest_folder_path / "home.nix")
 
+    if "flatpak" in installed_package_managers:
+        flatpak_manifest = get_flatpak_manifest(
+            [
+                p.flatpak
+                for p, install_with in packages
+                if p.flatpak is not None and "flatpak" in install_with
+            ],
+            [
+                p.flatpak
+                for p, install_with in packages
+                if p.flatpak is not None and "flatpak" not in install_with
+            ],
+        )
+        with open(cli_args.flatpak_manifest_file_path, "w") as f:
+            f.write(flatpak_manifest)
+
     for p, install_with in packages:
         if len(install_with) == 0:
             print(f"Package `{p.command_name}` was not installed.")
@@ -420,3 +481,4 @@ if __name__ == "__main__":
     print(get_guix_install_command(cli_args))
     print(get_apt_install_command(cli_args))
     print(get_nix_install_command(cli_args))
+    print(get_flatpak_install_command(cli_args))
