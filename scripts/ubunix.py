@@ -249,13 +249,10 @@ def get_package_managers_to_install(
 def get_guix_manifest(packages_to_install: List[Packages]) -> str:
     # Flatten list of package names
     package_names_to_install = flatten([p.package_names for p in packages_to_install])
-    return (
-        "(specifications->manifest '("
-        + "\n".join(
-            [enquote(package_name) for package_name in package_names_to_install]
-        )
-        + "))"
+    package_names_joined = "\n".join(
+        [enquote(package_name) for package_name in sorted(package_names_to_install)]
     )
+    return f"(specifications->manifest '({package_names_joined}))"
 
 
 def get_apt_manifest(
@@ -267,13 +264,12 @@ def get_apt_manifest(
         for package_name in flatten([p.package_names for p in packages_to_remove])
         if package_name not in package_names_to_install
     ]
-
     return "\n".join(
         [
-            "sudo nala remove " + " ".join(package_names_to_remove)
+            "sudo nala remove " + " ".join(sorted(package_names_to_remove))
             if len(package_names_to_remove) > 0
             else "",
-            "sudo nala install " + " ".join(package_names_to_install)
+            "sudo nala install " + " ".join(sorted(package_names_to_install))
             if len(package_names_to_install) > 0
             else "",
         ]
@@ -284,13 +280,13 @@ def get_nix_manifest(packages_to_install: List[Packages]) -> str:
     # Flatten lists of package names
     package_names_to_install = flatten([p.package_names for p in packages_to_install])
     packages_joined = " ".join(
-        [f"pkgs.{package_name}" for package_name in package_names_to_install]
+        [f"pkgs.{package_name}" for package_name in sorted(package_names_to_install)]
     )
     return dedent(
         f"""
         {{ config, pkgs, ... }}: {{
         home.username = "hannes";
-        home.homeDirectory = "/home/hannes";
+        home.homeDirectory = "{Path().home()}";
         home.stateVersion = "22.11";
         home.packages = [
             {packages_joined}
