@@ -197,6 +197,12 @@ editors:
       force: true
       packages: [nano]
     nix: [nano]
+flatpak:
+  flatpak:
+    guix:
+      ignore: true
+      packages: [flatpak]
+    apt: [flatpak]
 fonts:
   arphic-ukai:
     apt: [fonts-arphic-ukai]
@@ -226,6 +232,8 @@ fonts:
     nix: [inconsolata-unstable]
   jetbrains-mono:
     apt: [fonts-jetbrains-mono]
+  julia-mono:
+    nix: [julia-mono]
   latin-modern:
     guix: [font-latin-modern]
     apt: [fonts-lmodern]
@@ -253,11 +261,11 @@ gui:
   catfish:
     apt: [catfish]
   celluloid:
-    apt: [celluloid]
     flatpak: [io.github.celluloid_player.Celluloid]
+    apt: [celluloid]
   cheese:
-    apt: [cheese]
     flatpak: [org.gnome.Cheese]
+    apt: [cheese]
   czkawka:
     flatpak: [com.github.qarmin.czkawka]
   discord:
@@ -269,13 +277,18 @@ gui:
   evince:
     flatpak: [org.gnome.Evince]
   eye-of-gnome:
-    apt: [eog]
     flatpak: [org.gnome.eog]
+    apt: [eog]
   file-roller:
-    apt: [file-roller,zip]
     flatpak: [org.gnome.FileRoller]
+    apt: [file-roller, zip]
   firefox:
     flatpak: [org.mozilla.firefox]
+    apt:
+      comment: Installs a snap
+      ignore: true
+      packages: [firefox]
+    nix: [firefox]
   flatseal:
     flatpak: [com.github.tchx84.Flatseal]
   fluffychat:
@@ -286,6 +299,9 @@ gui:
     flatpak: [org.gnome.font-viewer]
   gimp:
     flatpak: [org.gimp.GIMP]
+    guix: [gimp]
+    apt: [gimp]
+    nix: [gimp]
   gpaste:
     guix:
       ignore: true
@@ -337,13 +353,19 @@ gui:
   vlc:
     flatpak: [org.videolan.VLC]
   zeal:
-    apt: [zeal]
     flatpak: [org.zealdocs.Zeal]
+    apt: [zeal]
   zulip:
     flatpak: [org.zulip.Zulip]
 guix:
   glibc-locales:
     guix: [glibc-locales]
+  nscd:
+    comment: The name service cache daemon is reccommended to run Guix on a foreign distro
+    apt: [nscd]
+  nss-certs:
+    comment: Provides X.509 Certificates
+    guix: [nss-certs]
 ignore:
   distrobox:
     guix: [distrobox]
@@ -391,6 +413,8 @@ programming:
   hugo:
     apt: [hugo]
     nix: [hugo]
+  julia:
+    nix: [julia-bin]
   latex2mathml:
     nix: [latex2mathml]
   linode-cli:
@@ -419,6 +443,10 @@ programming:
     nix: [pre-commit]
   prettier:
     nix: [nodePackages.prettier]
+  r:
+    guix: [r]
+    apt: [r-recommended]
+    nix: [R]
   rust-script:
     nix: [rust-script]
   shellcheck:
