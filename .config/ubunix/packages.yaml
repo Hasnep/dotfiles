@@ -101,6 +101,8 @@ cli:
   neofetch:
     guix: [neofetch]
     apt: [neofetch]
+  onefetch:
+    nix: [onefetch]
   pipx:
     apt:
       comment: Not working for some reason
@@ -112,7 +114,10 @@ cli:
     apt: [rclone]
     nix: [rclone]
   restic:
-    ignore: true
+    guix:
+      comment: Outdated
+      ignore: true
+      packages: [restic]
     apt: [restic]
     nix: [restic]
   ripgrep:
@@ -122,6 +127,7 @@ cli:
   speedtest:
     guix: [speedtest-cli]
     apt: [speedtest-cli]
+    nix: [speedtest-cli]
   tar:
     guix: [tar]
     apt:
@@ -205,6 +211,7 @@ flatpak:
     apt: [flatpak]
 fonts:
   arphic-ukai:
+    guix: [font-arphic-ukai]
     apt: [fonts-arphic-ukai]
   bebas-neue:
     apt: [fonts-bebas-neue]
@@ -231,6 +238,7 @@ fonts:
     apt: [fonts-inconsolata]
     nix: [inconsolata-unstable]
   jetbrains-mono:
+    guix: [font-jetbrains-mono]
     apt: [fonts-jetbrains-mono]
   julia-mono:
     nix: [julia-mono]
@@ -242,6 +250,8 @@ fonts:
   lobstertwo:
     apt: [fonts-lobstertwo]
   noto:
+    guix:
+      [font-google-noto, font-google-noto-sans-cjk, font-google-noto-serif-cjk]
     apt: [fonts-noto]
   stix:
     apt: [fonts-stix]
@@ -270,10 +280,16 @@ gui:
     flatpak: [com.github.qarmin.czkawka]
   discord:
     flatpak: [com.discordapp.Discord]
+  document-scanner:
+    flatpak: [org.gnome.SimpleScan]
+    apt: [simple-scan]
   drawing:
     flatpak: [com.github.maoschanz.drawing]
   element:
     flatpak: [im.riot.Riot]
+  epiphany:
+    flatpak: [org.gnome.Epiphany]
+    apt: [epiphany-browser]
   evince:
     flatpak: [org.gnome.Evince]
   eye-of-gnome:
@@ -383,6 +399,14 @@ programming:
     nix: [crystal]
   deno:
     nix: [deno]
+  docker:
+    guix:
+      ignore: true
+      packages: [docker, docker-compose]
+    apt: [docker, docker-compose]
+    nix:
+      ignore: true
+      packages: [docker, docker-compose]
   duckdb:
     nix: [duckdb]
   gdtoolkit:
@@ -434,6 +458,14 @@ programming:
   pandoc:
     guix: [pandoc]
     apt: [pandoc]
+  podman:
+    guix:
+      ignore: true
+      packages: [podman]
+    apt: [podman, podman-compose]
+    nix:
+      ignore: true
+      packages: [podman]
   pre-commit:
     guix:
       comment: Still on v2
@@ -515,12 +547,11 @@ shell:
     nix: [zsh]
 system:
   doas:
-    guix:
-      ignore: true
-      packages: [opendoas]
-    apt:
-      ignore: true
-      packages: [doas]
+    ignore: true
+    guix: [opendoas]
+    apt: [doas]
+  libfuse2:
+    apt: [libfuse2]
   software-properties-common:
     apt:
       force: true
@@ -542,6 +573,9 @@ terminal:
       packages: [foot]
     apt: [foot]
     nix: [foot]
+  gnome-terminal:
+    ignore: true
+    apt: [gnome-terminal]
   kitty:
     comment: Using foot at the moment
     ignore: true
