@@ -255,6 +255,11 @@ fonts:
     apt: [fonts-noto]
   stix:
     apt: [fonts-stix]
+gnome:
+  gnome-extension-manager:
+    flatpak: [com.mattjakeman.ExtensionManager]
+  gnome-extensions:
+    flatpak: [org.gnome.Extensions]
 gui:
   anki:
     flatpak: [net.ankiweb.Anki]
@@ -318,6 +323,9 @@ gui:
     guix: [gimp]
     apt: [gimp]
     nix: [gimp]
+  gnome-boxes:
+    flatpak: [org.gnome.Boxes]
+    apt: [gnome-boxes]
   gpaste:
     guix:
       ignore: true
@@ -360,6 +368,8 @@ gui:
     apt: [solaar]
   spotify:
     flatpak: [com.spotify.Client]
+  startup-disk-creator:
+    apt: [usb-creator-gtk]
   steam:
     flatpak: [com.valvesoftware.Steam]
   thunderbird:
