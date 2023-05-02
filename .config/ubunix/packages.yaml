@@ -67,6 +67,10 @@ cli:
     guix: [hyperfine]
     apt: [hyperfine]
     nix: [hyperfine]
+  imagemagick:
+    guix: [imagemagick]
+    apt: [imagemagick]
+    nix: [imagemagick]
   jc:
     guix: [jc]
     apt: [jc, jq]
@@ -326,6 +330,8 @@ gui:
   gnome-boxes:
     flatpak: [org.gnome.Boxes]
     apt: [gnome-boxes]
+  gnome-tweaks:
+    apt: [gnome-tweaks]
   gpaste:
     guix:
       ignore: true
@@ -360,7 +366,9 @@ gui:
   qalculate-gtk:
     flatpak: [io.github.Qalculate]
   qdirstat:
-    guix: [qdirstat]
+    guix:
+      ignore: true
+      packages: [qdirstat]
     apt: [qdirstat]
   smile:
     flatpak: [it.mijorus.smile]
@@ -401,6 +409,8 @@ nix:
   nix:
     nix: [nix]
 programming:
+  act:
+    nix: [act]
   chicken:
     guix: [chicken]
     apt: [chicken-bin]
@@ -463,7 +473,10 @@ programming:
     guix: [ninja]
     apt: [ninja-build]
   nodejs:
-    guix: [node]
+    guix:
+      comment: Old version of Node.js
+      ignore: true
+      packages: [node]
     apt: [nodejs, npm]
   pandoc:
     guix: [pandoc]
@@ -594,6 +607,25 @@ terminal:
       packages: [kitty]
     apt: [kitty]
     nix: [kitty]
+theming:
+  adwaita-kstyle:
+    flatpak:
+      [
+        org.kde.KStyle.Adwaita/x86_64/5.9,
+        org.kde.KStyle.Adwaita/x86_64/5.15-21.08,
+        org.kde.KStyle.Adwaita/x86_64/5.15-22.08,
+        org.kde.KStyle.Adwaita/x86_64/6.2,
+        org.kde.KStyle.Adwaita/x86_64/6.3,
+        org.kde.KStyle.Adwaita/x86_64/6.4,
+        org.kde.KStyle.Adwaita/x86_64/5.10,
+        org.kde.KStyle.Adwaita/x86_64/5.11,
+        org.kde.KStyle.Adwaita/x86_64/5.12,
+        org.kde.KStyle.Adwaita/x86_64/5.14,
+        org.kde.KStyle.Adwaita/x86_64/5.13,
+        org.kde.KStyle.Adwaita/x86_64/5.15,
+      ]
+  adwaita-qt:
+    apt: [adwaita-qt, adwaita-qt6]
 top:
   bpytop:
     guix: [bpytop]
