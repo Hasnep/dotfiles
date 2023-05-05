@@ -122,22 +122,21 @@ class UniPackage:
         def get_packages(
             package_manager: str, x: Optional[PackageManagerConfig]
         ) -> Optional[Packages]:
-            match x:
-                case None:
-                    return None
-                case list():
-                    return Packages(x, package_manager, False, False)
-                case dict():
-                    return (
-                        None
-                        if x.get("ignore", False)
-                        else Packages(
-                            x["packages"],
-                            package_manager,
-                            x.get("force", False),
-                            x.get("ignore", False),
-                        )
+            if isinstance(x, list):
+                return Packages(x, package_manager, False, False)
+            elif isinstance(x, dict):
+                return (
+                    None
+                    if x.get("ignore", False)
+                    else Packages(
+                        x["packages"],
+                        package_manager,
+                        x.get("force", False),
+                        x.get("ignore", False),
                     )
+                )
+            else:
+                return None
 
         self.ignore = ignore
         self.guix = get_packages("guix", guix)
