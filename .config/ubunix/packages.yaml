@@ -13,6 +13,7 @@ cli:
     apt: [bc]
   cowsay:
     comment: Normally my custom cowsay script takes precedence over the installed one
+    ignore: true
     guix: [cowsay]
     apt: [cowsay]
   curl:
@@ -57,6 +58,12 @@ cli:
     nix: [graphviz]
   grex:
     nix: [grex]
+  grimshot:
+    comment: Not working on Gnome
+    ignore: true
+    guix: [grimshot]
+    apt: [grimshot]
+    nix: [grimshot]
   gron:
     guix: [gron]
     apt: [gron]
@@ -128,6 +135,8 @@ cli:
     guix: [ripgrep]
     apt: [ripgrep]
     nix: [ripgrep]
+  simple-http-server:::
+    nix: [simple-http-server]
   speedtest:
     guix: [speedtest-cli]
     apt: [speedtest-cli]
@@ -139,8 +148,10 @@ cli:
       packages: [tar]
     nix: [tar]
   tesseract:
-    guix: [tesseract-ocr]
-    apt: [tesseract-ocr]
+    guix:
+      ignore: true
+      packages: [tesseract-ocr]
+    apt: [tesseract-ocr-eng, tesseract-ocr, tesseract-ocr-chi-tra]
   tldr:
     guix:
       comment: Breaks when I try to install
@@ -197,6 +208,15 @@ cli:
     apt: [zip]
     nix: [zip]
 editors:
+  helix:
+    flatpak:
+      comment: The flatpak doesn't integrate into terminal
+      ignore: true
+      packages: [com.helix_editor.Helix]
+    nix: [helix]
+  lite-xl:
+    guix: [lite-xl]
+    nix: [lite-xl]
   micro:
     apt: [micro]
     nix: [micro]
@@ -207,6 +227,8 @@ editors:
       force: true
       packages: [nano]
     nix: [nano]
+  pulsar:
+    flatpak: [dev.pulsar_edit.Pulsar]
 flatpak:
   flatpak:
     guix:
@@ -314,6 +336,9 @@ gui:
       ignore: true
       packages: [firefox]
     nix: [firefox]
+  flameshot:
+    guix: [flameshot]
+    apt: [flameshot]
   flatseal:
     flatpak: [com.github.tchx84.Flatseal]
   fluffychat:
@@ -330,8 +355,14 @@ gui:
   gnome-boxes:
     flatpak: [org.gnome.Boxes]
     apt: [gnome-boxes]
+  gnome-screenshot:
+    comment: Now built into Gnome
+    ignore: true
+    apt: [gnome-screenshot]
   gnome-tweaks:
     apt: [gnome-tweaks]
+  gparted:
+    apt: [gparted]
   gpaste:
     guix:
       ignore: true
@@ -410,6 +441,7 @@ nix:
     nix: [nix]
 programming:
   act:
+    ignore: true
     nix: [act]
   chicken:
     guix: [chicken]
@@ -575,6 +607,9 @@ system:
     apt: [doas]
   libfuse2:
     apt: [libfuse2]
+  procps:
+    comment: Provides process commands like `ps` and `kill`.
+    apt: [procps]
   software-properties-common:
     apt:
       force: true
