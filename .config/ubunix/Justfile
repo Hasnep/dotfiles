@@ -21,7 +21,7 @@ nix_bin_folder := nix_profile_folder / "bin"
 
 flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"
 
-default: generate guix apt nix flatpak
+default: generate flatpak guix apt nix
 
 sort_packages:
     cat {{packages_file}} | yq . | sort-ubunix-packages | sponge {{packages_file}} \
@@ -38,13 +38,16 @@ generate:
         --guix-profile-path={{guix_profile_folder}} \
         --nix-profile-path={{nix_profile_folder}}
 
+flatpak: install_flatpak
+
 guix: update_activate_guix install_guix
 
 apt: install_apt
 
 nix: install_nix install_fonts_nix
 
-flatpak: install_flatpak
+install_flatpak:
+    fish {{flatpak_manifest_file}}
 
 update_activate_guix:
     #!/usr/bin/env fish
@@ -79,6 +82,3 @@ install_fonts_nix:
     rm -rf {{fonts_folder}}/nix \
         && mkdir -p {{fonts_folder}}/nix \
         && cp -r --no-preserve=mode,ownership --dereference {{nix_profile_folder}}/share/fonts {{fonts_folder}}/nix
-
-install_flatpak:
-    fish {{flatpak_manifest_file}}
