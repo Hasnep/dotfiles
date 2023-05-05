@@ -1,10 +1,8 @@
-#!/usr/bin/env python3.11
+#!/usr/bin/env python3
 
 import json
 import os
-import re
 import subprocess
-import tomllib as toml
 from argparse import ArgumentParser
 from dataclasses import dataclass
 from pathlib import Path
@@ -145,27 +143,11 @@ class UniPackage:
 def read_packages_file(packages_file_path: Path) -> List[UniPackage]:
     try:
         with open(packages_file_path, "r") as f:
-            packages_string = f.read()
+            packages: Dict[str, Dict[str, PackageDict]] = json.load(f)
     except FileNotFoundError:
         raise Exception(f"Packages file not found: `{packages_file_path}`.")
 
-    packages_file_extension = packages_file_path.suffix
-
-    packages: Dict[str, Dict[str, PackageDict]]
-    match packages_file_extension:
-        case ".toml":
-            packages = toml.loads(packages_string)
-        case ".jsonc":
-            packages_string_no_comments = re.sub(
-                r"^\s*//.*", "", packages_string, flags=re.MULTILINE
-            )
-            packages = json.loads(packages_string_no_comments)
-        case ".json":
-            packages = json.loads(packages_string)
-        case _:
-            raise Exception(f"Unknown file extension: `{packages_file_extension}`.")
-
-    x = flatten(
+    commands_and_packages = flatten(
         [
             list(packages.items())
             for category, packages in packages.items()
@@ -181,7 +163,7 @@ def read_packages_file(packages_file_path: Path) -> List[UniPackage]:
             flatpak=p.get("flatpak"),
             ignore=p.get("ignore"),
         )
-        for command, p in x
+        for command, p in commands_and_packages
     ]
 
 
