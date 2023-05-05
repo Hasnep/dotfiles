@@ -18,7 +18,6 @@ nix_manifest_folder := env_var("XDG_CONFIG_HOME") / "home-manager"
 nix_config_folder := env_var("XDG_CONFIG_HOME") / "nix"
 nix_profile_folder := env_var("XDG_DATA_HOME") / "nix"
 nix_bin_folder := nix_profile_folder / "bin"
-nix_activate_script := nix_config_folder / "functions" / "activate-nix.fish"
 
 flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"
 
