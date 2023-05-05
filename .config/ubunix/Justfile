@@ -1,5 +1,6 @@
 #!/usr/bin/env just --justfile
 
+fonts_folder := env_var("XDG_DATA_HOME") / "fonts"
 fish_config_folder := env_var("XDG_CONFIG_HOME") / "fish"
 
 ubunix_config_folder := env_var("XDG_CONFIG_HOME") / "ubunix"
@@ -41,12 +42,14 @@ generate:
 apply_guix: update_activate_guix
     mkdir -p {{guix_data_folder}}
     guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
+    rm -rf {{fonts_folder}}/guix && cp -r --no-preserve=mode,ownership {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix
 
 apply_apt:
     fish {{apt_manifest_file}}
 
 apply_nix:
     nix run home-manager/master -- switch
+    rm -rf {{fonts_folder}}/nix && cp -r --no-preserve=mode,ownership --dereference {{nix_profile_folder}}/share/fonts {{fonts_folder}}/nix
 
 apply_flatpak:
     fish {{flatpak_manifest_file}}
