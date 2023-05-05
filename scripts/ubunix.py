@@ -191,11 +191,16 @@ def get_package_managers_to_install(
     if p.ignore:
         return []
 
+    is_flatpak_installed = "flatpak" in installed_package_managers
     is_guix_installed = "guix" in installed_package_managers
     is_apt_installed = "apt" in installed_package_managers
     is_nix_installed = "nix" in installed_package_managers
-    is_flatpak_installed = "flatpak" in installed_package_managers
 
+    (has_flatpak_package, force_flatpak, ignore_flatpak) = (
+        (False, False, False)
+        if p.flatpak is None
+        else (True, p.flatpak.force, p.flatpak.ignore)
+    )
     (has_guix_package, force_guix, ignore_guix) = (
         (False, False, False) if p.guix is None else (True, p.guix.force, p.guix.ignore)
     )
@@ -205,41 +210,36 @@ def get_package_managers_to_install(
     (has_nix_package, force_nix, ignore_nix) = (
         (False, False, False) if p.nix is None else (True, p.nix.force, p.nix.ignore)
     )
-    (has_flatpak_package, force_flatpak, ignore_flatpak) = (
-        (False, False, False)
-        if p.flatpak is None
-        else (True, p.flatpak.force, p.flatpak.ignore)
-    )
 
-    # Install using guix if it is installed and has a package
+    # Install using flatpak if it is installed and has a package
+    install_using_flatpak = (
+        not ignore_flatpak
+        and is_flatpak_installed
+        and has_flatpak_package
+        and (force_flatpak or True)
+    )
+    # Install using guix if it is installed and has a package and the same package is not installed using flatpak
     install_using_guix = (
         not ignore_guix
         and is_guix_installed
         and has_guix_package
-        and (force_guix or True)
+        and (force_guix or not install_using_flatpak)
     )
     # Install using apt if it is installed and has a package and the same package is not installed using guix
     install_using_apt = (
         not ignore_apt
         and is_apt_installed
         and has_apt_package
-        and (not install_using_guix or force_apt)
+        and (not (install_using_flatpak or install_using_guix) or force_apt)
     )
     # Install using nix if it is installed and has a package and the same package is not installed using guix or apt
     install_using_nix = (
         not ignore_nix
         and is_nix_installed
         and has_nix_package
-        and (not (install_using_guix or install_using_apt) or force_nix)
-    )
-    # Install using flatpak if it is installed and has a package and the same package is not installed using guix or apt or nix
-    install_using_flatpak = (
-        not ignore_flatpak
-        and is_flatpak_installed
-        and has_flatpak_package
         and (
-            not (install_using_guix or install_using_apt or install_using_nix)
-            or force_flatpak
+            not (install_using_flatpak or install_using_guix or install_using_apt)
+            or force_nix
         )
     )
 
@@ -465,7 +465,7 @@ if __name__ == "__main__":
             print(f"Package `{p.command_name}` was not installed.")
 
     print("")
+    print(get_flatpak_install_command(cli_args))
     print(get_guix_install_command(cli_args))
     print(get_apt_install_command(cli_args))
     print(get_nix_install_command(cli_args))
-    print(get_flatpak_install_command(cli_args))
