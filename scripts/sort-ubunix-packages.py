@@ -35,6 +35,7 @@ UniPackageDict = TypedDict(
         "guix": NotRequired[PackageDict | List[str]],
         "apt": NotRequired[PackageDict | List[str]],
         "nix": NotRequired[PackageDict | List[str]],
+        "flatpak": NotRequired[PackageDict | List[str]],
     },
 )
 
@@ -79,7 +80,7 @@ class UniPackage:
         extra_keys = [
             k
             for k in uni_package.keys()
-            if k not in ["ignore", "comment", "guix", "apt", "nix"]
+            if k not in ["ignore", "comment", "guix", "apt", "nix", "flatpak"]
         ]
         if len(extra_keys) > 0:
             raise Exception(f"Unknown keys: `{', '.join(extra_keys)}`.")
@@ -99,11 +100,14 @@ class UniPackage:
         self.apt = Package(apply_package_defaults(apt)) if apt else None
         nix = uni_package.get("nix")
         self.nix = Package(apply_package_defaults(nix)) if nix else None
+        flatpak = uni_package.get("flatpak")
+        self.flatpak = Package(apply_package_defaults(flatpak)) if flatpak else None
 
     def serialise(self) -> str:
         return "\n".join(
             (["comment: " + self.comment] if self.comment else [])
             + (["ignore: " + serialise_bool(self.ignore)] if self.ignore else [])
+            + (["flatpak: " + indent(self.flatpak.serialise())] if self.flatpak else [])
             + (["guix: " + indent(self.guix.serialise())] if self.guix else [])
             + (["apt: " + indent(self.apt.serialise())] if self.apt else [])
             + (["nix: " + indent(self.nix.serialise())] if self.nix else [])
