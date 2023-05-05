@@ -317,12 +317,19 @@ def get_flatpak_manifest(
         for package_name in flatten([p.package_names for p in packages_to_remove])
         if package_name not in package_names_to_install
     ]
-    return "\n".join(
+    uninstall_command = (
+        ["flatpak uninstall " + " ".join(sorted(package_names_to_remove))]
+        if len(package_names_to_remove) > 0
+        else []
+    )
+    install_command = (
         [
-            "flatpak uninstall " + " ".join(sorted(package_names_to_remove)),
             "flatpak install " + " ".join(sorted(package_names_to_install)),
         ]
+        if len(package_names_to_install) > 0
+        else []
     )
+    return "\n".join(uninstall_command + install_command)
 
 
 def format_guix_manifest(manifest_file_path: Path) -> None:
