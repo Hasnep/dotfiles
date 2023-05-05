@@ -22,7 +22,7 @@ nix_activate_script := nix_config_folder / "functions" / "activate-nix.fish"
 
 flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"
 
-default: generate apply_guix apply_apt apply_nix apply_flatpak
+default: generate guix apt nix flatpak
 
 sort_packages:
     cat {{packages_file}} | yq . | sort-ubunix-packages | sponge {{packages_file}} \
@@ -39,20 +39,13 @@ generate:
         --guix-profile-path={{guix_profile_folder}} \
         --nix-profile-path={{nix_profile_folder}}
 
-apply_guix: update_activate_guix
-    mkdir -p {{guix_data_folder}}
-    guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
-    rm -rf {{fonts_folder}}/guix && cp -r --no-preserve=mode,ownership {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix
+guix: update_activate_guix install_guix
 
-apply_apt:
-    fish {{apt_manifest_file}}
+apt: install_apt
 
-apply_nix:
-    nix run home-manager/master -- switch
-    rm -rf {{fonts_folder}}/nix && cp -r --no-preserve=mode,ownership --dereference {{nix_profile_folder}}/share/fonts {{fonts_folder}}/nix
+nix: install_nix install_fonts_nix
 
-apply_flatpak:
-    fish {{flatpak_manifest_file}}
+flatpak: install_flatpak
 
 update_activate_guix:
     #!/usr/bin/env fish
@@ -64,3 +57,29 @@ update_activate_guix:
     echo '    set --export GUIX_LOCPATH {{guix_profile_folder}}/lib/locale' >> {{guix_activate_script}}
     fish_indent --write {{guix_activate_script}}
     echo "Updated '{{guix_activate_script}}'."
+
+install_guix: 
+    mkdir -p {{guix_data_folder}}
+    guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
+
+install_fonts_guix:
+    rm -rf {{fonts_folder}}/guix \
+        && cp -r --no-preserve=mode,ownership {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix
+
+install_apt:
+    fish {{apt_manifest_file}}
+
+install_nix:
+    if type home-manager >/dev/null 2>&1; then \
+        home-manager switch; \
+    else \
+        nix run home-manager/master -- switch; \
+    fi
+
+install_fonts_nix:
+    rm -rf {{fonts_folder}}/nix \
+        && mkdir -p {{fonts_folder}}/nix \
+        && cp -r --no-preserve=mode,ownership --dereference {{nix_profile_folder}}/share/fonts {{fonts_folder}}/nix
+
+install_flatpak:
+    fish {{flatpak_manifest_file}}
