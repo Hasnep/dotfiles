@@ -9,7 +9,8 @@ from pathlib import Path
 from textwrap import dedent
 from typing import Dict, List, NotRequired, Optional, TypedDict, TypeVar
 
-# Constants
+# Types
+
 T = TypeVar("T")
 PackageManagerConfigDict = TypedDict(
     "PackageManagerConfigDict",
@@ -25,11 +26,16 @@ PackageDict = TypedDict(
         "flatpak": NotRequired[PackageManagerConfig],
     },
 )
+
+# Constants
+
 XDG_CONFIG_HOME = Path(os.getenv("XDG_CONFIG_HOME", Path.home() / ".config"))
 XDG_DATA_HOME = Path(os.getenv("XDG_DATA_HOME", Path.home() / ".local" / "share"))
 
 
 # Utils
+
+
 def flatten(nested_list: List[List[T]]) -> List[T]:
     return [item for sublist in nested_list for item in sublist]
 
