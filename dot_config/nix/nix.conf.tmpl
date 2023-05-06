@@ -3,5 +3,5 @@ bash-prompt-prefix = (nix:$name)\040
 build-users-group = nixbld
 experimental-features = nix-command flakes
 extra-nix-path = nixpkgs=flake:nixpkgs
-trusted-users = root hannes
+trusted-users = root {{ .chezmoi.username }}
 use-xdg-base-directories = true
