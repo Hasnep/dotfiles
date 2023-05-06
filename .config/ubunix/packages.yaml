@@ -180,6 +180,10 @@ cli:
     nix: [unzip]
   vale:
     nix: [vale]
+  visidata:
+    guix: [visidata]
+    apt: [visidata]
+    nix: [visidata]
   wget:
     guix: [wget]
     apt:
@@ -588,7 +592,10 @@ shell:
       packages: [bash]
     nix: [bash]
   fish:
-    guix: [fish]
+    guix:
+      comment: The chsh command doesn't like to use fish from Guix
+      ignore: true
+      packages: [fish]
     apt:
       force: true
       packages: [fish]
