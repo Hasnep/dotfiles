@@ -34,7 +34,6 @@ colors:
     magenta: "#d670d6"
     cyan: "#29b8db"
     white: "#e5e5e5"
-
 window:
   dimensions:
     columns: 110
