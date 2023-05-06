@@ -12,6 +12,7 @@ for line in sys.stdin:
             if var == "PATH":
                 values = value.split(":")
                 for value in values:
-                    print(f"fish_add_path --move {value}")
+                    if value != "$PATH":
+                        print(f"fish_add_path --move {value}")
             else:
                 print(f"set --export {var} {value}")
