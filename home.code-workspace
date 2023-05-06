@@ -9,6 +9,10 @@
 			"path": "./.config/autostart"
 		},
 		{
+			"name": "Environment variables config",
+			"path": "./.config/environment-variables"
+		},
+		{
 			"name": "Fish config",
 			"path": "./.config/fish"
 		},
