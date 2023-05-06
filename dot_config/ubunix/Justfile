@@ -60,7 +60,7 @@ update_activate_guix:
     fish_indent --write {{guix_activate_script}}
     echo "Updated '{{guix_activate_script}}'."
 
-install_guix: 
+install_guix:
     mkdir -p {{guix_data_folder}}
     guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
 
