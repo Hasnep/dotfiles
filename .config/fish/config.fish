@@ -1,21 +1,10 @@
-# Configure fzf plugin keybindings
-fzf_configure_bindings --directory=\cf --git_log= --git_status=\cg --history=\cr --variables --processes
-
-# Set default editor
-if type --query --no-functions micro
-    set --export --global EDITOR micro
-end
-
 # Set XDG environment variables
-source $HOME/.config/xdg-config.env
-
-# Add folders to path
-fish_add_path --move $XDG_DATA_HOME/cargo/bin/
-fish_add_path --move $XDG_DATA_HOME/juliaup/bin/
-# Nix
-fish_add_path --move $XDG_DATA_HOME/nix/bin
-# System packages
-fish_add_path --move /usr/bin/
+set environment_variables_script $HOME/.config/fish/environment-variables.fish
+if test -f $environment_variables_script
+    source $environment_variables_script
+else
+    echo "Environment variables script not found at '$environment_variables_script'."
+end
 
 # Guix
 if type --query --no-functions guix
@@ -27,10 +16,19 @@ if type --query --no-functions guix
     end
 end
 
-fish_add_path --move $HOME/.local/bin/
-fish_add_path --move $HOME/bin/
-
 # Add abbreviations
 if type --query --no-functions trash
     abbr --global --add rip 'trash put'
+end
+
+# Configure fzf plugin keybindings
+if type --query --no-functions fzf
+    if type --query fzf_configure_bindings
+        fzf_configure_bindings --directory=\cf --git_log= --git_status=\cg --history=\cr --variables --processes
+    end
+end
+
+# Set default editor
+if type --query --no-functions micro
+    set --export --global EDITOR micro
 end
