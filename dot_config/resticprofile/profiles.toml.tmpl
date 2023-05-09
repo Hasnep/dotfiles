@@ -7,7 +7,7 @@ exclude-file = "excludes.txt"
 exclude-if-present = ".resticignore"
 schedule-permission = "user"
 schedule-lock-wait = "2h"
-run-before = "$HOME/.local/bin/restic-excludes-compile --output=$HOME/.config/resticprofile/excludes.txt $HOME/.config/resticprofile/excludes.json"
+run-before = "{{ .chezmoi.homeDir }}/bin/restic-excludes-compile --output={{ .chezmoi.homeDir }}/.config/resticprofile/excludes.txt {{ .chezmoi.homeDir }}/.config/resticprofile/excludes.json"
 
 [global.retention]
 before-backup = false
@@ -19,9 +19,9 @@ prune = true
 inherit = "global"
 
 [home.backup]
-source = ["~"]
+source = ["{{ .chezmoi.homeDir }}"]
 schedule = "daily"
-exclude = ["~/Documents/"]
+exclude = ["{{ .chezmoi.homeDir }}/Documents/"]
 tag = ["home"]
 
 [home.retention]
@@ -36,7 +36,7 @@ tag = ["home"]
 inherit = "global"
 
 [documents.backup]
-source = ["~/Documents/"]
+source = ["{{ .chezmoi.homeDir }}/Documents/"]
 tag = ["documents"]
 schedule = "hourly"
 
@@ -51,16 +51,16 @@ tag = ["documents"]
 # Final profiles
 [home-local]
 inherit = "home"
-repository = "/media/hannes/caddy/dello/home/"
+repository = "/media/{{ .chezmoi.username }}/caddy/{{ .chezmoi.hostname }}/home/"
 
 [home-remote]
 inherit = "home"
-repository = "~/pCloudDrive/restic/dello/home/"
+repository = "{{ .chezmoi.homeDir }}/pCloudDrive/restic/{{ .chezmoi.hostname }}/home/"
 
 [documents-local]
 inherit = "documents"
-repository = "/media/hannes/caddy/dello/documents/"
+repository = "/media/{{ .chezmoi.username }}/caddy/{{ .chezmoi.hostname }}/documents/"
 
 [documents-remote]
 inherit = "documents"
-repository = "~/pCloudDrive/restic/dello/documents/"
+repository = "{{ .chezmoi.homeDir }}/pCloudDrive/restic/{{ .chezmoi.hostname }}/documents/"
