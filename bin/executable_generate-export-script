@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+from argparse import ArgumentParser
+from enum import Enum
+from pathlib import Path
+from typing import Dict, List, NamedTuple, Optional, Tuple, Union
+
+
+class Shell(Enum):
+    FISH = "fish"
+    POSIX = "posix"
+
+
+class PathVariable(NamedTuple):
+    priority: int
+    value: str
+
+    def to_fish(self) -> str:
+        return f'fish_add_path --move "{self.value}"'
+
+    def to_posix(self) -> str:
+        return f'if [ -d "{self.value}" ] && [[ ":$PATH:" != *":{self.value}:"* ]]; then; PATH="${{PATH:+"$PATH:"}}{self.value}"; fi'
+
+
+class EnvironmentVariable(NamedTuple):
+    priority: int
+    name: str
+    value: str
+
+    def to_fish(self) -> str:
+        return f'set --export {self.name} "{self.value}"'
+
+    def to_posix(self) -> str:
+        return f'export {self.name}="{self.value}"'
+
+
+Variable = Union[PathVariable, EnvironmentVariable]
+
+
+def get_cli_args() -> Tuple[Optional[Path], Optional[Path], Shell]:
+    parser = ArgumentParser()
+    parser.add_argument(
+        "--shell", type=str, choices=[s.value for s in Shell], required=True
+    )
+    parser.add_argument("input", type=Path, nargs="?")
+    parser.add_argument("--output", type=Path, nargs="?")
+    args = parser.parse_args()
+    input_path: Optional[Path] = args.input
+    output_path: Optional[Path] = args.output
+    shell = Shell(args.shell)
+    return input_path, output_path, shell
+
+
+def parse_variable(priority: int, name: str, value: str) -> Variable:
+    return (
+        PathVariable(priority, value)
+        if name == "PATH"
+        else EnvironmentVariable(priority, name, value)
+    )
+
+
+def get_config(config_file_path: Optional[Path]) -> List[Variable]:
+    config: List[Dict[str, str]]
+    if config_file_path is None:
+        config = json.load(sys.stdin)
+    else:
+        with open(config_file_path, "r") as f:
+            config = json.load(f)
+    return [parse_variable(int(x["_priority"]), x["name"], x["value"]) for x in config]
+
+
+def get_export_script(variables: List[Variable]) -> str:
+    def get_export_line(variable: Variable) -> str:
+        if shell == Shell.FISH:
+            return variable.to_fish()
+        elif shell == Shell.POSIX:
+            return variable.to_posix()
+        else:
+            return ""
+
+    return "\n".join(get_export_line(variable) for variable in variables)
+
+
+if __name__ == "__main__":
+    config_file_path, output_file_path, shell = get_cli_args()
+    variables = get_config(config_file_path)
+    variables_sorted = sorted(variables, reverse=True)
+    export_script = get_export_script(variables_sorted)
+    if output_file_path is None:
+        print(export_script)
+    else:
+        with open(output_file_path, "w") as f:
+            f.write(export_script)
