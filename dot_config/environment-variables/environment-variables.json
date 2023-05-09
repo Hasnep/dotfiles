@@ -211,61 +211,97 @@
   },
   {
     "_priority": 20,
-    "category": "path-cargo",
-    "name": "PATH",
-    "value": "$XDG_DATA_HOME/cargo/bin/"
-  },
-  {
-    "_priority": 20,
-    "category": "path-juliaup",
-    "name": "PATH",
-    "value": "$XDG_DATA_HOME/juliaup/bin/"
-  },
-  {
-    "_priority": 17,
-    "category": "path-nix",
-    "name": "PATH",
-    "value": "$XDG_DATA_HOME/nix/bin"
-  },
-  {
-    "_priority": 17,
-    "category": "path-nix",
-    "name": "PATH",
-    "value": "$HOME/.nix-profile/bin"
-  },
-  {
-    "_priority": 15,
     "category": "path-system",
     "name": "PATH",
     "value": "/usr/sbin"
   },
   {
-    "_priority": 15,
+    "_priority": 20,
     "category": "path-system",
     "name": "PATH",
     "value": "/usr/bin/"
   },
   {
-    "_priority": 15,
+    "_priority": 20,
     "category": "path-system",
     "name": "PATH",
     "value": "/sbin"
   },
   {
-    "_priority": 15,
+    "_priority": 20,
     "category": "path-system",
     "name": "PATH",
     "value": "/usr/local/bin"
   },
   {
-    "_priority": 19,
+    "_priority": 20,
     "category": "path-system",
     "name": "PATH",
-    "value": "$HOME/.local/bin/"
+    "value": "/usr/local/games"
   },
   {
     "_priority": 20,
     "category": "path-system",
+    "name": "PATH",
+    "value": "/usr/games"
+  },
+  {
+    "_priority": 20,
+    "category": "path-system",
+    "name": "PATH",
+    "value": "/bin"
+  },
+  {
+    "_priority": 20,
+    "category": "path-system",
+    "name": "PATH",
+    "value": "/usr/local/sbin"
+  },
+  {
+    "_priority": 10,
+    "category": "path-nix",
+    "name": "PATH",
+    "value": "$XDG_DATA_HOME/nix/bin"
+  },
+  {
+    "_priority": 10,
+    "category": "path-nix",
+    "name": "PATH",
+    "value": "$HOME/.nix-profile/bin"
+  },
+  {
+    "_priority": 10,
+    "category": "path-nix",
+    "name": "PATH",
+    "value": "/nix/var/nix/profiles/default/bin"
+  },
+  {
+    "_priority": 5,
+    "category": "path-snap",
+    "name": "PATH",
+    "value": "/snap/bin"
+  },
+  {
+    "_priority": 5,
+    "category": "path-cargo",
+    "name": "PATH",
+    "value": "$XDG_DATA_HOME/cargo/bin/"
+  },
+  {
+    "_priority": 5,
+    "category": "path-juliaup",
+    "name": "PATH",
+    "value": "$XDG_DATA_HOME/juliaup/bin/"
+  },
+  {
+    "_priority": 0,
+    "category": "path-user",
+    "name": "PATH",
+    "value": "$HOME/.local/bin/"
+  },
+  {
+    "_priority": 0,
+    "category": "path-user",
     "name": "PATH",
     "value": "$HOME/bin/"
   }
