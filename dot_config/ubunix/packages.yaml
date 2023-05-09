@@ -11,6 +11,12 @@ cli:
   bc:
     guix: [bc]
     apt: [bc]
+  chezmoi:
+    guix:
+      comment: Outdated version
+      ignore: true
+      packages: [chezmoi]
+    nix: [chezmoi]
   cowsay:
     comment: Normally my custom cowsay script takes precedence over the installed one
     ignore: true
@@ -120,6 +126,10 @@ cli:
       ignore: true
       packages: [pipx]
     nix: [pipx]
+  potrace:
+    guix: [potrace]
+    apt: [potrace]
+    nix: [potrace]
   rclone:
     guix: [rclone]
     apt: [rclone]
@@ -248,9 +258,7 @@ fonts:
   cmu:
     apt: [fonts-cmu]
   comic-mono:
-    nix:
-      ignore: true
-      packages: [comic-mono-font]
+    nix: [comic-mono-font]
   comic-neue:
     guix: [font-comic-neue]
     apt: [fonts-comic-neue]
@@ -580,7 +588,7 @@ python:
       packages: [python]
     apt:
       force: true
-      packages: [python3]
+      packages: [python3, python3-venv]
     nix: [python3]
   ruff:
     nix: [ruff]
