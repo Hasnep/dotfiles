@@ -258,7 +258,7 @@ fonts:
   cmu:
     apt: [fonts-cmu]
   comic-mono:
-    nix: [comic-mono-font]
+    nix: [comic-mono]
   comic-neue:
     guix: [font-comic-neue]
     apt: [fonts-comic-neue]
