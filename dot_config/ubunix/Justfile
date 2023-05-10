@@ -79,6 +79,7 @@ install_nix:
     fi
 
 install_fonts_nix:
-    rm -rf {{fonts_folder}}/nix \
+    mkdir -p {{nix_profile_folder}}/share/fonts \
+        && rm -rf {{fonts_folder}}/nix \
         && mkdir -p {{fonts_folder}}/nix \
         && cp -r --no-preserve=mode,ownership --dereference {{nix_profile_folder}}/share/fonts {{fonts_folder}}/nix
