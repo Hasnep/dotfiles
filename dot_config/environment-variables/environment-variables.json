@@ -67,6 +67,24 @@
   },
   {
     "_priority": 50,
+    "category": "zsh",
+    "name": "ZDOTDIR",
+    "value": "$XDG_CONFIG_HOME/zsh"
+  },
+  {
+    "_priority": 50,
+    "category": "gnupg",
+    "name": "GNUPGHOME",
+    "value": "$XDG_DATA_HOME/gnupg"
+  },
+  {
+    "_priority": 50,
+    "category": "xinit",
+    "name": "XINITRC",
+    "value": "$XDG_CONFIG_HOME/x11/xinitrc"
+  },
+  {
+    "_priority": 50,
     "category": "bash",
     "name": "HISTFILE",
     "value": "$XDG_STATE_HOME/bash/history"
