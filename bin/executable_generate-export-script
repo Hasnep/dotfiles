@@ -21,7 +21,7 @@ class PathVariable(NamedTuple):
         return f'fish_add_path --move "{self.value}"'
 
     def to_posix(self) -> str:
-        return f'if [ -d "{self.value}" ] && [[ ":$PATH:" != *":{self.value}:"* ]]; then; PATH="${{PATH:+"$PATH:"}}{self.value}"; fi'
+        return f'if [ -d "{self.value}" ] && [[ ":$PATH:" != *":{self.value}:"* ]]; then PATH="${{PATH:+"$PATH:"}}{self.value}"; fi'
 
 
 class EnvironmentVariable(NamedTuple):
@@ -71,25 +71,33 @@ def get_config(config_file_path: Optional[Path]) -> List[Variable]:
     return [parse_variable(int(x["_priority"]), x["name"], x["value"]) for x in config]
 
 
-def get_export_script(variables: List[Variable]) -> str:
-    def get_export_line(variable: Variable) -> str:
-        if shell == Shell.FISH:
-            return variable.to_fish()
-        elif shell == Shell.POSIX:
-            return variable.to_posix()
-        else:
-            return ""
+def get_export_script(variables: List[Variable], shell: Shell) -> str:
+    return "\n".join(
+        variable.to_fish()
+        if shell == Shell.FISH
+        else variable.to_posix()
+        if shell == Shell.POSIX
+        else ""
+        for variable in variables
+    )
 
-    return "\n".join(get_export_line(variable) for variable in variables)
+
+def write_script_to_file(script_file_path: Path, script: str) -> None:
+    print(f"Writing script to `{script_file_path}`.")
+    with open(script_file_path, "w") as f:
+        f.write(script)
 
 
-if __name__ == "__main__":
+def main() -> None:
     config_file_path, output_file_path, shell = get_cli_args()
     variables = get_config(config_file_path)
     variables_sorted = sorted(variables, reverse=True)
-    export_script = get_export_script(variables_sorted)
+    export_script = get_export_script(variables_sorted, shell)
     if output_file_path is None:
         print(export_script)
     else:
-        with open(output_file_path, "w") as f:
-            f.write(export_script)
+        write_script_to_file(output_file_path, export_script)
+
+
+if __name__ == "__main__":
+    main()
