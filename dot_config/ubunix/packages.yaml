@@ -36,6 +36,9 @@ cli:
     nix: curlie
   delta:
     nix: delta
+  distrobox:
+    ignore: true
+    guix: distrobox
   dust:
     guix:
       ignore: true
@@ -105,6 +108,10 @@ cli:
     apt: lolcat
   macchina:
     nix: macchina
+  magic-wormhole:
+    guix: magic-wormhole
+    apt: magic-wormhole
+    nix: magic-wormhole
   make:
     guix: make
     apt:
@@ -127,7 +134,6 @@ cli:
   pipx:
     apt:
       comment: Not working for some reason
-      ignore: true
       packages: pipx
     nix: pipx
   potrace:
@@ -149,7 +155,7 @@ cli:
     guix: ripgrep
     apt: ripgrep
     nix: ripgrep
-  "simple-http-server::":
+  simple-http-server:
     nix: simple-http-server
   speedtest:
     guix: speedtest-cli
@@ -261,7 +267,10 @@ flatpak:
 fonts:
   arphic-ukai:
     guix: font-arphic-ukai
-    apt: fonts-arphic-ukai
+    apt:
+      comment: Required for Chinese language support
+      force: true
+      packages: fonts-arphic-ukai
   bebas-neue:
     apt: fonts-bebas-neue
   cmu:
@@ -304,6 +313,22 @@ fonts:
     apt: fonts-noto
   stix:
     apt: fonts-stix
+gaming:
+  lutris:
+    apt: lutris
+  ryujinx:
+    flatpak: org.ryujinx.Ryujinx
+  steam:
+    flatpak:
+      - com.valvesoftware.Steam
+      - com.valvesoftware.Steam.CompatibilityTool.Proton
+      - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+    apt:
+      - lib32z1
+      - libc6-i386
+      - steam
+  yuzu:
+    flatpak: org.yuzu_emu.yuzu
 gnome:
   gnome-extension-manager:
     flatpak: com.mattjakeman.ExtensionManager
@@ -409,8 +434,6 @@ gui:
     flatpak: org.kde.krita
   libre-office:
     flatpak: org.libreoffice.LibreOffice
-  lutris:
-    apt: lutris
   meld:
     flatpak: org.gnome.meld
   musescore:
@@ -436,8 +459,6 @@ gui:
     flatpak: com.spotify.Client
   startup-disk-creator:
     apt: usb-creator-gtk
-  steam:
-    flatpak: com.valvesoftware.Steam
   thunderbird:
     flatpak: org.mozilla.Thunderbird
   transmission:
@@ -460,9 +481,6 @@ guix:
   nss-certs:
     comment: Provides X.509 Certificates
     guix: nss-certs
-ignore:
-  distrobox:
-    guix: distrobox
 nix:
   alejandra:
     nix: alejandra
