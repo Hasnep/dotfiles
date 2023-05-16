@@ -28,20 +28,18 @@ flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"
 
 default: generate flatpak guix apt nix
 
-sort_packages:
-    cat {{packages_file}} | yq . | sort-ubunix-packages | sponge {{packages_file}} \
-        && prettier --write {{packages_file}}
+format:
+    ubunix format --packages={{packages_file}}
 
 generate:
-    cat {{packages_file}} | yq . > /tmp/ubunix-packages.json
-    ubunix \
-        --packages-file=/tmp/ubunix-packages.json \
-        --guix-manifest-file={{guix_manifest_file}} \
-        --apt-manifest-file={{apt_manifest_file}} \
-        --nix-manifest-folder={{nix_manifest_folder}} \
-        --flatpak-manifest-file={{flatpak_manifest_file}} \
-        --guix-profile-path={{guix_profile_folder}} \
-        --nix-profile-path={{nix_profile_folder}}
+    ubunix generate \
+        --packages={{packages_file}} \
+        --guix-manifest={{guix_manifest_file}} \
+        --apt-manifest={{apt_manifest_file}} \
+        --nix-manifest={{nix_manifest_folder}} \
+        --flatpak-manifest={{flatpak_manifest_file}} \
+        --guix-profile={{guix_profile_folder}} \
+        --nix-profile={{nix_profile_folder}}
 
 flatpak: install_flatpak
 
