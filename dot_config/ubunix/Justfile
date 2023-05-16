@@ -1,22 +1,27 @@
 #!/usr/bin/env just --justfile
 
-fonts_folder := env_var("XDG_DATA_HOME") / "fonts"
-fish_config_folder := env_var("XDG_CONFIG_HOME") / "fish"
+xdg_data_home := env_var("XDG_DATA_HOME")
+xdg_config_home := env_var("XDG_CONFIG_HOME")
+home := env_var("HOME")
 
-ubunix_config_folder := env_var("XDG_CONFIG_HOME") / "ubunix"
+fonts_folder := xdg_data_home / "fonts"
+fish_config_folder := xdg_config_home / "fish"
+
+ubunix_config_folder := xdg_config_home / "ubunix"
 packages_file := ubunix_config_folder / "packages.yaml"
 
-guix_config_folder := env_var("XDG_CONFIG_HOME") / "guix"
+guix_config_folder := xdg_config_home / "guix"
 guix_manifest_file := guix_config_folder / "manifest.scm"
-guix_data_folder := env_var("XDG_DATA_HOME") / "guix"
+guix_data_folder := xdg_data_home / "guix"
 guix_profile_folder := guix_data_folder / "default"
 guix_activate_script := guix_config_folder / "activate-guix.fish"
 
 apt_manifest_file := ubunix_config_folder / "apt-manifest.fish"
 
-nix_manifest_folder := env_var("XDG_CONFIG_HOME") / "home-manager"
-nix_config_folder := env_var("XDG_CONFIG_HOME") / "nix"
-nix_profile_folder := env_var("XDG_DATA_HOME") / "nix"
+nix_manifest_folder := xdg_config_home / "home-manager"
+nix_config_folder := xdg_config_home / "nix"
+# nix_profile_folder := xdg_data_home / "nix"
+nix_profile_folder := home / ".nix-profile"
 nix_bin_folder := nix_profile_folder / "bin"
 
 flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"
