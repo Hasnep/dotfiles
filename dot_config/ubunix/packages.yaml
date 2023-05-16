@@ -1,703 +1,734 @@
 cli:
   ansible:
-    guix: [ansible]
-    apt: [ansible]
+    guix: ansible
+    apt: ansible
   autorestic:
     ignore: true
-    nix: [autorestic]
+    nix: autorestic
   bat:
-    guix: [bat]
-    apt: [bat]
+    guix: bat
+    apt: bat
   bc:
-    guix: [bc]
-    apt: [bc]
+    guix: bc
+    apt: bc
   chezmoi:
     guix:
       comment: Outdated version
       ignore: true
-      packages: [chezmoi]
-    nix: [chezmoi]
+      packages: chezmoi
+    nix: chezmoi
   cowsay:
-    comment: Normally my custom cowsay script takes precedence over the installed one
+    comment:
+      Normally my custom cowsay script takes precedence over the installed
+      one
     ignore: true
-    guix: [cowsay]
-    apt: [cowsay]
+    guix: cowsay
+    apt: cowsay
   curl:
     guix:
       comment: Didn't work last time I tried to use it
       ignore: true
-      packages: [curl]
-    apt: [curl]
-    nix: [curl]
+      packages: curl
+    apt: curl
+    nix: curl
   curlie:
-    guix: [curlie]
-    nix: [curlie]
+    guix: curlie
+    nix: curlie
   delta:
-    nix: [delta]
+    nix: delta
   dust:
     guix:
       ignore: true
-      packages: [du-dust]
-    nix: [du-dust]
+      packages: du-dust
+    nix: du-dust
   entr:
-    guix: [entr]
-    apt: [entr]
+    guix: entr
+    apt: entr
   exa:
-    guix: [exa]
-    apt: [exa]
+    guix: exa
+    apt: exa
   fd:
-    guix: [fd]
-    apt: [fd-find]
+    guix: fd
+    apt: fd-find
   ffmpeg:
-    guix: [ffmpeg]
-    apt: [ffmpeg]
-    nix: [ffmpeg]
+    guix: ffmpeg
+    apt: ffmpeg
+    nix: ffmpeg
   fzf:
-    guix: [fzf]
-    apt: [fzf]
-    nix: [fzf]
+    guix: fzf
+    apt: fzf
+    nix: fzf
   glow:
-    nix: [glow]
+    nix: glow
   graphviz:
-    guix: [graphviz]
-    apt: [graphviz]
-    nix: [graphviz]
+    guix: graphviz
+    apt: graphviz
+    nix: graphviz
   grex:
-    nix: [grex]
+    nix: grex
   grimshot:
     comment: Not working on Gnome
     ignore: true
-    guix: [grimshot]
-    apt: [grimshot]
-    nix: [grimshot]
+    guix: grimshot
+    apt: grimshot
+    nix: grimshot
   gron:
-    guix: [gron]
-    apt: [gron]
+    guix: gron
+    apt: gron
   httpie:
-    guix: [httpie]
-    apt: [httpie]
+    guix: httpie
+    apt: httpie
   hyperfine:
-    guix: [hyperfine]
-    apt: [hyperfine]
-    nix: [hyperfine]
+    guix: hyperfine
+    apt: hyperfine
+    nix: hyperfine
   imagemagick:
-    guix: [imagemagick]
-    apt: [imagemagick]
-    nix: [imagemagick]
+    guix: imagemagick
+    apt: imagemagick
+    nix: imagemagick
   jc:
-    guix: [jc]
-    apt: [jc, jq]
-    nix: [jc]
+    guix: jc
+    apt:
+      - jc
+      - jq
+    nix: jc
   jello:
-    apt: [jello]
-    nix: [jello]
+    apt: jello
+    nix: jello
   jq:
-    guix: [jq]
-    apt: [jq]
+    guix: jq
+    apt: jq
   just:
-    nix: [just]
+    nix: just
   lolcat:
-    guix: [lolcat]
-    apt: [lolcat]
+    guix: lolcat
+    apt: lolcat
   macchina:
-    nix: [macchina]
+    nix: macchina
   make:
-    guix: [make]
+    guix: make
     apt:
       force: true
-      packages: [make]
+      packages: make
   moreutils:
-    guix: [moreutils]
-    apt: [moreutils]
+    guix: moreutils
+    apt: moreutils
   mosh:
-    guix: [mosh]
-    apt: [mosh]
+    guix: mosh
+    apt: mosh
   mpv:
-    guix: [mpv]
-    apt: [mpv]
+    guix: mpv
+    apt: mpv
   neofetch:
-    guix: [neofetch]
-    apt: [neofetch]
+    guix: neofetch
+    apt: neofetch
   onefetch:
-    nix: [onefetch]
+    nix: onefetch
   pipx:
     apt:
       comment: Not working for some reason
       ignore: true
-      packages: [pipx]
-    nix: [pipx]
+      packages: pipx
+    nix: pipx
   potrace:
-    guix: [potrace]
-    apt: [potrace]
-    nix: [potrace]
+    guix: potrace
+    apt: potrace
+    nix: potrace
   rclone:
-    guix: [rclone]
-    apt: [rclone]
-    nix: [rclone]
+    guix: rclone
+    apt: rclone
+    nix: rclone
   restic:
     guix:
       comment: Outdated
       ignore: true
-      packages: [restic]
-    apt: [restic]
-    nix: [restic]
+      packages: restic
+    apt: restic
+    nix: restic
   ripgrep:
-    guix: [ripgrep]
-    apt: [ripgrep]
-    nix: [ripgrep]
-  simple-http-server:::
-    nix: [simple-http-server]
+    guix: ripgrep
+    apt: ripgrep
+    nix: ripgrep
+  "simple-http-server::":
+    nix: simple-http-server
   speedtest:
-    guix: [speedtest-cli]
-    apt: [speedtest-cli]
-    nix: [speedtest-cli]
+    guix: speedtest-cli
+    apt: speedtest-cli
+    nix: speedtest-cli
   tar:
-    guix: [tar]
+    guix: tar
     apt:
       force: true
-      packages: [tar]
-    nix: [tar]
+      packages: tar
+    nix: tar
   tesseract:
     guix:
       ignore: true
-      packages: [tesseract-ocr]
-    apt: [tesseract-ocr-eng, tesseract-ocr, tesseract-ocr-chi-tra]
+      packages: tesseract-ocr
+    apt:
+      - tesseract-ocr
+      - tesseract-ocr-chi-tra
+      - tesseract-ocr-eng
   tldr:
     guix:
       comment: Breaks when I try to install
       ignore: true
-      packages: [tealdeer]
-    apt: [tealdeer]
-    nix: [tealdeer]
+      packages: tealdeer
+    apt: tealdeer
+    nix: tealdeer
   tokei:
-    guix: [tokei]
-    nix: [tokei]
+    guix: tokei
+    nix: tokei
   topgrade:
-    nix: [topgrade]
+    nix: topgrade
   trashy:
-    nix: [trashy]
+    nix: trashy
   tree:
     comment: The command `exa` has a --tree argument
     ignore: true
-    guix: [tree]
-    apt: [tree]
+    guix: tree
+    apt: tree
   unzip:
-    guix: [unzip]
+    guix: unzip
     apt:
       comment: Needed for Lutris
       force: true
-      packages: [unzip]
-    nix: [unzip]
+      packages: unzip
+    nix: unzip
   vale:
-    nix: [vale]
+    nix: vale
   visidata:
-    guix: [visidata]
-    apt: [visidata]
-    nix: [visidata]
+    guix: visidata
+    apt: visidata
+    nix: visidata
   wget:
-    guix: [wget]
+    guix: wget
     apt:
       force: true
-      packages: [wget]
-    nix: [wget]
+      packages: wget
+    nix: wget
   xdg-ninja:
-    nix: [xdg-ninja]
+    nix: xdg-ninja
   youtube-dl:
     comment: Replaced by yt-dlp
     ignore: true
-    guix: [youtube-dl]
-    apt: [youtube-dl]
-    nix: [youtube-dl]
+    guix: youtube-dl
+    apt: youtube-dl
+    nix: youtube-dl
   yq:
-    apt: [yq, jq]
-    nix: [yq]
+    apt:
+      - jq
+      - yq
+    nix: yq
   yt-dlp:
-    guix: [yt-dlp]
-    apt: [yt-dlp]
-    nix: [yt-dlp]
+    guix: yt-dlp
+    apt: yt-dlp
+    nix: yt-dlp
   zellij:
-    nix: [zellij]
+    nix: zellij
   zip:
-    guix: [zip]
-    apt: [zip]
-    nix: [zip]
+    guix: zip
+    apt: zip
+    nix: zip
 editors:
   helix:
     flatpak:
       comment: The flatpak doesn't integrate into terminal
       ignore: true
-      packages: [com.helix_editor.Helix]
-    nix: [helix]
+      packages: com.helix_editor.Helix
+    nix: helix
   lite-xl:
-    guix: [lite-xl]
-    nix: [lite-xl]
+    guix: lite-xl
+    nix: lite-xl
   micro:
-    apt: [micro]
-    nix: [micro]
+    apt: micro
+    nix: micro
   nano:
-    guix: [nano]
+    guix: nano
     apt:
       comment: Need to always have access to an editor
       force: true
-      packages: [nano]
-    nix: [nano]
+      packages: nano
+    nix: nano
   pulsar:
-    flatpak: [dev.pulsar_edit.Pulsar]
+    flatpak: dev.pulsar_edit.Pulsar
 flatpak:
   flatpak:
     guix:
       ignore: true
-      packages: [flatpak]
-    apt: [flatpak]
+      packages: flatpak
+    apt: flatpak
 fonts:
   arphic-ukai:
-    guix: [font-arphic-ukai]
-    apt: [fonts-arphic-ukai]
+    guix: font-arphic-ukai
+    apt: fonts-arphic-ukai
   bebas-neue:
-    apt: [fonts-bebas-neue]
+    apt: fonts-bebas-neue
   cmu:
-    apt: [fonts-cmu]
+    apt: fonts-cmu
   comic-mono:
-    nix: [comic-mono]
+    nix: comic-mono
   comic-neue:
-    guix: [font-comic-neue]
-    apt: [fonts-comic-neue]
-    nix: [comic-neue]
+    guix: font-comic-neue
+    apt: fonts-comic-neue
+    nix: comic-neue
   dejavu:
-    apt: [fonts-dejavu]
+    apt: fonts-dejavu
   emojione:
-    apt: [fonts-emojione]
+    apt: fonts-emojione
   firacode:
-    apt: [fonts-firacode]
+    apt: fonts-firacode
   ibm-plex:
-    apt: [fonts-ibm-plex]
+    apt: fonts-ibm-plex
   inconsolata:
-    guix: [font-inconsolata]
-    apt: [fonts-inconsolata]
-    nix: [inconsolata-unstable]
+    guix: font-inconsolata
+    apt: fonts-inconsolata
+    nix: inconsolata-unstable
   jetbrains-mono:
-    guix: [font-jetbrains-mono]
-    apt: [fonts-jetbrains-mono]
+    guix: font-jetbrains-mono
+    apt: fonts-jetbrains-mono
   julia-mono:
-    nix: [julia-mono]
+    nix: julia-mono
   latin-modern:
-    guix: [font-latin-modern]
-    apt: [fonts-lmodern]
+    guix: font-latin-modern
+    apt: fonts-lmodern
   lobster:
-    apt: [fonts-lobster]
+    apt: fonts-lobster
   lobstertwo:
-    apt: [fonts-lobstertwo]
+    apt: fonts-lobstertwo
   noto:
     guix:
-      [font-google-noto, font-google-noto-sans-cjk, font-google-noto-serif-cjk]
-    apt: [fonts-noto]
+      - font-google-noto
+      - font-google-noto-sans-cjk
+      - font-google-noto-serif-cjk
+    apt: fonts-noto
   stix:
-    apt: [fonts-stix]
+    apt: fonts-stix
 gnome:
   gnome-extension-manager:
-    flatpak: [com.mattjakeman.ExtensionManager]
+    flatpak: com.mattjakeman.ExtensionManager
   gnome-extensions:
-    flatpak: [org.gnome.Extensions]
+    flatpak: org.gnome.Extensions
 gui:
   anki:
-    flatpak: [net.ankiweb.Anki]
+    flatpak: net.ankiweb.Anki
   audacity:
-    flatpak: [org.audacityteam.Audacity]
+    flatpak: org.audacityteam.Audacity
   bitwig-studio:
-    flatpak: [com.bitwig.BitwigStudio]
+    flatpak: com.bitwig.BitwigStudio
   blender:
-    flatpak: [org.blender.Blender]
+    flatpak: org.blender.Blender
   bottles:
-    flatpak: [com.usebottles.bottles]
+    flatpak: com.usebottles.bottles
   brave-browser:
-    flatpak: [com.brave.Browser]
+    flatpak: com.brave.Browser
   catfish:
-    apt: [catfish]
+    apt: catfish
   celluloid:
-    flatpak: [io.github.celluloid_player.Celluloid]
-    apt: [celluloid]
+    flatpak: io.github.celluloid_player.Celluloid
+    apt: celluloid
   cheese:
-    flatpak: [org.gnome.Cheese]
-    apt: [cheese]
+    flatpak: org.gnome.Cheese
+    apt: cheese
   czkawka:
-    flatpak: [com.github.qarmin.czkawka]
+    flatpak: com.github.qarmin.czkawka
   discord:
-    flatpak: [com.discordapp.Discord]
+    flatpak: com.discordapp.Discord
   document-scanner:
-    flatpak: [org.gnome.SimpleScan]
-    apt: [simple-scan]
+    flatpak: org.gnome.SimpleScan
+    apt: simple-scan
   drawing:
-    flatpak: [com.github.maoschanz.drawing]
+    flatpak: com.github.maoschanz.drawing
   element:
-    flatpak: [im.riot.Riot]
+    flatpak: im.riot.Riot
   epiphany:
-    flatpak: [org.gnome.Epiphany]
-    apt: [epiphany-browser]
+    flatpak: org.gnome.Epiphany
+    apt: epiphany-browser
   evince:
-    flatpak: [org.gnome.Evince]
+    flatpak: org.gnome.Evince
   eye-of-gnome:
-    flatpak: [org.gnome.eog]
-    apt: [eog]
+    flatpak: org.gnome.eog
+    apt: eog
   file-roller:
-    flatpak: [org.gnome.FileRoller]
-    apt: [file-roller, zip]
+    flatpak: org.gnome.FileRoller
+    apt:
+      - file-roller
+      - zip
   firefox:
-    flatpak: [org.mozilla.firefox]
+    flatpak: org.mozilla.firefox
     apt:
       comment: Installs a snap
       ignore: true
-      packages: [firefox]
-    nix: [firefox]
+      packages: firefox
+    nix: firefox
   flameshot:
-    guix: [flameshot]
-    apt: [flameshot]
+    guix: flameshot
+    apt: flameshot
   flatseal:
-    flatpak: [com.github.tchx84.Flatseal]
+    flatpak: com.github.tchx84.Flatseal
   fluffychat:
-    flatpak: [im.fluffychat.Fluffychat]
+    flatpak: im.fluffychat.Fluffychat
   font-downloader:
-    flatpak: [org.gustavoperedo.FontDownloader]
+    flatpak: org.gustavoperedo.FontDownloader
   font-viewer:
-    flatpak: [org.gnome.font-viewer]
+    flatpak: org.gnome.font-viewer
   gimp:
-    flatpak: [org.gimp.GIMP]
-    guix: [gimp]
-    apt: [gimp]
-    nix: [gimp]
+    flatpak: org.gimp.GIMP
+    guix: gimp
+    apt: gimp
+    nix: gimp
   gnome-boxes:
-    flatpak: [org.gnome.Boxes]
-    apt: [gnome-boxes]
+    flatpak: org.gnome.Boxes
+    apt: gnome-boxes
   gnome-screenshot:
     comment: Now built into Gnome
     ignore: true
-    apt: [gnome-screenshot]
+    apt: gnome-screenshot
   gnome-tweaks:
-    apt: [gnome-tweaks]
+    apt: gnome-tweaks
   gparted:
-    apt: [gparted]
+    apt: gparted
   gpaste:
     guix:
       ignore: true
-      packages: [gpaste]
-    apt: [gpaste-2, gnome-shell-extension-gpaste]
+      packages: gpaste
+    apt:
+      - gnome-shell-extension-gpaste
+      - gpaste-2
   handbrake:
-    flatpak: [fr.handbrake.ghb]
+    flatpak: fr.handbrake.ghb
   inkscape:
-    flatpak: [org.inkscape.Inkscape]
+    flatpak: org.inkscape.Inkscape
   joplin:
-    flatpak: [net.cozic.joplin_desktop]
+    flatpak: net.cozic.joplin_desktop
   josm:
-    flatpak: [org.openstreetmap.josm]
+    flatpak: org.openstreetmap.josm
   kdenlive:
-    flatpak: [org.kde.kdenlive]
+    flatpak: org.kde.kdenlive
   krita:
-    flatpak: [org.kde.krita]
+    flatpak: org.kde.krita
   libre-office:
-    flatpak: [org.libreoffice.LibreOffice]
+    flatpak: org.libreoffice.LibreOffice
   lutris:
-    apt: [lutris]
+    apt: lutris
   meld:
-    flatpak: [org.gnome.meld]
+    flatpak: org.gnome.meld
   musescore:
-    flatpak: [org.musescore.MuseScore]
+    flatpak: org.musescore.MuseScore
   obs:
-    flatpak: [com.obsproject.Studio]
+    flatpak: com.obsproject.Studio
   pinta:
-    flatpak: [com.github.PintaProject.Pinta]
+    flatpak: com.github.PintaProject.Pinta
   pitivi:
-    flatpak: [org.pitivi.Pitivi]
+    flatpak: org.pitivi.Pitivi
   qalculate-gtk:
-    flatpak: [io.github.Qalculate]
+    flatpak: io.github.Qalculate
   qdirstat:
     guix:
       ignore: true
-      packages: [qdirstat]
-    apt: [qdirstat]
+      packages: qdirstat
+    apt: qdirstat
   smile:
-    flatpak: [it.mijorus.smile]
+    flatpak: it.mijorus.smile
   solaar:
-    apt: [solaar]
+    apt: solaar
   spotify:
-    flatpak: [com.spotify.Client]
+    flatpak: com.spotify.Client
   startup-disk-creator:
-    apt: [usb-creator-gtk]
+    apt: usb-creator-gtk
   steam:
-    flatpak: [com.valvesoftware.Steam]
+    flatpak: com.valvesoftware.Steam
   thunderbird:
-    flatpak: [org.mozilla.Thunderbird]
+    flatpak: org.mozilla.Thunderbird
   transmission:
-    flatpak: [com.transmissionbt.Transmission]
+    flatpak: com.transmissionbt.Transmission
   vlc:
-    flatpak: [org.videolan.VLC]
+    flatpak: org.videolan.VLC
   zeal:
-    flatpak: [org.zealdocs.Zeal]
-    apt: [zeal]
+    flatpak: org.zealdocs.Zeal
+    apt: zeal
   zulip:
-    flatpak: [org.zulip.Zulip]
+    flatpak: org.zulip.Zulip
 guix:
   glibc-locales:
-    guix: [glibc-locales]
+    guix: glibc-locales
   nscd:
-    comment: The name service cache daemon is reccommended to run Guix on a foreign distro
-    apt: [nscd]
+    comment:
+      The name service cache daemon is reccommended to run Guix on a foreign
+      distro
+    apt: nscd
   nss-certs:
     comment: Provides X.509 Certificates
-    guix: [nss-certs]
+    guix: nss-certs
 ignore:
   distrobox:
-    guix: [distrobox]
+    guix: distrobox
 nix:
   alejandra:
-    nix: [alejandra]
+    nix: alejandra
   nix:
-    nix: [nix]
+    nix: nix
 programming:
   act:
     ignore: true
-    nix: [act]
+    nix: act
   chicken:
-    guix: [chicken]
-    apt: [chicken-bin]
+    guix: chicken
+    apt: chicken-bin
   crystal:
-    apt: [crystal]
-    nix: [crystal]
+    apt: crystal
+    nix: crystal
   deno:
-    nix: [deno]
+    nix: deno
   docker:
     guix:
       ignore: true
-      packages: [docker, docker-compose]
-    apt: [docker, docker-compose]
+      packages:
+        - docker
+        - docker-compose
+    apt:
+      - docker
+      - docker-compose
     nix:
       ignore: true
-      packages: [docker, docker-compose]
+      packages:
+        - docker
+        - docker-compose
   duckdb:
-    nix: [duckdb]
+    nix: duckdb
   gdtoolkit:
     nix:
       comment: Broke last time I tried to install
       ignore: true
-      packages: [python310Packages.gdtoolkit]
+      packages: python310Packages.gdtoolkit
   git:
     guix:
       ignore: true
-      packages: [git]
-    apt: [git]
-    nix: [git]
+      packages: git
+    apt: git
+    nix: git
   git-delete-merged-branches:
-    apt: [git-delete-merged-branches]
-    nix: [git-delete-merged-branches]
+    apt: git-delete-merged-branches
+    nix: git-delete-merged-branches
   github-cli:
-    apt: [gh]
-    nix: [gh]
+    apt: gh
+    nix: gh
   go:
-    guix: [go]
-    apt: [golang]
+    guix: go
+    apt: golang
   guile:
-    guix: [guile]
-    apt: [guile-3.0]
+    guix: guile
+    apt: guile-3.0
   hadolint:
-    nix: [hadolint]
+    nix: hadolint
   hugo:
-    apt: [hugo]
-    nix: [hugo]
+    apt: hugo
+    nix: hugo
   julia:
-    nix: [julia-bin]
+    nix: julia-bin
   latex2mathml:
-    nix: [latex2mathml]
+    nix: latex2mathml
   linode-cli:
-    nix: [linode-cli]
+    nix: linode-cli
   meson:
-    guix: [meson]
-    apt: [meson]
+    guix: meson
+    apt: meson
   nim:
-    guix: [nim]
-    apt: [nim]
+    guix: nim
+    apt: nim
   ninja:
-    guix: [ninja]
-    apt: [ninja-build]
+    guix: ninja
+    apt: ninja-build
   nodejs:
     guix:
       comment: Old version of Node.js
       ignore: true
-      packages: [node]
-    apt: [nodejs, npm]
+      packages: node
+    apt:
+      - nodejs
+      - npm
   pandoc:
-    guix: [pandoc]
-    apt: [pandoc]
+    guix: pandoc
+    apt: pandoc
   podman:
     guix:
       ignore: true
-      packages: [podman]
-    apt: [podman, podman-compose]
+      packages: podman
+    apt:
+      - podman
+      - podman-compose
     nix:
       ignore: true
-      packages: [podman]
+      packages: podman
   pre-commit:
     guix:
       comment: Still on v2
       ignore: true
-      packages: [pre-commit]
-    apt: [pre-commit]
-    nix: [pre-commit]
+      packages: pre-commit
+    apt: pre-commit
+    nix: pre-commit
   prettier:
-    nix: [nodePackages.prettier]
+    nix: nodePackages.prettier
   r:
-    guix: [r]
-    apt: [r-recommended]
-    nix: [R]
+    guix: r
+    apt: r-recommended
+    nix: R
   rust-script:
-    nix: [rust-script]
+    nix: rust-script
   shellcheck:
-    guix: [shellcheck]
-    apt: [shellcheck]
+    guix: shellcheck
+    apt: shellcheck
   tectonic:
-    guix: [tectonic]
+    guix: tectonic
   terraform:
-    nix: [terraform]
+    nix: terraform
   tup:
-    guix: [tup]
-    apt: [tup]
-    nix: [tup]
+    guix: tup
+    apt: tup
+    nix: tup
   yamllint:
-    guix: [python-yamllint]
-    apt: [yamllint]
-    nix: [yamllint]
+    guix: python-yamllint
+    apt: yamllint
+    nix: yamllint
   zig:
-    guix: [zig]
-    nix: [zig]
+    guix: zig
+    nix: zig
 python:
   black:
-    guix: [python-black]
-    apt: [black]
-    nix: [black]
+    guix: python-black
+    apt: black
+    nix: black
   flake8:
-    guix: [python-flake8, python-flake8-implicit-str-concat]
-    apt: [flake8]
-    nix: [flake8]
+    guix:
+      - python-flake8
+      - python-flake8-implicit-str-concat
+    apt: flake8
+    nix: flake8
   isort:
-    guix: [python-isort]
-    apt: [isort]
-    nix: [isort]
+    guix: python-isort
+    apt: isort
+    nix: isort
   pyright:
-    nix: [nodePackages.pyright]
+    nix: nodePackages.pyright
   python3:
     guix:
       comment: Outdated version of Python
       ignore: true
-      packages: [python]
+      packages: python
     apt:
       force: true
-      packages: [python3, python3-venv]
-    nix: [python3]
+      packages:
+        - python3
+        - python3-venv
+    nix: python3
   ruff:
-    nix: [ruff]
+    nix: ruff
 shell:
   bash:
-    guix: [bash]
+    guix: bash
     apt:
       force: true
-      packages: [bash]
-    nix: [bash]
+      packages: bash
+    nix: bash
   fish:
     guix:
       comment: The chsh command doesn't like to use fish from Guix
       ignore: true
-      packages: [fish]
+      packages: fish
     apt:
       force: true
-      packages: [fish]
-    nix: [fish]
+      packages: fish
+    nix: fish
   nushell:
-    guix: [nushell]
-    nix: [nushell]
+    guix: nushell
+    nix: nushell
   zsh:
-    guix: [zsh]
-    apt: [zsh]
-    nix: [zsh]
+    guix: zsh
+    apt: zsh
+    nix: zsh
 system:
   doas:
     ignore: true
-    guix: [opendoas]
-    apt: [doas]
+    guix: opendoas
+    apt: doas
   libfuse2:
-    apt: [libfuse2]
+    apt: libfuse2
   procps:
     comment: Provides process commands like `ps` and `kill`.
-    apt: [procps]
+    apt: procps
   software-properties-common:
     apt:
       force: true
-      packages: [software-properties-common]
+      packages: software-properties-common
   sudo:
     apt:
       force: true
-      packages: [sudo]
+      packages: sudo
 terminal:
   alacritty:
     guix:
       ignore: true
-      packages: [alacritty]
-    apt: [alacritty]
-    nix: [alacritty]
+      packages: alacritty
+    apt: alacritty
+    nix: alacritty
   foot:
     guix:
       ignore: true
-      packages: [foot]
-    apt: [foot]
-    nix: [foot]
+      packages: foot
+    apt: foot
+    nix: foot
   gnome-terminal:
     ignore: true
-    apt: [gnome-terminal]
+    apt: gnome-terminal
   kitty:
     comment: Using foot at the moment
     ignore: true
     guix:
       ignore: true
-      packages: [kitty]
-    apt: [kitty]
-    nix: [kitty]
+      packages: kitty
+    apt: kitty
+    nix: kitty
 theming:
   adwaita-kstyle:
     flatpak:
-      [
-        org.kde.KStyle.Adwaita/x86_64/5.9,
-        org.kde.KStyle.Adwaita/x86_64/5.15-21.08,
-        org.kde.KStyle.Adwaita/x86_64/5.15-22.08,
-        org.kde.KStyle.Adwaita/x86_64/6.2,
-        org.kde.KStyle.Adwaita/x86_64/6.3,
-        org.kde.KStyle.Adwaita/x86_64/6.4,
-        org.kde.KStyle.Adwaita/x86_64/5.10,
-        org.kde.KStyle.Adwaita/x86_64/5.11,
-        org.kde.KStyle.Adwaita/x86_64/5.12,
-        org.kde.KStyle.Adwaita/x86_64/5.14,
-        org.kde.KStyle.Adwaita/x86_64/5.13,
-        org.kde.KStyle.Adwaita/x86_64/5.15,
-      ]
+      - org.kde.KStyle.Adwaita/x86_64/5.10
+      - org.kde.KStyle.Adwaita/x86_64/5.11
+      - org.kde.KStyle.Adwaita/x86_64/5.12
+      - org.kde.KStyle.Adwaita/x86_64/5.13
+      - org.kde.KStyle.Adwaita/x86_64/5.14
+      - org.kde.KStyle.Adwaita/x86_64/5.15
+      - org.kde.KStyle.Adwaita/x86_64/5.15-21.08
+      - org.kde.KStyle.Adwaita/x86_64/5.15-22.08
+      - org.kde.KStyle.Adwaita/x86_64/5.9
+      - org.kde.KStyle.Adwaita/x86_64/6.2
+      - org.kde.KStyle.Adwaita/x86_64/6.3
+      - org.kde.KStyle.Adwaita/x86_64/6.4
   adwaita-qt:
-    apt: [adwaita-qt, adwaita-qt6]
+    apt:
+      - adwaita-qt
+      - adwaita-qt6
 top:
   bpytop:
-    guix: [bpytop]
-    apt: [bpytop]
+    guix: bpytop
+    apt: bpytop
   btm:
-    nix: [bottom]
+    nix: bottom
   btop:
-    guix: [btop]
-    apt: [btop]
-    nix: [btop]
+    guix: btop
+    apt: btop
+    nix: btop
   htop:
-    guix: [htop]
-    apt: [htop]
+    guix: htop
+    apt: htop
 tui:
   lynx:
-    guix: [lynx]
-    apt: [lynx]
+    guix: lynx
+    apt: lynx
   tmux:
-    guix: [tmux]
-    apt: [tmux]
+    guix: tmux
+    apt: tmux
 ubuntu:
   aptitude:
-    apt: [aptitude]
+    apt: aptitude
   nala:
-    apt: [nala]
+    apt: nala
