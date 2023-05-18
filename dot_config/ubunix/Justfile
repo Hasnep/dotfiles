@@ -43,7 +43,7 @@ generate:
 
 flatpak: install_flatpak
 
-guix: update_activate_guix install_guix
+guix: update_activate_guix install_guix install_fonts_guix
 
 apt: install_apt
 
@@ -69,7 +69,7 @@ install_guix:
 
 install_fonts_guix:
     rm -rf {{fonts_folder}}/guix \
-        && cp -r --no-preserve=mode,ownership {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix
+        && cp -r --no-preserve=mode,ownership --dereference {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix
 
 install_apt:
     fish {{apt_manifest_file}}
