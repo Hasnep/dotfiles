@@ -47,6 +47,7 @@ cli:
   entr:
     guix: entr
     apt: entr
+    nix: entr
   exa:
     guix: exa
     apt: exa
@@ -356,6 +357,8 @@ gui:
     flatpak: io.github.celluloid_player.Celluloid
     apt: celluloid
   cheese:
+    comment: Replaced by Snapshot
+    ignore: true
     flatpak: org.gnome.Cheese
     apt: cheese
   czkawka:
@@ -378,9 +381,6 @@ gui:
     apt: epiphany-browser
   evince:
     flatpak: org.gnome.Evince
-  eye-of-gnome:
-    flatpak: org.gnome.eog
-    apt: eog
   file-roller:
     flatpak: org.gnome.FileRoller
     apt:
@@ -412,6 +412,11 @@ gui:
   gnome-boxes:
     flatpak: org.gnome.Boxes
     apt: gnome-boxes
+  gnome-image-viewer:
+    comment: Replaced by Loupe
+    ignore: true
+    flatpak: org.gnome.eog
+    apt: eog
   gnome-screenshot:
     comment: Now built into Gnome
     ignore: true
@@ -441,6 +446,8 @@ gui:
     flatpak: org.kde.krita
   libre-office:
     flatpak: org.libreoffice.LibreOffice
+  loupe:
+    flatpak: org.gnome.Loupe
   meld:
     flatpak: org.gnome.meld
   musescore:
@@ -460,6 +467,8 @@ gui:
     apt: qdirstat
   smile:
     flatpak: it.mijorus.smile
+  snapshot:
+    flatpak: org.gnome.Snapshot
   solaar:
     apt: solaar
   spotify:
@@ -491,6 +500,8 @@ guix:
 nix:
   alejandra:
     nix: alejandra
+  nil:
+    nix: nil
   nix:
     nix: nix
 programming:
@@ -541,6 +552,17 @@ programming:
   go:
     guix: go
     apt: golang
+  godot:
+    flatpak: org.godotengine.Godot
+    guix:
+      comment: Still on version 3
+      ignore: true
+      packages: godot
+    apt:
+      comment: Still on version 3
+      ignore: true
+      packages: godot3
+    nix: godot_4
   guile:
     guix: guile
     apt: guile-3.0
