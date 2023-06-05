@@ -13,6 +13,7 @@ fish_completions_folder = Path(config_directory) / "fish" / "completions"
 
 for tool, command in [
     ("antidot", "antidot completion fish"),
+    ("autorestic", "autorestic completion fish"),
     ("bin", "bin completion fish"),
     ("just", "just --completions fish"),
     ("trash", "trash completions fish"),
