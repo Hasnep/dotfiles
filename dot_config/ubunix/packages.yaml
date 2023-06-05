@@ -3,7 +3,6 @@ cli:
     guix: ansible
     apt: ansible
   autorestic:
-    ignore: true
     nix: autorestic
   bat:
     guix: bat
