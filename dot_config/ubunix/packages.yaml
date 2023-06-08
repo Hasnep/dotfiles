@@ -38,6 +38,8 @@ cli:
   distrobox:
     ignore: true
     guix: distrobox
+  dua:
+    nix: dua
   dust:
     guix:
       ignore: true
@@ -61,6 +63,9 @@ cli:
     guix: fzf
     apt: fzf
     nix: fzf
+  gdal:
+    comment: Geospatial tools
+    apt: gdal-bin
   glow:
     nix: glow
   graphviz:
@@ -146,7 +151,7 @@ cli:
     nix: rclone
   restic:
     guix:
-      comment: Outdated
+      comment: Outdated version
       ignore: true
       packages: restic
     apt: restic
@@ -490,7 +495,7 @@ guix:
     guix: glibc-locales
   nscd:
     comment:
-      The name service cache daemon is reccommended to run Guix on a foreign
+      The name service cache daemon is recomended to run Guix on a foreign
       distro
     apt: nscd
   nss-certs:
@@ -498,8 +503,10 @@ guix:
     guix: nss-certs
 nix:
   alejandra:
+    comment: Nix formatter
     nix: alejandra
   nil:
+    comment: Nix language server
     nix: nil
   nix:
     nix: nix
@@ -579,6 +586,8 @@ programming:
   meson:
     guix: meson
     apt: meson
+  netlify:
+    nix: netlify-cli
   nim:
     guix: nim
     apt: nim
@@ -593,6 +602,10 @@ programming:
     apt:
       - nodejs
       - npm
+  npm-check-updates:
+    nix: nodePackages.npm-check-updates
+  packer:
+    nix: packer
   pandoc:
     guix: pandoc
     apt: pandoc
