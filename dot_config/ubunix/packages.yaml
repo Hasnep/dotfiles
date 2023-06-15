@@ -324,7 +324,13 @@ fonts:
 gaming:
   lutris:
     apt: lutris
+  marble-marcher:
+    ignore: true
+    guix: marble-marcher
+    nix: marble-marcher-ce
   ryujinx:
+    comment: Too demanding for my current laptop
+    ignore: true
     flatpak: org.ryujinx.Ryujinx
   steam:
     flatpak:
@@ -336,6 +342,8 @@ gaming:
       - libc6-i386
       - steam
   yuzu:
+    comment: Too demanding for my current laptop
+    ignore: true
     flatpak: org.yuzu_emu.yuzu
 gnome:
   gnome-extension-manager:
@@ -408,6 +416,9 @@ gui:
     flatpak: org.gustavoperedo.FontDownloader
   font-viewer:
     flatpak: org.gnome.font-viewer
+  fractal:
+    flatpak: org.gnome.Fractal
+    nix: fractal
   gimp:
     flatpak: org.gimp.GIMP
     guix: gimp
@@ -711,6 +722,7 @@ system:
     guix: opendoas
     apt: doas
   libfuse2:
+    comment: Needed for pCloud appimage
     apt: libfuse2
   procps:
     comment: Provides process commands like `ps` and `kill`.
