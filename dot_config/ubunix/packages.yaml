@@ -211,10 +211,6 @@ cli:
     nix: unzip
   vale:
     nix: vale
-  visidata:
-    guix: visidata
-    apt: visidata
-    nix: visidata
   wget:
     guix: wget
     apt:
@@ -238,8 +234,6 @@ cli:
     guix: yt-dlp
     apt: yt-dlp
     nix: yt-dlp
-  zellij:
-    nix: zellij
   zip:
     guix: zip
     apt: zip
@@ -463,6 +457,8 @@ gui:
     flatpak: org.libreoffice.LibreOffice
   loupe:
     flatpak: org.gnome.Loupe
+  marktext:
+    flatpak: com.github.marktext.marktext
   meld:
     flatpak: org.gnome.meld
   musescore:
@@ -533,6 +529,16 @@ programming:
     nix: crystal
   deno:
     nix: deno
+  dhall:
+    guix: dhall
+    apt: dhall
+    nix: dhall
+  dhall-tools:
+    nix:
+      - dhall-bash
+      - dhall-json
+      - dhall-lsp-server
+      - dhall-nix
   docker:
     guix:
       ignore: true
@@ -599,12 +605,18 @@ programming:
     apt: meson
   netlify:
     nix: netlify-cli
+  nickel:
+    nix: nickel
+  nickel-language-server:
+    nix: nls
   nim:
     guix: nim
     apt: nim
+    nix: nim
   ninja:
     guix: ninja
     apt: ninja-build
+    nix: ninja
   nodejs:
     guix:
       comment: Old version of Node.js
@@ -618,8 +630,15 @@ programming:
   packer:
     nix: packer
   pandoc:
-    guix: pandoc
-    apt: pandoc
+    guix:
+      comment: On version 2.14
+      packages: pandoc
+    apt:
+      comment: On version 2.17
+      packages: pandoc
+    nix:
+      comment: On version 2.19
+      packages: pandoc
   podman:
     guix:
       ignore: true
@@ -645,6 +664,8 @@ programming:
     nix: R
   rust-script:
     nix: rust-script
+  samurai:
+    nix: samurai
   shellcheck:
     guix: shellcheck
     apt: shellcheck
@@ -656,6 +677,16 @@ programming:
     guix: tup
     apt: tup
     nix: tup
+  typst:
+    nix: typst
+  typst-live:
+    comment: Not installing for some reason
+    ignore: true
+    nix: typst-live
+  typst-tools:
+    nix:
+      - typst-fmt
+      - typst-lsp
   yamllint:
     guix: python-yamllint
     apt: yamllint
@@ -697,9 +728,15 @@ shell:
   bash:
     guix: bash
     apt:
+      comment: I always want to keep the system's bash around
       force: true
       packages: bash
     nix: bash
+  dash:
+    apt:
+      comment: System's sh on Ubuntu
+      force: true
+      packages: dash
   fish:
     guix:
       comment: The chsh command doesn't like to use fish from Guix
@@ -791,13 +828,22 @@ top:
   htop:
     guix: htop
     apt: htop
+    nix: htop
 tui:
   lynx:
     guix: lynx
     apt: lynx
+    nix: lynx
   tmux:
     guix: tmux
     apt: tmux
+    nix: tmux
+  visidata:
+    guix: visidata
+    apt: visidata
+    nix: visidata
+  zellij:
+    nix: zellij
 ubuntu:
   aptitude:
     apt: aptitude
