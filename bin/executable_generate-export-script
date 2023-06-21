@@ -5,7 +5,24 @@ import sys
 from argparse import ArgumentParser
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, NamedTuple, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Set, Self, TypeVar, Iterable, Any
+import re
+from abc import ABC as AbstractBaseClass, abstractmethod
+
+T = TypeVar("T")
+
+# Utils
+
+
+def flatten(nested_list: Iterable[Iterable[T]]) -> List[T]:
+    return [item for sublist in nested_list for item in sublist]
+
+
+def extract_dependencies(value: str) -> Set[str]:
+    return set(re.findall(r"\$([A-Za-z_]+)", value))
+
+
+# Classes
 
 
 class Shell(Enum):
@@ -13,9 +30,60 @@ class Shell(Enum):
     POSIX = "posix"
 
 
-class PathVariable(NamedTuple):
-    priority: int
-    value: str
+class Variable(AbstractBaseClass):
+    def __init__(self, name: str, value: str, category: str) -> None:
+        self.name = name
+        self.value = value
+        self.category = category
+        self.depends_on = extract_dependencies(self.value)
+
+    @abstractmethod
+    def to_fish(self) -> str:
+        pass
+
+    @abstractmethod
+    def to_posix(self) -> str:
+        pass
+
+    def __eq__(self, other: Self):
+        return self.category == other.category and self.name == other.name
+
+    def __hash__(self) -> int:
+        return hash((self.category, self.name))
+
+
+class PathVariable(Variable):
+    def __init__(self, values: List[str], priority: int, category: str) -> None:
+        super().__init__("PATH", ":".join(values), category)
+        self.priority = priority
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any], category: str):
+        try:
+            values = d["values"]
+        except KeyError:
+            raise KeyError(
+                f"Path variable in category `{category}` doesn't have the `values` key."
+            )
+        if isinstance(values, list) and all(isinstance(v, str) for v in values):
+            values_validated: List[str] = values
+        else:
+            raise ValueError(
+                f"Path variable in category `{category}` has an invalid `values` value: `{values}`."
+            )
+        try:
+            priority = d["priority"]
+        except KeyError:
+            raise KeyError(
+                f"Path variable in category `{category}` doesn't have the `priority` key."
+            )
+        if isinstance(priority, int):
+            pass
+        else:
+            raise ValueError(
+                f"Path variable in category `{category}` has an invalid `priority` value: `{priority}`."
+            )
+        return cls(values_validated, priority=priority, category=category)
 
     def to_fish(self) -> str:
         return f'fish_add_path --move "{self.value}"'
@@ -24,10 +92,9 @@ class PathVariable(NamedTuple):
         return f'if [ -d "{self.value}" ] && [[ ":$PATH:" != *":{self.value}:"* ]]; then PATH="${{PATH:+"$PATH:"}}{self.value}"; fi'
 
 
-class EnvironmentVariable(NamedTuple):
-    priority: int
-    name: str
-    value: str
+class EnvironmentVariable(Variable):
+    def __init__(self, name: str, value: str, category: str) -> None:
+        super().__init__(name, value, category)
 
     def to_fish(self) -> str:
         return f'set --export {self.name} "{self.value}"'
@@ -36,7 +103,7 @@ class EnvironmentVariable(NamedTuple):
         return f'export {self.name}="{self.value}"'
 
 
-Variable = Union[PathVariable, EnvironmentVariable]
+# CLI and IO
 
 
 def get_cli_args() -> Tuple[Optional[Path], Optional[Path], Shell]:
@@ -53,32 +120,36 @@ def get_cli_args() -> Tuple[Optional[Path], Optional[Path], Shell]:
     return input_path, output_path, shell
 
 
-def parse_variable(priority: int, name: str, value: str) -> Variable:
-    return (
-        PathVariable(priority, value)
-        if name == "PATH"
-        else EnvironmentVariable(priority, name, value)
-    )
-
-
-def get_config(config_file_path: Optional[Path]) -> List[Variable]:
-    config: List[Dict[str, str]]
+def get_config(
+    config_file_path: Optional[Path],
+) -> Tuple[Set[EnvironmentVariable], Set[PathVariable]]:
+    config: Dict[str, Dict[str, Any]]
     if config_file_path is None:
         config = json.load(sys.stdin)
     else:
         with open(config_file_path, "r") as f:
             config = json.load(f)
-    return [parse_variable(int(x["_priority"]), x["name"], x["value"]) for x in config]
-
-
-def get_export_script(variables: List[Variable], shell: Shell) -> str:
-    return "\n".join(
-        variable.to_fish()
-        if shell == Shell.FISH
-        else variable.to_posix()
-        if shell == Shell.POSIX
-        else ""
-        for variable in variables
+    return (
+        set(
+            flatten(
+                [
+                    EnvironmentVariable(variable_name, variable_value, category)
+                    for (variable_name, variable_value) in category_variables.items()
+                    if variable_name != "PATH"
+                ]
+                for (category, category_variables) in config.items()
+            )
+        ),
+        set(
+            flatten(
+                [
+                    PathVariable.from_dict(variable_data, category)
+                    for (variable_name, variable_data) in category_variables.items()
+                    if variable_name == "PATH"
+                ]
+                for (category, category_variables) in config.items()
+            )
+        ),
     )
 
 
@@ -88,11 +159,72 @@ def write_script_to_file(script_file_path: Path, script: str) -> None:
         f.write(script)
 
 
+# Processing
+
+
+def sort_environment_variables(
+    variables: Set[EnvironmentVariable],
+) -> List[EnvironmentVariable]:
+    def helper(
+        variables_to_add: Set[EnvironmentVariable],
+        variables_added_so_far: List[EnvironmentVariable],
+    ) -> List[EnvironmentVariable]:
+        # Assume the $HOME variable is always defined
+        variable_names_added_so_far = [v.name for v in variables_added_so_far] + [
+            "HOME"
+        ]
+        # If there are no more variables to add then we're done
+        if len(variables_to_add) == 0:
+            return variables_added_so_far
+        else:
+            # The variables that can be added are the ones that have had all of their dependencies added already
+            variables_that_can_be_added = {
+                v
+                for v in variables_to_add
+                if v.depends_on.issubset(variable_names_added_so_far)
+            }
+            # If we didn't add any variables then we're in an infinite recursion situation
+            if len(variables_that_can_be_added) == 0:
+                raise ValueError(
+                    "There seems to be a cycle in the environment variables config."
+                )
+            return helper(
+                variables_to_add - variables_that_can_be_added,
+                variables_added_so_far + list(variables_that_can_be_added),
+            )
+
+    return helper(set(variables), [])
+
+
+def sort_path_variables(
+    variables: Set[PathVariable],
+) -> List[PathVariable]:
+    return sorted(variables, key=lambda v: v.priority)
+
+
+def get_export_script(
+    environment_variables: List[EnvironmentVariable],
+    path_variables: List[PathVariable],
+    shell: Shell,
+) -> str:
+    return "\n".join(
+        variable.to_fish()
+        if shell == Shell.FISH
+        else variable.to_posix()
+        if shell == Shell.POSIX
+        else ""
+        for variable in (environment_variables + path_variables)
+    )
+
+
 def main() -> None:
     config_file_path, output_file_path, shell = get_cli_args()
-    variables = get_config(config_file_path)
-    variables_sorted = sorted(variables, reverse=True)
-    export_script = get_export_script(variables_sorted, shell)
+    environment_variables, path_variables = get_config(config_file_path)
+    environment_variables_sorted = sort_environment_variables(environment_variables)
+    path_variables_sorted = sort_path_variables(path_variables)
+    export_script = get_export_script(
+        environment_variables_sorted, path_variables_sorted, shell
+    )
     if output_file_path is None:
         print(export_script)
     else:

@@ -1,326 +1,167 @@
-[
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_CACHE_HOME",
-    "value": "$HOME/.cache"
+{
+  "bash": {
+    "HISTFILE": "$XDG_STATE_HOME/bash/history"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_CONFIG_DIRS",
-    "value": "/etc/xdg"
+  "cargo": {
+    "CARGO_HOME": "$XDG_DATA_HOME/cargo",
+    "PATH": {
+      "values": [
+        "$XDG_DATA_HOME/cargo/bin/"
+      ],
+      "priority": 1
+    }
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_CONFIG_HOME",
-    "value": "$HOME/.config"
+  "docker": {
+    "DOCKER_CONFIG": "$XDG_CONFIG_HOME/docker"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_DATA_HOME",
-    "value": "$HOME/.local/share"
+  "elm": {
+    "ELM_HOME": "$XDG_CONFIG_HOME/elm"
   },
-  {
-    "_priority": 99,
-    "category": "xdg-variables",
-    "name": "XDG_DATA_DIRS",
-    "value": "/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$XDG_DATA_HOME/flatpak/exports/share"
+  "gnupg": {
+    "GNUPGHOME": "$XDG_DATA_HOME/gnupg"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_DESKTOP_DIR",
-    "value": "$HOME/Desktop"
+  "go": {
+    "GOPATH": "$XDG_DATA_HOME/go"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_DOCUMENTS_DIR",
-    "value": "$HOME/Documents"
+  "gtk-2": {
+    "GTK2_RC_FILES": "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_DOWNLOAD_DIR",
-    "value": "$HOME/Downloads"
+  "guix": {
+    "BASH_LOADABLES_PATH": "$GUIX_PROFILE/lib/bash",
+    "CHICKEN_REPOSITORY_PATH": "$GUIX_PROFILE/var/lib/chicken/11",
+    "CPLUS_INCLUDE_PATH": "$GUIX_PROFILE/include/c++:$GUIX_PROFILE/include",
+    "C_INCLUDE_PATH": "$GUIX_PROFILE/include",
+    "GUIX_CONFIG_FOLDER": "$XDG_CONFIG_HOME/guix",
+    "GUIX_DATA_FOLDER": "$XDG_DATA_HOME/guix",
+    "GUIX_LOCPATH": "$GUIX_PROFILE/lib/locale",
+    "GUIX_MANIFEST": "$GUIX_CONFIG_FOLDER/manifest.scm",
+    "GUIX_PROFILE": "$GUIX_DATA_FOLDER/default",
+    "GUIX_PYTHONPATH": "$GUIX_PROFILE/lib/python3.9/site-packages",
+    "LIBRARY_PATH": "$GUIX_PROFILE/lib",
+    "PATH": {
+      "values": [
+        "$GUIX_PROFILE/bin:$GUIX_PROFILE/sbin"
+      ],
+      "priority": 2
+    },
+    "R_LIBS_SITE": "$GUIX_PROFILE/site-library/"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_MUSIC_DIR",
-    "value": "$HOME/Music"
+  "java": {
+    "_JAVA_OPTIONS": "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_PICTURES_DIR",
-    "value": "$HOME/Pictures"
+  "julia": {
+    "JULIA_DEPOT_PATH": "$XDG_DATA_HOME/julia"
   },
-  {
-    "_priority": 100,
-    "category": "xdg-variables",
-    "name": "XDG_VIDEOS_DIR",
-    "value": "$HOME/Videos"
+  "juliaup": {
+    "PATH": {
+      "values": [
+        "$XDG_DATA_HOME/juliaup/bin/"
+      ],
+      "priority": 3
+    }
   },
-  {
-    "_priority": 50,
-    "category": "zsh",
-    "name": "ZDOTDIR",
-    "value": "$XDG_CONFIG_HOME/zsh"
+  "kde": {
+    "KDEHOME": "$XDG_CONFIG_HOME/kde"
   },
-  {
-    "_priority": 50,
-    "category": "gnupg",
-    "name": "GNUPGHOME",
-    "value": "$XDG_DATA_HOME/gnupg"
+  "less": {
+    "LESSHISTFILE": "$XDG_CACHE_HOME/less/history",
+    "LESSKEY": "$XDG_CONFIG_HOME/less/lesskey"
   },
-  {
-    "_priority": 50,
-    "category": "xinit",
-    "name": "XINITRC",
-    "value": "$XDG_CONFIG_HOME/x11/xinitrc"
+  "nimble": {
+    "NIMBLE_DIR": "$XDG_DATA_HOME/nimble"
   },
-  {
-    "_priority": 50,
-    "category": "bash",
-    "name": "HISTFILE",
-    "value": "$XDG_STATE_HOME/bash/history"
+  "nix": {
+    "NIX_CONF_DIR": "$XDG_CONFIG_HOME/nix",
+    "PATH": {
+      "values": [
+        "$HOME/.nix-profile/bin",
+        "$XDG_DATA_HOME/nix/bin",
+        "/nix/var/nix/profiles/default/bin"
+      ],
+      "priority": 4
+    }
   },
-  {
-    "_priority": 50,
-    "category": "cargo",
-    "name": "CARGO_HOME",
-    "value": "$XDG_DATA_HOME/cargo"
+  "node": {
+    "NODE_REPL_HISTORY": "$XDG_DATA_HOME/node_repl_history"
   },
-  {
-    "_priority": 50,
-    "category": "docker",
-    "name": "DOCKER_CONFIG",
-    "value": "$XDG_CONFIG_HOME/docker"
+  "npm": {
+    "NPM_CONFIG_USERCONFIG": "$XDG_CONFIG_HOME/npm/npmrc",
+    "npm_config_cache": "$XDG_CACHE_HOME/npm"
   },
-  {
-    "_priority": 50,
-    "category": "elm",
-    "name": "ELM_HOME",
-    "value": "$XDG_CONFIG_HOME/elm"
+  "nvidia": {
+    "CUDA_CACHE_PATH": "$XDG_CACHE_HOME/nv",
+    "__GL_SHADER_DISK_CACHE_PATH": "$XDG_CACHE_HOME/nv"
   },
-  {
-    "_priority": 50,
-    "category": "go",
-    "name": "GOPATH",
-    "value": "$XDG_DATA_HOME/go"
+  "opam": {
+    "OPAMROOT": "$XDG_DATA_HOME/opam"
   },
-  {
-    "_priority": 50,
-    "category": "gtk-2",
-    "name": "GTK2_RC_FILES",
-    "value": "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+  "pass": {
+    "PASSWORD_STORE_DIR": "$XDG_DATA_HOME/pass"
   },
-  {
-    "_priority": 50,
-    "category": "java",
-    "name": "_JAVA_OPTIONS",
-    "value": "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
+  "platformio": {
+    "PLATFORMIO_CORE_DIR": "$XDG_DATA_HOME/platformio"
   },
-  {
-    "_priority": 50,
-    "category": "julia",
-    "name": "JULIA_DEPOT_PATH",
-    "value": "$XDG_DATA_HOME/julia"
+  "python": {
+    "PYTHONSTARTUP": "$XDG_CONFIG_HOME/python/pythonrc"
   },
-  {
-    "_priority": 50,
-    "category": "kde",
-    "name": "KDEHOME",
-    "value": "$XDG_CONFIG_HOME/kde"
+  "rustup": {
+    "RUSTUP_HOME": "$XDG_DATA_HOME/rustup"
   },
-  {
-    "_priority": 50,
-    "category": "less",
-    "name": "LESSHISTFILE",
-    "value": "$XDG_CACHE_HOME/less/history"
+  "snap": {
+    "PATH": {
+      "values": [
+        "/snap/bin"
+      ],
+      "priority": 4
+    }
   },
-  {
-    "_priority": 50,
-    "category": "less",
-    "name": "LESSKEY",
-    "value": "$XDG_CONFIG_HOME/less/lesskey"
+  "system-path": {
+    "PATH": {
+      "values": [
+        "/bin",
+        "/sbin",
+        "/usr/bin/",
+        "/usr/games",
+        "/usr/local/bin",
+        "/usr/local/games",
+        "/usr/local/sbin",
+        "/usr/sbin"
+      ],
+      "priority": 10
+    }
   },
-  {
-    "_priority": 50,
-    "category": "nimble",
-    "name": "NIMBLE_DIR",
-    "value": "$XDG_DATA_HOME/nimble"
+  "topiary": {
+    "TOPIARY_LANGUAGE_DIR": "$HOME/Documents/rust/topiary/languages"
   },
-  {
-    "_priority": 50,
-    "category": "nix",
-    "name": "NIX_CONF_DIR",
-    "value": "$XDG_CONFIG_HOME/nix"
+  "user-path": {
+    "PATH": {
+      "values": [
+        "$HOME/.local/bin/:$HOME/bin/"
+      ],
+      "priority": 100
+    }
   },
-  {
-    "_priority": 50,
-    "category": "node",
-    "name": "NODE_REPL_HISTORY",
-    "value": "$XDG_DATA_HOME/node_repl_history"
+  "wine": {
+    "WINEPREFIX": "$XDG_DATA_HOME/wine"
   },
-  {
-    "_priority": 50,
-    "category": "npm",
-    "name": "npm_config_cache",
-    "value": "$XDG_CACHE_HOME/npm"
+  "xdg-variables": {
+    "XDG_CACHE_HOME": "$HOME/.cache",
+    "XDG_CONFIG_DIRS": "/etc/xdg",
+    "XDG_CONFIG_HOME": "$HOME/.config",
+    "XDG_DATA_DIRS": "/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$XDG_DATA_HOME/flatpak/exports/share",
+    "XDG_DATA_HOME": "$HOME/.local/share",
+    "XDG_DESKTOP_DIR": "$HOME/Desktop",
+    "XDG_DOCUMENTS_DIR": "$HOME/Documents",
+    "XDG_DOWNLOAD_DIR": "$HOME/Downloads",
+    "XDG_MUSIC_DIR": "$HOME/Music",
+    "XDG_PICTURES_DIR": "$HOME/Pictures",
+    "XDG_VIDEOS_DIR": "$HOME/Videos",
+    "XDG_STATE_HOME": "$HOME/.local/state"
   },
-  {
-    "_priority": 50,
-    "category": "npm",
-    "name": "NPM_CONFIG_USERCONFIG",
-    "value": "$XDG_CONFIG_HOME/npm/npmrc"
+  "xinit": {
+    "XINITRC": "$XDG_CONFIG_HOME/x11/xinitrc"
   },
-  {
-    "_priority": 50,
-    "category": "nvidia",
-    "name": "__GL_SHADER_DISK_CACHE_PATH",
-    "value": "$XDG_CACHE_HOME/nv"
-  },
-  {
-    "_priority": 50,
-    "category": "nvidia",
-    "name": "CUDA_CACHE_PATH",
-    "value": "$XDG_CACHE_HOME/nv"
-  },
-  {
-    "_priority": 50,
-    "category": "opam",
-    "name": "OPAMROOT",
-    "value": "$XDG_DATA_HOME/opam"
-  },
-  {
-    "_priority": 50,
-    "category": "pass",
-    "name": "PASSWORD_STORE_DIR",
-    "value": "$XDG_DATA_HOME/pass"
-  },
-  {
-    "_priority": 50,
-    "category": "platformio",
-    "name": "PLATFORMIO_CORE_DIR",
-    "value": "$XDG_DATA_HOME/platformio"
-  },
-  {
-    "_priority": 50,
-    "category": "python",
-    "name": "PYTHONSTARTUP",
-    "value": "$XDG_CONFIG_HOME/python/pythonrc"
-  },
-  {
-    "_priority": 50,
-    "category": "rustup",
-    "name": "RUSTUP_HOME",
-    "value": "$XDG_DATA_HOME/rustup"
-  },
-  {
-    "_priority": 50,
-    "category": "wine",
-    "name": "WINEPREFIX",
-    "value": "$XDG_DATA_HOME/wine"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/usr/sbin"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/usr/bin/"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/sbin"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/usr/local/bin"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/usr/local/games"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/usr/games"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/bin"
-  },
-  {
-    "_priority": 20,
-    "category": "path-system",
-    "name": "PATH",
-    "value": "/usr/local/sbin"
-  },
-  {
-    "_priority": 10,
-    "category": "path-nix",
-    "name": "PATH",
-    "value": "$XDG_DATA_HOME/nix/bin"
-  },
-  {
-    "_priority": 10,
-    "category": "path-nix",
-    "name": "PATH",
-    "value": "$HOME/.nix-profile/bin"
-  },
-  {
-    "_priority": 10,
-    "category": "path-nix",
-    "name": "PATH",
-    "value": "/nix/var/nix/profiles/default/bin"
-  },
-  {
-    "_priority": 5,
-    "category": "path-snap",
-    "name": "PATH",
-    "value": "/snap/bin"
-  },
-  {
-    "_priority": 5,
-    "category": "path-cargo",
-    "name": "PATH",
-    "value": "$XDG_DATA_HOME/cargo/bin/"
-  },
-  {
-    "_priority": 5,
-    "category": "path-juliaup",
-    "name": "PATH",
-    "value": "$XDG_DATA_HOME/juliaup/bin/"
-  },
-  {
-    "_priority": 0,
-    "category": "path-user",
-    "name": "PATH",
-    "value": "$HOME/.local/bin/"
-  },
-  {
-    "_priority": 0,
-    "category": "path-user",
-    "name": "PATH",
-    "value": "$HOME/bin/"
+  "zsh": {
+    "ZDOTDIR": "$XDG_CONFIG_HOME/zsh"
   }
-]
+}

@@ -14,7 +14,6 @@ guix_config_folder := xdg_config_home / "guix"
 guix_manifest_file := guix_config_folder / "manifest.scm"
 guix_data_folder := xdg_data_home / "guix"
 guix_profile_folder := guix_data_folder / "default"
-guix_activate_script := guix_config_folder / "activate-guix.fish"
 
 apt_manifest_file := ubunix_config_folder / "apt-manifest.fish"
 
@@ -43,7 +42,7 @@ generate:
 
 flatpak: install_flatpak
 
-guix: update_activate_guix install_guix install_fonts_guix
+guix: install_guix install_fonts_guix
 
 apt: install_apt
 
@@ -51,18 +50,7 @@ nix: install_nix install_fonts_nix
 
 install_flatpak:
     fish {{flatpak_manifest_file}}
-
-update_activate_guix:
-    #!/usr/bin/env fish
-    echo -n '' > {{guix_activate_script}}
-    guix package --search-paths -p {{guix_data_folder}}/current 2>/dev/null | bash-exports-to-fish >> {{guix_activate_script}}
-    echo '    set --export GUIX_MANIFEST {{guix_manifest_file}}' >> {{guix_activate_script}}
-    echo '    set --export GUIX_PROFILE {{guix_profile_folder}}' >> {{guix_activate_script}}
-    guix package --search-paths --profile={{guix_profile_folder}} 2>/dev/null | bash-exports-to-fish >> {{guix_activate_script}}
-    echo '    set --export GUIX_LOCPATH {{guix_profile_folder}}/lib/locale' >> {{guix_activate_script}}
-    fish_indent --write {{guix_activate_script}}
-    echo "Updated '{{guix_activate_script}}'."
-
+ 
 install_guix:
     mkdir -p {{guix_data_folder}}
     guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
