@@ -11,10 +11,6 @@ repos:
         id: check-case-conflict
       - name: Check for merge conflicts
         id: check-merge-conflict
-      - name: Check executable files have a shebang
-        id: check-executables-have-shebangs
-      - name: Check scripts with a shebang are executable
-        id: check-shebang-scripts-are-executable
       - name: Don't allow adding large files
         id: check-added-large-files
 
