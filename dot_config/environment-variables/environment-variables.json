@@ -5,9 +5,7 @@
   "cargo": {
     "CARGO_HOME": "$XDG_DATA_HOME/cargo",
     "PATH": {
-      "values": [
-        "$XDG_DATA_HOME/cargo/bin/"
-      ],
+      "values": ["$XDG_DATA_HOME/cargo/bin/"],
       "priority": 1
     }
   },
@@ -39,10 +37,7 @@
     "GUIX_PYTHONPATH": "$GUIX_PROFILE/lib/python3.9/site-packages",
     "LIBRARY_PATH": "$GUIX_PROFILE/lib",
     "PATH": {
-      "values": [
-        "$GUIX_PROFILE/bin",
-        "$GUIX_PROFILE/sbin"
-      ],
+      "values": ["$GUIX_PROFILE/bin", "$GUIX_PROFILE/sbin"],
       "priority": 10
     },
     "R_LIBS_SITE": "$GUIX_PROFILE/site-library/"
@@ -55,9 +50,7 @@
   },
   "juliaup": {
     "PATH": {
-      "values": [
-        "$XDG_DATA_HOME/juliaup/bin/"
-      ],
+      "values": ["$XDG_DATA_HOME/juliaup/bin/"],
       "priority": 3
     }
   },
@@ -110,9 +103,7 @@
   },
   "snap": {
     "PATH": {
-      "values": [
-        "/snap/bin"
-      ],
+      "values": ["/snap/bin"],
       "priority": 4
     }
   },
@@ -136,10 +127,7 @@
   },
   "user-path": {
     "PATH": {
-      "values": [
-        "$HOME/.local/bin/",
-        "$HOME/bin/"
-      ],
+      "values": ["$HOME/.local/bin/", "$HOME/bin/"],
       "priority": 100
     }
   },
