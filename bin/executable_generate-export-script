@@ -5,9 +5,8 @@ import sys
 from argparse import ArgumentParser
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Set, Self, TypeVar, Iterable, Any
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, TypeVar
 import re
-from abc import ABC as AbstractBaseClass, abstractmethod
 
 T = TypeVar("T")
 
@@ -18,10 +17,6 @@ def flatten(nested_list: Iterable[Iterable[T]]) -> List[T]:
     return [item for sublist in nested_list for item in sublist]
 
 
-def extract_dependencies(value: str) -> Set[str]:
-    return set(re.findall(r"\$([A-Za-z_]+)", value))
-
-
 # Classes
 
 
@@ -30,31 +25,11 @@ class Shell(Enum):
     POSIX = "posix"
 
 
-class Variable(AbstractBaseClass):
-    def __init__(self, name: str, value: str, category: str) -> None:
-        self.name = name
-        self.value = value
-        self.category = category
-        self.depends_on = extract_dependencies(self.value)
-
-    @abstractmethod
-    def to_fish(self) -> str:
-        pass
-
-    @abstractmethod
-    def to_posix(self) -> str:
-        pass
-
-    def __eq__(self, other: Self):
-        return self.category == other.category and self.name == other.name
-
-    def __hash__(self) -> int:
-        return hash((self.category, self.name))
-
-
-class PathVariable(Variable):
+class PathVariable:
     def __init__(self, values: List[str], priority: int, category: str) -> None:
-        super().__init__("PATH", ":".join(values), category)
+        self.name = "PATH"
+        self.values = values
+        self.category = category
         self.priority = priority
 
     @classmethod
@@ -86,15 +61,25 @@ class PathVariable(Variable):
         return cls(values_validated, priority=priority, category=category)
 
     def to_fish(self) -> str:
-        return f'fish_add_path --move "{self.value}"'
+        values_joined = " ".join(f'"{v}"' for v in self.values)
+        return f"fish_add_path --move {values_joined}"
 
     def to_posix(self) -> str:
-        return f'if [ -d "{self.value}" ] && [[ ":$PATH:" != *":{self.value}:"* ]]; then PATH="${{PATH:+"$PATH:"}}{self.value}"; fi'
+        return "\n".join(
+            f'if [ -d "{value}" ] && [[ ":$PATH:" != *":{value}:"* ]]; then PATH="${{PATH:+"$PATH:"}}{value}"; fi'
+            for value in self.values
+        )
 
 
-class EnvironmentVariable(Variable):
+class EnvironmentVariable:
     def __init__(self, name: str, value: str, category: str) -> None:
-        super().__init__(name, value, category)
+        self.name = name
+        self.value = value
+        self.category = category
+
+    @property
+    def depends_on(self) -> Set[str]:
+        return set(re.findall(r"\$([A-Za-z_]+)", self.value))
 
     def to_fish(self) -> str:
         return f'set --export {self.name} "{self.value}"'
