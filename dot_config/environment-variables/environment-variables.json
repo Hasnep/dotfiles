@@ -43,7 +43,7 @@
         "$GUIX_PROFILE/bin",
         "$GUIX_PROFILE/sbin"
       ],
-      "priority": 2
+      "priority": 10
     },
     "R_LIBS_SITE": "$GUIX_PROFILE/site-library/"
   },
@@ -79,7 +79,7 @@
         "$XDG_DATA_HOME/nix/bin",
         "/nix/var/nix/profiles/default/bin"
       ],
-      "priority": 4
+      "priority": 5
     }
   },
   "node": {
@@ -128,7 +128,7 @@
         "/usr/local/sbin",
         "/usr/sbin"
       ],
-      "priority": 10
+      "priority": 999
     }
   },
   "topiary": {
