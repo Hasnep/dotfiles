@@ -66,7 +66,7 @@ class PathVariable:
 
     def to_posix(self) -> str:
         return "\n".join(
-            f'if [ -d "{value}" ] && [[ ":$PATH:" != *":{value}:"* ]]; then PATH="${{PATH:+"$PATH:"}}{value}"; fi'
+            f'if [ -d "{value}" ] && [[ ":$PATH:" != *":{value}:"* ]]; then PATH="{value}${{PATH:+":$PATH"}}"; fi'
             for value in self.values
         )
 
@@ -184,7 +184,7 @@ def sort_environment_variables(
 def sort_path_variables(
     variables: Set[PathVariable],
 ) -> List[PathVariable]:
-    return sorted(variables, key=lambda v: v.priority, reverse=True)
+    return sorted(variables, key=lambda v: v.priority)
 
 
 def get_export_script(
