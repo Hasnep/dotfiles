@@ -83,6 +83,7 @@ cli:
   gron:
     guix: gron
     apt: gron
+    nix: gron
   httpie:
     guix: httpie
     apt: httpie
@@ -349,6 +350,7 @@ gui:
     flatpak: net.ankiweb.Anki
   audacity:
     flatpak: org.audacityteam.Audacity
+    apt: audacity
   bitwig-studio:
     flatpak: com.bitwig.BitwigStudio
   blender:
@@ -455,6 +457,8 @@ gui:
     flatpak: org.kde.krita
   libre-office:
     flatpak: org.libreoffice.LibreOffice
+  lossless-cut:
+    flatpak: no.mifi.losslesscut
   loupe:
     flatpak: org.gnome.Loupe
   marktext:
@@ -527,6 +531,11 @@ programming:
   crystal:
     apt: crystal
     nix: crystal
+  dart:
+    nix:
+      comment: Not installing for some reason
+      ignore: true
+      packages: dart
   deno:
     nix: deno
   dhall:
@@ -555,6 +564,11 @@ programming:
         - docker-compose
   duckdb:
     nix: duckdb
+  flutter:
+    nix:
+      comment: Not installing for some reason
+      ignore: true
+      packages: flutter
   gdtoolkit:
     nix:
       comment: Broke last time I tried to install
@@ -606,9 +620,15 @@ programming:
   netlify:
     nix: netlify-cli
   nickel:
-    nix: nickel
+    nix:
+      comment: Currently on v0.3.1
+      ignore: true
+      packages: nickel
   nickel-language-server:
-    nix: nls
+    nix:
+      comment: Could not install yet
+      ignore: true
+      packages: nls
   nim:
     guix: nim
     apt: nim
@@ -630,6 +650,7 @@ programming:
   packer:
     nix: packer
   pandoc:
+    comment: None of these are on v3 yet
     guix:
       comment: On version 2.14
       packages: pandoc
@@ -673,6 +694,11 @@ programming:
     guix: tectonic
   terraform:
     nix: terraform
+  topiary:
+    nix:
+      comment: Currently on v0.1.0
+      ignore: true
+      packages: topiary
   tup:
     guix: tup
     apt: tup
@@ -692,7 +718,10 @@ programming:
     apt: yamllint
     nix: yamllint
   zig:
-    guix: zig
+    guix:
+      comment: Currently on v0.9.1
+      ignore: true
+      packages: zig
     nix: zig
 python:
   black:
