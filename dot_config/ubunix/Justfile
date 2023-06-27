@@ -56,8 +56,10 @@ install_guix:
     guix package --manifest={{guix_manifest_file}} --profile={{guix_profile_folder}}
 
 install_fonts_guix:
-    rm -rf {{fonts_folder}}/guix \
-        && cp -r --no-preserve=mode,ownership --dereference {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix
+    rm -rf {{fonts_folder}}/guix && \
+    if [ -d {{guix_profile_folder}}/share/fonts ]; then \
+        cp -r --no-preserve=mode,ownership --dereference {{guix_profile_folder}}/share/fonts {{fonts_folder}}/guix; \
+    fi
 
 install_apt:
     fish {{apt_manifest_file}}
