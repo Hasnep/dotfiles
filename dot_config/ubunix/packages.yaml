@@ -1,7 +1,20 @@
 cli:
   ansible:
-    guix: ansible
-    apt: ansible
+    guix:
+      comment: Prefer to install with Nix
+      ignore: true
+      packages: ansible
+    apt:
+      comment: Prefer to install with Nix
+      ignore: true
+      packages: ansible
+    nix: ansible
+  ansible-lint:
+    apt:
+      comment: Prefer to install with Nix
+      ignore: true
+      packages: ansible-lint
+    nix: ansible-lint
   autorestic:
     nix: autorestic
   bat:
@@ -95,6 +108,8 @@ cli:
     guix: imagemagick
     apt: imagemagick
     nix: imagemagick
+  imgcat:
+    nix: imgcat
   jc:
     guix: jc
     apt:
@@ -260,6 +275,8 @@ editors:
       packages: nano
     nix: nano
   pulsar:
+    comment: Just trying it out
+    ignore: true
     flatpak: dev.pulsar_edit.Pulsar
 flatpak:
   flatpak:
@@ -317,6 +334,10 @@ fonts:
   stix:
     apt: fonts-stix
 gaming:
+  cemu:
+    comment: Prefer to use SteamDeck
+    ignore: true
+    flatpak: info.cemu.Cemu
   lutris:
     apt: lutris
   marble-marcher:
@@ -412,7 +433,11 @@ gui:
     flatpak: org.gustavoperedo.FontDownloader
   font-viewer:
     flatpak: org.gnome.font-viewer
+  footage:
+    flatpak: io.gitlab.adhami3310.Footage
   fractal:
+    comment: Doesn't support e2e encryption yet
+    ignore: true
     flatpak: org.gnome.Fractal
     nix: fractal
   gimp:
@@ -455,6 +480,8 @@ gui:
     flatpak: org.kde.kdenlive
   krita:
     flatpak: org.kde.krita
+  lemonade:
+    flatpak: ml.mdwalters.Lemonade
   libre-office:
     flatpak: org.libreoffice.LibreOffice
   lossless-cut:
@@ -499,15 +526,18 @@ gui:
   zeal:
     flatpak: org.zealdocs.Zeal
     apt: zeal
+  zoom:
+    comment: Spyware
+    ignore: true
+    flatpak: us.zoom.Zoom
   zulip:
     flatpak: org.zulip.Zulip
 guix:
   glibc-locales:
     guix: glibc-locales
   nscd:
-    comment:
-      The name service cache daemon is recomended to run Guix on a foreign
-      distro
+    comment: |
+      The name service cache daemon is recomended to run Guix on a foreign distro
     apt: nscd
   nss-certs:
     comment: Provides X.509 Certificates
@@ -556,12 +586,18 @@ programming:
         - docker-compose
     apt:
       - docker
-      - docker-compose
+      - docker-buildx-plugin
+      - docker-compose-plugin
     nix:
       ignore: true
       packages:
         - docker
         - docker-compose
+  docker-compose:
+    apt:
+      comment: Replaced by compose plugin
+      ignore: true
+      packages: docker-compose
   duckdb:
     nix: duckdb
   flutter:
@@ -620,15 +656,9 @@ programming:
   netlify:
     nix: netlify-cli
   nickel:
-    nix:
-      comment: Currently on v0.3.1
-      ignore: true
-      packages: nickel
+    nix: nickel
   nickel-language-server:
-    nix:
-      comment: Could not install yet
-      ignore: true
-      packages: nls
+    nix: nls
   nim:
     guix: nim
     apt: nim
