@@ -1,8 +1,9 @@
 #!/usr/bin/env just --justfile
 
-xdg_data_home := env_var("XDG_DATA_HOME")
-xdg_config_home := env_var("XDG_CONFIG_HOME")
 home := env_var("HOME")
+xdg_config_home := env_var("XDG_CONFIG_HOME")
+xdg_data_home := env_var("XDG_DATA_HOME")
+xdg_state_home := env_var("XDG_STATE_HOME")
 
 fonts_folder := xdg_data_home / "fonts"
 fish_config_folder := xdg_config_home / "fish"
@@ -19,8 +20,7 @@ apt_manifest_file := ubunix_config_folder / "apt-manifest.fish"
 
 nix_manifest_folder := xdg_config_home / "home-manager"
 nix_config_folder := xdg_config_home / "nix"
-# nix_profile_folder := xdg_data_home / "nix"
-nix_profile_folder := home / ".nix-profile"
+nix_profile_folder := xdg_state_home / "nix" / "profile"
 nix_bin_folder := nix_profile_folder / "bin"
 
 flatpak_manifest_file := ubunix_config_folder / "flatpak-manifest.fish"

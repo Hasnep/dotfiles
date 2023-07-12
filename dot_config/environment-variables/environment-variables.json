@@ -66,12 +66,10 @@
   },
   "nix": {
     "NIX_CONF_DIR": "$XDG_CONFIG_HOME/nix",
+    "NIX_PROFILE_DIR": "$XDG_STATE_HOME/nix/profile",
+    "NIX_SSH_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt",
     "PATH": {
-      "values": [
-        "$HOME/.nix-profile/bin",
-        "$XDG_DATA_HOME/nix/bin",
-        "/nix/var/nix/profiles/default/bin"
-      ],
+      "values": ["$NIX_PROFILE_DIR/bin", "/nix/var/nix/profiles/default/bin"],
       "priority": 5
     }
   },
