@@ -30,9 +30,8 @@ cli:
       packages: chezmoi
     nix: chezmoi
   cowsay:
-    comment:
-      Normally my custom cowsay script takes precedence over the installed
-      one
+    comment: |
+      Normally my custom cowsay script takes precedence over the installed one
     ignore: true
     guix: cowsay
     apt: cowsay
