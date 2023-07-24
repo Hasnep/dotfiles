@@ -15,7 +15,9 @@ for tool, command in [
     ("antidot", "antidot completion fish"),
     ("autorestic", "autorestic completion fish"),
     ("bin", "bin completion fish"),
+    ("glow", "glow completion fish"),
     ("just", "just --completions fish"),
+    ("poetry", "poetry completions fish"),
     ("trash", "trash completions fish"),
     ("zellij", "zellij setup --generate-completion fish"),
 ]:
