@@ -121,6 +121,7 @@ cli:
   jq:
     guix: jq
     apt: jq
+    nix: jq
   just:
     nix: just
   lolcat:
@@ -447,6 +448,9 @@ gui:
   gnome-boxes:
     flatpak: org.gnome.Boxes
     apt: gnome-boxes
+  gnome-characters:
+    flatpak: org.gnome.Characters
+    apt: gnome-characters
   gnome-image-viewer:
     comment: Replaced by Loupe
     ignore: true
@@ -469,6 +473,8 @@ gui:
       - gpaste-2
   handbrake:
     flatpak: fr.handbrake.ghb
+  helio:
+    flatpak: fm.helio.Workstation
   inkscape:
     flatpak: org.inkscape.Inkscape
   joplin:
@@ -568,10 +574,14 @@ programming:
   deno:
     nix: deno
   dhall:
+    comment: Using Nickel now
+    ignore: true
     guix: dhall
     apt: dhall
     nix: dhall
   dhall-tools:
+    comment: Using Nickel now
+    ignore: true
     nix:
       - dhall-bash
       - dhall-json
@@ -641,7 +651,10 @@ programming:
   hadolint:
     nix: hadolint
   hugo:
-    apt: hugo
+    apt:
+      comment: Installs all of Go toolchain as well
+      ignore: true
+      packages: hugo
     nix: hugo
   julia:
     nix: julia-bin
@@ -676,6 +689,9 @@ programming:
       - npm
   npm-check-updates:
     nix: nodePackages.npm-check-updates
+  orogene:
+    comment: Node.js package manager
+    nix: orogene
   packer:
     nix: packer
   pandoc:
@@ -724,10 +740,7 @@ programming:
   terraform:
     nix: terraform
   topiary:
-    nix:
-      comment: Currently on v0.1.0
-      ignore: true
-      packages: topiary
+    nix: topiary
   tup:
     guix: tup
     apt: tup
@@ -751,7 +764,11 @@ programming:
       comment: Currently on v0.9.1
       ignore: true
       packages: zig
-    nix: zig
+    nix:
+      comment: Currently on v0.10.1
+      packages: zig
+  zig-language-server:
+    nix: zls
 python:
   black:
     guix: python-black
@@ -767,6 +784,18 @@ python:
     guix: python-isort
     apt: isort
     nix: isort
+  poetry:
+    guix:
+      ignore: true
+      packages: poetry
+    apt:
+      ignore: true
+      packages: python3-poetry
+    nix:
+      - poetry
+      - poetryPlugins.poetry-audit-plugin
+      - poetryPlugins.poetry-plugin-export
+      - poetryPlugins.poetry-plugin-up
   pyright:
     nix: nodePackages.pyright
   python3:
@@ -778,6 +807,7 @@ python:
       force: true
       packages:
         - python3
+        - python3-pip
         - python3-venv
     nix: python3
   ruff:
