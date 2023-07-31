@@ -497,6 +497,8 @@ gui:
     flatpak: com.github.marktext.marktext
   meld:
     flatpak: org.gnome.meld
+  mission-center:
+    flatpak: io.missioncenter.MissionCenter
   musescore:
     flatpak: org.musescore.MuseScore
   obs:
