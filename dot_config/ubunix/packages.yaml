@@ -629,6 +629,10 @@ programming:
       packages: docker-compose
   duckdb:
     nix: duckdb
+  elm:
+    guix: elm
+    apt: elm-compiler
+    nix: elmPackages.elm
   flutter:
     nix:
       comment: Not installing for some reason
