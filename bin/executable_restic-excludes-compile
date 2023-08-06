@@ -3,35 +3,49 @@
 import argparse
 import json
 from pathlib import Path
+from typing import Dict, Iterable, List, Tuple, TypeVar
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--output", type=Path)
-parser.add_argument("input_file_path", type=Path)
+T = TypeVar("T")
 
-# Parse arguments
-args = parser.parse_args()
-output_file_path = args.output
-input_file_path = args.input_file_path
 
-if input_file_path is None:
-    print("Input file not specified")
-    print("restic-excludes-compile --output=<output path> <input path>")
-    exit()
+def flatten(nested_list: Iterable[Iterable[T]]) -> List[T]:
+    return [item for sublist in nested_list for item in sublist]
 
-# Read JSON
-print(f"Reading exclude source file from '{input_file_path}'.")
-with open(input_file_path, "r") as f:
-    excludes = json.load(f)
 
-# Create output string
-output = ""
-for category, exclude_paths in excludes.items():
-    output += f"# {category}\n"
-    for exclude_path in exclude_paths:
-        output += f"{exclude_path}\n"
+def get_cli_args() -> Tuple[Path, Path]:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("input_file_path", type=Path)
+    args = parser.parse_args()
+    return (args.input_file_path, args.output)
 
-print(f"Writing exclude file to '{output_file_path}'.")
-with open(output_file_path, "w") as f:
-    f.write(output)
 
-print("Done converting excludes file.")
+def read_excludes(file_path: Path) -> Dict[str, List[str]]:
+    with open(file_path, "r") as f:
+        return json.load(f)
+
+
+def convert_excludes(excludes: Dict[str, List[str]]) -> str:
+    return "\n".join(
+        flatten(
+            ([f"# {category}"] + exclude_paths)
+            for category, exclude_paths in excludes.items()
+        )
+    )
+
+
+def write_excludes(excludes: str, file_path: Path) -> None:
+    with open(file_path, "w") as f:
+        f.write(excludes)
+
+
+def main()->None:
+    (input_file_path, output_file_path) = get_cli_args()
+    write_excludes(convert_excludes(read_excludes(input_file_path)), output_file_path)
+    print(
+        f"Converted restic excludes file from `{input_file_path}` to `{output_file_path}`."
+    )
+
+
+if __name__ == "__main__":
+    main()
