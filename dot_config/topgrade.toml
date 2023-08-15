@@ -1,20 +1,17 @@
+[misc]
 assume_yes = true
-
-# Disable specific steps - same options as the command line flag
 disable = [
     "containers",
     "distrobox",
+    "flutter",
     "github_cli_extensions",
     "guix",
     "node",
     "pip3",
     "snap",
 ]
-skip_notify = true
-
-[git]
-repos = ["~/.dotfiles"]
-pull_predefined = false
 
 [commands]
-Guix = "fish $XDG_CONFIG_HOME/guix/upgrade-guix.fish"
+"Guix" = "fish $XDG_CONFIG_HOME/guix/upgrade-guix.fish"
+"Nix garbage collection" = "nix-collect-garbage --delete-old"
+"Ubunix" = "cd $XDG_CONFIG_HOME/ubunix && just"
