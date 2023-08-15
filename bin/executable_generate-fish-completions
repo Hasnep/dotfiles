@@ -11,21 +11,31 @@ if config_directory is None:
 
 fish_completions_folder = Path(config_directory) / "fish" / "completions"
 
-for tool, command in [
-    ("antidot", "antidot completion fish"),
-    ("autorestic", "autorestic completion fish"),
-    ("bin", "bin completion fish"),
-    ("glow", "glow completion fish"),
-    ("just", "just --completions fish"),
-    ("poetry", "poetry completions fish"),
-    ("trash", "trash completions fish"),
-    ("zellij", "zellij setup --generate-completion fish"),
+for tool, command, output in [
+    ("antidot", "antidot completion fish", "prints"),
+    ("autorestic", "autorestic completion fish", "prints"),
+    ("bin", "bin completion fish", "prints"),
+    ("glow", "glow completion fish", "prints"),
+    ("just", "just --completions fish", "prints"),
+    ("poetry", "poetry completions fish", "prints"),
+    ("restic", "restic --fish-completion {completions_file}", "writes"),
+    ("trash", "trash completions fish", "prints"),
+    ("zellij", "zellij setup --generate-completion fish", "prints"),
 ]:
+    # Check if the tool is installed
     if subprocess.run(f"type {tool}", shell=True, capture_output=True).returncode == 0:
-        completion_file = fish_completions_folder / f"{tool}.fish"
-        print(f"Generating completions for {tool} in {completion_file}.")
-        completions = subprocess.run(
-            command, shell=True, capture_output=True, text=True
-        ).stdout
-        with open(completion_file, "w") as f:
-            f.write(completions)
+        completions_file = fish_completions_folder / f"{tool}.fish"
+        print(f"Generating completions for {tool} in {completions_file}.")
+        if output == "writes":
+            subprocess.run(
+                command.format(completions_file=completions_file),
+                shell=True,
+                capture_output=True,
+                text=True,
+            )
+        elif output == "prints":
+            completions = subprocess.run(
+                command, shell=True, capture_output=True, text=True
+            ).stdout
+            with open(completions_file, "w") as f:
+                f.write(completions)
