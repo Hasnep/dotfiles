@@ -1,0 +1,82 @@
+#!/usr/bin/python3
+
+from pathlib import Path
+import json
+import socket
+import getpass
+import argparse
+from typing import Any, Dict, Tuple, List
+
+
+def get_autorestic_config(locations: List[Tuple[str, Path]]) -> Dict[str, Any]:
+    backends = {
+        "pcloud": {
+            "type": "local",
+            "path": str(
+                Path().home() / "pCloudDrive" / "autorestic" / socket.gethostname()
+            ),
+        },
+        "caddy": {
+            "type": "local",
+            "path": str(
+                Path("/")
+                / "media"
+                / getpass.getuser()
+                / "caddy"
+                / "autorestic"
+                / socket.gethostname()
+            ),
+        },
+    }
+    backend_names = list(backends.keys())
+    backup_options = {
+        "hooks": {"success": ["echo $AUTORESTIC_ADDED_SIZE"]},
+        "options": {
+            "backup": {
+                "exclude-file": str(
+                    Path().home() / ".config" / "autorestic" / "excludes.txt"
+                ),
+                # "group-by": "tags",
+                # "forget": {
+                #     "keep-last": [20],
+                #     "keep-hourly": [24],
+                #     "keep-daily": [14],
+                #     "keep-weekly": [4],
+                #     "keep-monthly": [12],
+                #     "keep-yearly": [999],
+                # },
+            }
+        },
+        # "forget": "prune",
+    }
+    return {
+        "version": 2,
+        "backends": backends,
+        "locations": {
+            name: {"from": str(from_location), "to": backend_names, **backup_options}
+            for (name, from_location) in locations
+        },
+    }
+
+
+def get_output_file_path() -> Path:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("output", type=Path)
+    args = parser.parse_args()
+    return args.output
+
+
+def main():
+    output_file_path = get_output_file_path()
+    locations = [
+        ("home", Path().home()),
+        ("documents", Path().home() / "Documents"),
+    ]
+    autorestic_config = get_autorestic_config(locations)
+    print(f"Writing autorestic config to `{output_file_path}`.")
+    with open(output_file_path, "w") as f:
+        json.dump(autorestic_config, f)
+
+
+if __name__ == "__main__":
+    main()
