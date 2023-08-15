@@ -5,8 +5,8 @@
   "cargo": {
     "CARGO_HOME": "$XDG_DATA_HOME/cargo",
     "PATH": {
-      "values": ["$XDG_DATA_HOME/cargo/bin/"],
-      "priority": 1
+      "priority": 1,
+      "values": ["$XDG_DATA_HOME/cargo/bin/"]
     }
   },
   "docker": {
@@ -37,8 +37,8 @@
     "GUIX_PYTHONPATH": "$GUIX_PROFILE/lib/python3.9/site-packages",
     "LIBRARY_PATH": "$GUIX_PROFILE/lib",
     "PATH": {
-      "values": ["$GUIX_PROFILE/bin", "$GUIX_PROFILE/sbin"],
-      "priority": 10
+      "priority": 10,
+      "values": ["$GUIX_PROFILE/bin", "$GUIX_PROFILE/sbin"]
     },
     "R_LIBS_SITE": "$GUIX_PROFILE/site-library/"
   },
@@ -50,8 +50,8 @@
   },
   "juliaup": {
     "PATH": {
-      "values": ["$XDG_DATA_HOME/juliaup/bin/"],
-      "priority": 3
+      "priority": 3,
+      "values": ["$XDG_DATA_HOME/juliaup/bin/"]
     }
   },
   "kde": {
@@ -69,8 +69,8 @@
     "NIX_PROFILE_DIR": "$XDG_STATE_HOME/nix/profile",
     "NIX_SSH_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt",
     "PATH": {
-      "values": ["$NIX_PROFILE_DIR/bin", "/nix/var/nix/profiles/default/bin"],
-      "priority": 5
+      "priority": 5,
+      "values": ["$NIX_PROFILE_DIR/bin", "/nix/var/nix/profiles/default/bin"]
     }
   },
   "node": {
@@ -101,12 +101,13 @@
   },
   "snap": {
     "PATH": {
-      "values": ["/snap/bin"],
-      "priority": 4
+      "priority": 4,
+      "values": ["/snap/bin"]
     }
   },
   "system-path": {
     "PATH": {
+      "priority": 999,
       "values": [
         "/bin",
         "/sbin",
@@ -116,8 +117,7 @@
         "/usr/local/games",
         "/usr/local/sbin",
         "/usr/sbin"
-      ],
-      "priority": 999
+      ]
     }
   },
   "topiary": {
@@ -125,8 +125,8 @@
   },
   "user-path": {
     "PATH": {
-      "values": ["$HOME/.local/bin/", "$HOME/bin/"],
-      "priority": 100
+      "priority": 100,
+      "values": ["$HOME/.local/bin/", "$HOME/bin/"]
     }
   },
   "wine": {
@@ -143,8 +143,8 @@
     "XDG_DOWNLOAD_DIR": "$HOME/Downloads",
     "XDG_MUSIC_DIR": "$HOME/Music",
     "XDG_PICTURES_DIR": "$HOME/Pictures",
-    "XDG_VIDEOS_DIR": "$HOME/Videos",
-    "XDG_STATE_HOME": "$HOME/.local/state"
+    "XDG_STATE_HOME": "$HOME/.local/state",
+    "XDG_VIDEOS_DIR": "$HOME/Videos"
   },
   "xinit": {
     "XINITRC": "$XDG_CONFIG_HOME/x11/xinitrc"
