@@ -23,6 +23,9 @@ cli:
   bc:
     guix: bc
     apt: bc
+  bfs:
+    apt: bfs
+    nix: bfs
   chezmoi:
     guix:
       comment: Outdated version
