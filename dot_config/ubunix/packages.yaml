@@ -67,6 +67,8 @@ cli:
   exa:
     guix: exa
     apt: exa
+  f2:
+    nix: f2
   fd:
     guix: fd
     apt: fd-find
