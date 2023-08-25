@@ -694,6 +694,13 @@ programming:
       ignore: true
       packages: hugo
     nix: hugo
+  janet:
+    ignore: true
+    guix: janet
+    nix: janet
+  janet-project-manager:
+    ignore: true
+    nix: jpm
   julia:
     nix: julia-bin
   latex2mathml:
