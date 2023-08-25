@@ -283,6 +283,19 @@ editors:
     comment: Just trying it out
     ignore: true
     flatpak: dev.pulsar_edit.Pulsar
+elm:
+  elm:
+    guix: elm
+    apt: elm-compiler
+    nix: elmPackages.elm
+  elm-format:
+    nix: elmPackages.elm-format
+  elm-review:
+    nix: elmPackages.elm-review
+  elm-test:
+    nix: elmPackages.elm-test
+  uglify-js:
+    guix: node-uglify-js
 flatpak:
   flatpak:
     guix:
@@ -634,10 +647,6 @@ programming:
       packages: docker-compose
   duckdb:
     nix: duckdb
-  elm:
-    guix: elm
-    apt: elm-compiler
-    nix: elmPackages.elm
   flutter:
     nix:
       comment: Not installing for some reason
