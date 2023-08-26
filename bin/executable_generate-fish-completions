@@ -15,6 +15,7 @@ for tool, command, output in [
     ("antidot", "antidot completion fish", "prints"),
     ("autorestic", "autorestic completion fish", "prints"),
     ("bin", "bin completion fish", "prints"),
+    ("chezmoi", "chezmoi completion fish --output={completions_file}", "writes"),
     ("glow", "glow completion fish", "prints"),
     ("just", "just --completions fish", "prints"),
     ("poetry", "poetry completions fish", "prints"),
