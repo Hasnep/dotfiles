@@ -1,34 +1,15 @@
 #!/usr/bin/python3
 
-from pathlib import Path
+import argparse
 import json
 import socket
-import getpass
-import argparse
-from typing import Any, Dict, Tuple, List
+from pathlib import Path
+from typing import Any, Dict
 
 
-def get_autorestic_config(locations: List[Tuple[str, Path]]) -> Dict[str, Any]:
-    backends = {
-        "pcloud": {
-            "type": "local",
-            "path": str(
-                Path().home() / "pCloudDrive" / "autorestic" / socket.gethostname()
-            ),
-        },
-        "caddy": {
-            "type": "local",
-            "path": str(
-                Path("/")
-                / "media"
-                / getpass.getuser()
-                / "caddy"
-                / "autorestic"
-                / socket.gethostname()
-            ),
-        },
-    }
-    backend_names = list(backends.keys())
+def get_autorestic_config(
+    locations: Dict[str, Path], backends: Dict[str, Dict[str, str]]
+) -> Dict[str, Any]:
     backup_options = {
         "hooks": {"success": ["echo $AUTORESTIC_ADDED_SIZE"]},
         "options": {
@@ -53,8 +34,12 @@ def get_autorestic_config(locations: List[Tuple[str, Path]]) -> Dict[str, Any]:
         "version": 2,
         "backends": backends,
         "locations": {
-            name: {"from": str(from_location), "to": backend_names, **backup_options}
-            for (name, from_location) in locations
+            name: {
+                "from": str(from_location),
+                "to": list(backends.keys()),
+                **backup_options,
+            }
+            for (name, from_location) in locations.items()
         },
     }
 
@@ -67,12 +52,16 @@ def get_output_file_path() -> Path:
 
 
 def main():
+    username = socket.gethostname()
     output_file_path = get_output_file_path()
-    locations = [
-        ("home", Path().home()),
-        ("documents", Path().home() / "Documents"),
-    ]
-    autorestic_config = get_autorestic_config(locations)
+    locations = {"home": Path().home(), "documents": Path().home() / "Documents"}
+    backends = {
+        "pcloud": {
+            "type": "local",
+            "path": str(Path().home() / "pCloudDrive" / "autorestic" / username),
+        }
+    }
+    autorestic_config = get_autorestic_config(locations, backends)
     print(f"Writing autorestic config to `{output_file_path}`.")
     with open(output_file_path, "w") as f:
         json.dump(autorestic_config, f)
