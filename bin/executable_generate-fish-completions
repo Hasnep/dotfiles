@@ -2,41 +2,78 @@
 
 import os
 import subprocess
+from concurrent import futures
 from pathlib import Path
+from typing import Literal, NamedTuple
 
-config_directory = os.getenv("XDG_CONFIG_HOME")
-if config_directory is None:
-    print("Environment variable `XDG_CONFIG_HOME` not set.")
-    exit(1)
+OutputType = Literal["prints", "writes"]
 
-fish_completions_folder = Path(config_directory) / "fish" / "completions"
 
-for tool, command, output in [
-    ("antidot", "antidot completion fish", "prints"),
-    ("autorestic", "autorestic completion fish", "prints"),
-    ("bin", "bin completion fish", "prints"),
-    ("chezmoi", "chezmoi completion fish --output={completions_file}", "writes"),
-    ("glow", "glow completion fish", "prints"),
-    ("just", "just --completions fish", "prints"),
-    ("poetry", "poetry completions fish", "prints"),
-    ("restic", "restic --fish-completion {completions_file}", "writes"),
-    ("trash", "trash completions fish", "prints"),
-    ("zellij", "zellij setup --generate-completion fish", "prints"),
-]:
-    # Check if the tool is installed
-    if subprocess.run(f"type {tool}", shell=True, capture_output=True).returncode == 0:
-        completions_file = fish_completions_folder / f"{tool}.fish"
-        print(f"Generating completions for {tool} in {completions_file}.")
-        if output == "writes":
+class ToolInfo(NamedTuple):
+    tool: str
+    completion_command: str
+    output_type: OutputType
+
+
+def get_config_directory() -> Path:
+    config_directory = os.getenv("XDG_CONFIG_HOME")
+    if config_directory is None:
+        raise ValueError("Environment variable `XDG_CONFIG_HOME` not set.")
+    else:
+        return Path(config_directory)
+
+
+def get_completions_directory(config_directory: Path) -> Path:
+    return config_directory / "fish" / "completions"
+
+
+def is_installed(tool: str) -> bool:
+    return (
+        subprocess.run(f"type {tool}", shell=True, capture_output=True).returncode == 0
+    )
+
+
+def generate_completion(tool_info: ToolInfo) -> None:
+    if is_installed(tool_info.tool):
+        completions_file = (
+            get_completions_directory(get_config_directory()) / f"{tool_info.tool}.fish"
+        )
+        print(f"Generating completions for {tool_info.tool} in {completions_file}.")
+        if tool_info.output_type == "writes":
             subprocess.run(
-                command.format(completions_file=completions_file),
+                tool_info.completion_command.format(completions_file=completions_file),
                 shell=True,
                 capture_output=True,
                 text=True,
             )
-        elif output == "prints":
+        elif tool_info.output_type == "prints":
             completions = subprocess.run(
-                command, shell=True, capture_output=True, text=True
+                tool_info.completion_command, shell=True, capture_output=True, text=True
             ).stdout
             with open(completions_file, "w") as f:
                 f.write(completions)
+        else:
+            pass
+
+
+def main():
+    tool_infos = [
+        ToolInfo("antidot", "antidot completion fish", "prints"),
+        ToolInfo("autorestic", "autorestic completion fish", "prints"),
+        ToolInfo("bin", "bin completion fish", "prints"),
+        ToolInfo(
+            "chezmoi", "chezmoi completion fish --output={completions_file}", "writes"
+        ),
+        ToolInfo("glow", "glow completion fish", "prints"),
+        ToolInfo("just", "just --completions fish", "prints"),
+        ToolInfo("poetry", "poetry completions fish", "prints"),
+        ToolInfo("restic", "restic --fish-completion {completions_file}", "writes"),
+        ToolInfo("trash", "trash completions fish", "prints"),
+        ToolInfo("zellij", "zellij setup --generate-completion fish", "prints"),
+    ]
+    with futures.ProcessPoolExecutor() as pool:
+        list(pool.map(generate_completion, tool_infos))
+
+
+if __name__ == "__main__":
+    main()
