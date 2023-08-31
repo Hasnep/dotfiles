@@ -259,6 +259,39 @@ cli:
     guix: zip
     apt: zip
     nix: zip
+containers:
+  docker:
+    guix:
+      ignore: true
+      packages:
+        - docker
+        - docker-compose
+    apt:
+      - docker
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    nix:
+      ignore: true
+      packages:
+        - docker
+        - docker-compose
+  docker-compose:
+    apt:
+      comment: Replaced by compose plugin
+      ignore: true
+      packages: docker-compose
+  hadolint:
+    nix: hadolint
+  podman:
+    guix:
+      ignore: true
+      packages: podman
+    apt:
+      - podman
+      - podman-compose
+    nix:
+      ignore: true
+      packages: podman
 editors:
   helix:
     flatpak:
@@ -379,6 +412,33 @@ gaming:
     comment: Too demanding for my current laptop
     ignore: true
     flatpak: org.yuzu_emu.yuzu
+git:
+  git:
+    guix:
+      ignore: true
+      packages: git
+    apt: git
+    nix: git
+  git-delete-merged-branches:
+    apt: git-delete-merged-branches
+    nix: git-delete-merged-branches
+  git-machete:
+    nix: git-machete
+  git-revise:
+    apt: git-revise
+    nix: git-revise
+  github-cli:
+    apt: gh
+    nix: gh
+  jujutsu:
+    nix: jujutsu
+  pre-commit:
+    guix:
+      comment: Still on v2
+      ignore: true
+      packages: pre-commit
+    apt: pre-commit
+    nix: pre-commit
 gnome:
   gnome-extension-manager:
     flatpak: com.mattjakeman.ExtensionManager
@@ -611,40 +671,6 @@ programming:
       packages: dart
   deno:
     nix: deno
-  dhall:
-    comment: Using Nickel now
-    ignore: true
-    guix: dhall
-    apt: dhall
-    nix: dhall
-  dhall-tools:
-    comment: Using Nickel now
-    ignore: true
-    nix:
-      - dhall-bash
-      - dhall-json
-      - dhall-lsp-server
-      - dhall-nix
-  docker:
-    guix:
-      ignore: true
-      packages:
-        - docker
-        - docker-compose
-    apt:
-      - docker
-      - docker-buildx-plugin
-      - docker-compose-plugin
-    nix:
-      ignore: true
-      packages:
-        - docker
-        - docker-compose
-  docker-compose:
-    apt:
-      comment: Replaced by compose plugin
-      ignore: true
-      packages: docker-compose
   duckdb:
     nix: duckdb
   flutter:
@@ -657,18 +683,6 @@ programming:
       comment: Broke last time I tried to install
       ignore: true
       packages: python310Packages.gdtoolkit
-  git:
-    guix:
-      ignore: true
-      packages: git
-    apt: git
-    nix: git
-  git-delete-merged-branches:
-    apt: git-delete-merged-branches
-    nix: git-delete-merged-branches
-  github-cli:
-    apt: gh
-    nix: gh
   go:
     guix: go
     apt: golang
@@ -686,8 +700,6 @@ programming:
   guile:
     guix: guile
     apt: guile-3.0
-  hadolint:
-    nix: hadolint
   hugo:
     apt:
       comment: Installs all of Go toolchain as well
@@ -750,23 +762,6 @@ programming:
     nix:
       comment: On version 2.19
       packages: pandoc
-  podman:
-    guix:
-      ignore: true
-      packages: podman
-    apt:
-      - podman
-      - podman-compose
-    nix:
-      ignore: true
-      packages: podman
-  pre-commit:
-    guix:
-      comment: Still on v2
-      ignore: true
-      packages: pre-commit
-    apt: pre-commit
-    nix: pre-commit
   prettier:
     nix: nodePackages.prettier
   r:
