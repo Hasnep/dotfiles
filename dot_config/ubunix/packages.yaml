@@ -750,6 +750,7 @@ programming:
     comment: Node.js package manager
     nix: orogene
   packer:
+    ignore: true
     nix: packer
   pandoc:
     comment: None of these are on v3 yet
@@ -962,6 +963,10 @@ tui:
     guix: lynx
     apt: lynx
     nix: lynx
+  orpie:
+    apt: orpie
+    nix: orpie
+    comment: RPN calculator
   tmux:
     guix: tmux
     apt: tmux
@@ -977,3 +982,12 @@ ubuntu:
     apt: aptitude
   nala:
     apt: nala
+xfce:
+  xfdashboard:
+    ignore: true
+    guix:
+      comment: Not on v1.0 yet
+      ignore: true
+      packages: xfdashboard
+    apt: xfdashboard
+    nix: xfdashboard
